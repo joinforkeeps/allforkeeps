@@ -1,0 +1,81 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/elements/PageHeader.astro";
+import Button from "@/components/ui/Button.astro";
+import { BookOpen } from "@lucide/astro";
+
+const coursesList = [
+    {
+        title: "Self-Hosted CRM Foundations",
+        level: "Beginner",
+        desc: "Deploy Twenty CRM and manage donor relationships without per-seat licensing fees.",
+        badge: "Free",
+    },
+    {
+        title: "Private AI for Nonprofits",
+        level: "Intermediate",
+        desc: "Run secure, offline Ollama models on your local hardware to draft grants with total privacy.",
+        badge: "Free",
+    },
+    {
+        title: "Automated Volunteer Onboarding",
+        level: "Beginner",
+        desc: "Build n8n workflows that handle event signups, calendar sync, and welcome packets automatically.",
+        badge: "Free",
+    },
+    {
+        title: "Grant Writing with Open Data",
+        level: "Advanced",
+        desc: "Connect public grant databases to local search tooling to fund your next community initiative.",
+        badge: "Quickstart",
+    },
+];
+---
+
+<Layout
+    title="Free Courses & Quickstarts For Keeps"
+    description="Self-led e-learning courses and technical quickstarts for nonprofit teams."
+>
+    <div class="py-16 md:py-24 site-container">
+        <PageHeader
+            title="Free Courses & Quickstarts"
+            description="Self-led learning paths designed for nonprofit directors, staff, and volunteers with zero prior tech background."
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            {
+                coursesList.map((course) => (
+                    <div class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary">
+                                    {course.level}
+                                </span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">
+                                    {course.badge}
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+                                {course.title}
+                            </h3>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6">
+                                {course.desc}
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-neutral-100 dark:border-neutral-800">
+                            <span class="text-xs text-neutral-400 flex items-center gap-1">
+                                <BookOpen class="w-3.5 h-3.5" /> Self-paced
+                            </span>
+                            <Button
+                                url="/sign-in"
+                                className="text-sm px-4 py-2"
+                            >
+                                Start Course
+                            </Button>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</Layout>

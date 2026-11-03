@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ForKeepsSocials from "@/components/sections/ForKeepsSocials.astro";
+---
+<Layout title="Community | For Keeps" description="Connect with For Keeps, share open-source discoveries, and learn alongside nonprofit builders.">
+ <main class="site-container fk-community">
+  <header><p class="text-primary">JOIN FOR KEEPS</p><h1>Build skills. Share what works.</h1><p>A place for nonprofit teams, grassroots organizers, volunteers, and open-source learners to connect around practical technology.</p><a class="fk-community-cta" href="https://linktr.ee/joinforkeeps" target="_blank" rel="noopener noreferrer">Open the For Keeps link hub ↗</a></header>
+  <section><h2>Find your way in</h2><p>Follow project updates, explore code, or share a useful tool. You do not need to publish a promotional post to contact us or follow our public channels.</p><ForKeepsSocials /></section>
+  <section class="fk-community-note"><h2>Ask questions safely</h2><p>Share what you are trying to do, what happened, and any non-sensitive error messages. Remove donor records, personal information, passwords, API keys, and private links before posting.</p><p>Public channels are for peer discussion, not guaranteed response times or emergency support. Use the contact page for private project enquiries.</p><a href="/contact">Contact For Keeps →</a></section>
+ </main>
+</Layout>
+<style>
+.fk-community{padding-top:3rem;padding-bottom:3rem}.fk-community header{max-width:48rem}.fk-community h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.15;margin:1rem 0}.fk-community h2{font-size:1.8rem;margin-bottom:1rem}.fk-community p{line-height:1.8;margin:.75rem 0 1.25rem}.fk-community section{margin-top:2.5rem}.fk-community a{color:#2d6dc3}.fk-community-cta{display:inline-block;border:1px solid #b7caff;border-radius:.7rem;padding:.8rem 1rem}.fk-community-note{border:1px solid #b7caff66;padding:1.5rem;border-radius:1rem}:global(html.dark) .fk-community a{color:#93c5fd}
+</style>

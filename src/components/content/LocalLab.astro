@@ -1,0 +1,10 @@
+---
+interface Props { title?: string; }
+const { title = 'Start small. Keep it local.' } = Astro.props;
+---
+<aside class="fk-callout" aria-label={title}>
+  <h3>{title}</h3>
+  <p>Use sample records. Run one tool first. Do not expose the lab to the public internet.</p>
+  <p>Before production: assign an owner, apply updates, secure access, and test a restore.</p>
+  <slot />
+</aside>

@@ -2,66 +2,65 @@
 	{
         "id": 1,
 		"name": "Github",
-        "username": "ricocc",
+        "username": "joinforkeeps",
 		"image": "/assets/social/social-github.jpg",
-		"url": "https://github.com/ricocc/"
+		"url": "https://github.com/joinforkeeps"
 	},
 
 	{
         "id": 2,
-		"name": "Xiaohongshu",
-        "username": "ricouii",
+		"name": "Instagram",
+        "username": "joinforkeeps",
 		"image": "/assets/social/social-xiaohongshu.jpg",
-		"url": "https://www.xiaohongshu.com/user/profile/5f2b6903000000000101f51f"
+		"url": "https://www.instagram.com/joinforkeeps/"
 	},
 
     {
         "id": 3,
 		"name": "Twitter",
-        "username": "ricouii",
+        "username": "joinforkeeps",
 		"image": "/assets/social/social-twitter.jpg",
-		"url": "https://x.com/ricouii"
+		"url": "https://x.com/joinforkeeps"
 	},
 
     {
         "id": 4,
-		"name": "Gumroad",
-        "username": "ricoui",
+		"name": "Mastodon",
+        "username": "@joinforkeeps",
 		"image": "/assets/social/social-gumroad.jpg",
-		"url": "https://ricoui.gumroad.com/"
+		"url": "https://mastodon.social/@joinforkeeps"
 	},
 
     {
         "id": 5,
-		"name": "Behance",
-        "username": "ricoui",
+		"name": "YouTube",
+        "username": "joinforkeeps",
 		"image": "/assets/social/social-behance.jpg",
-		"url": "https://www.behance.net/ricoui"
+		"url": "https://www.youtube.com/@joinforkeeps"
 	},
 
     {
         "id": 6,
-		"name": "figma",
-        "username": "ricocc",
+		"name": "Threads",
+        "username": "@joinforkeeps",
 		"image": "/assets/social/social-figma.jpg",
-		"url": "https://www.figma.com/@ricocc",
-        "isShow": false
+		"url": "https://www.threads.com/@joinforkeeps"
 	},
 
     {
         "id": 7,
-		"name": "Dribbble",
-        "username": "ricoui",
+		"name": "Hugging Face",
+        "username": "joinforkeeps",
 		"image": "/assets/social/social-dribbble.jpg",
-		"url": "https://dribbble.com/ricoui"
+		"url": "https://huggingface.co/joinforkeeps"
 	},
 
     {
         "id": 8,
-		"name": "Email",
-        "username": "ricocc",
+		"name": "Linktree",
+        "username": "joinforkeeps",
 		"image": "/assets/social/social-email.jpg",
-		"url": "mailto:ricocc@qq.com"
+		"url": "https://linktr.ee/joinforkeeps"
 	}
 
 

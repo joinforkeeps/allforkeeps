@@ -1,44 +1,33 @@
 ---
-title: "Content Layer and faster builds"
-publishDate: 2026-03-18
-version: "v0.3.0"
-description: "Astro Content Layer migration, unified metadata, and a 30% faster cold build."
+title: "The Liberation Engine"
+publishDate: 2026-11-06
+version: "v0.1.3"
+description: "Content Layer migration, lightning-fast blueprint builds, and zero-per-seat scalability."
 ---
 
-## Migration to Content Layer
+## Content layer improvements
 
-Blog and changelog content moved to Astro's `glob` loader and Content Layer API. The migration removed older content patterns and made the site easier to extend later with external Markdown, a CMS, or another content source.
+All open-source course guides and community changelogs moved to Astro's content layer API, ensuring lightning-fast local rendering without relying on external SaaS content managers or paid platform subscriptions.
 
 Key changes from the earlier preview:
 
-- `entry.slug` became `entry.id`
-- `entry.render()` became `render(entry)` from `astro:content`
-- `Astro.glob()` usage moved to `import.meta.glob()` where static imports were still needed
-- `getStaticPaths()` params were normalized for Astro v6 readiness
+- Local content entries synchronized directly through optimized asset collections
+- Markdown rendering pipelines streamlined for high-speed documentation access
+- Static paths pre-compiled for instant deployment on any self-hosted server
+- Schema structures standardized for open-source contributor clarity
 
-## Schema unification
+## Satteri unification
 
-Blog and changelog frontmatter now follow a shared shape:
+Blog and changelog updates now follow a shared Satteri Markdown
 
-```yaml
-title: string
-description: string
-publishDate: date
-version?: string     # changelog only
-tags?: string[]      # blog only
-read?: number        # blog only
-img?: string
-img_alt?: string
-featured?: boolean
-```
 
 ## Performance wins
 
-- Cold build time: **21s -> 14s** on CI (Vercel hobby runner, 8 routes)
-- First-load JS on Home: **31KB -> 24KB** gzipped after splitting AnimatedText into a dynamic chunk
-- Blog cards now use `loading="lazy"` by default
-- Lighthouse on a fresh install: **95+** across Performance, Accessibility, Best Practices, and SEO on Home, Features, and Pricing
+- Cold build on local self-hosted runners
+- First-load bundle weight optimized for low-bandwidth community centers
+- Asset cards configured to preserve local bandwidth
+- Verified performance baselines ensuring instant loading on donated office hardware
 
 ## Release status
 
-`v0.3` locked the content and performance baseline. The remaining work before `v1.0` was product-story polish, route coverage, and final template cleanup.
+Locked down the speed and independence of the platform. No vendor can throttle your builds or raise your rates after you complete your course.

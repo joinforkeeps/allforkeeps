@@ -1,0 +1,9 @@
+---
+interface Props { title: string; sourceUrl: string; sourceLabel?: string; }
+const { title, sourceUrl, sourceLabel = 'Read the source' } = Astro.props;
+---
+<aside class="fk-callout" aria-label={title}>
+  <h3>{title}</h3>
+  <div><slot /></div>
+  <a href={sourceUrl}>{sourceLabel}</a>
+</aside>

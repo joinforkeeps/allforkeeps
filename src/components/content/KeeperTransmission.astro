@@ -1,0 +1,8 @@
+---
+interface Props { room?: string; }
+const { room = 'Course 0' } = Astro.props;
+---
+<aside class="fk-callout fk-keeper" aria-label={`Keeper transmission: ${room}`}>
+  <p class="fk-label">KEEPER TRANSMISSION / {room}</p>
+  <div><slot /></div>
+</aside>

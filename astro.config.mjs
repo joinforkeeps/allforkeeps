@@ -1,31 +1,41 @@
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import { fileURLToPath } from "url";
-import path from "path";
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
+import { satteri } from '@astrojs/markdown-satteri';
+import { fileURLToPath } from 'node:url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-// Get the site URL from environment variables, or use the default value if not set
-// Note: After the first deployment, be sure to set the correct PUBLIC_SITE_URL in the .env file
-const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://ricofast.pages.dev/';
-
-// https://astro.build/config
 export default defineConfig({
-  site: siteUrl,
+  site: import.meta.env.PUBLIC_SITE_URL || 'https://allforkeeps.com',
   base: '/',
   envPrefix: 'PUBLIC_',
+
+  server: {
+    port: 5200,
+  },
+
   vite: {
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src')
-      }
-    }
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
   },
 
-  server: {
-    port: 5200,
+  markdown: {
+    processor: satteri({
+      features: {
+        gfm: {
+          footnotes: {
+            backContent: '↩',
+            backLabel: 'Back to reference',
+            label: 'Footnotes',
+          },
+        },
+        smartPunctuation: true,
+      },
+    }),
   },
 
   integrations: [mdx(), sitemap()],
