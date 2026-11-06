@@ -4,8 +4,8 @@ import { getCollection } from "astro:content";
 export async function GET(context) {
   const blog = await getCollection('post');
   return rss({
-    title: 'RicoUI SaaS Template Astro',
-    description: 'Astro SaaS Template by Rico UI',
+    title: 'For Keeps',
+    description: 'For Keeps',
     site: context.site,
     items: blog.map((post) => {
       const link = `/blog/${post.id}/`;

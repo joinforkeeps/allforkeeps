@@ -2,13 +2,14 @@ const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://allforkeeps.com';
 export const siteConfig = {
   title: "For Keeps",
   author: "All For Keeps LLC",
-  url: SITE_URL,
+  url: "https://allforkeeps.com",
   mail: "hello@allforkeeps.com",
   meta: {
     title: "Learn to Self Host and Own Everything you Build. For Keeps. Verified Open Source eLearning for Nonprofits",
-    description: "We provide self-led online courses for self hosted cloud tools, and custom tech stacks for nonprofit organizations with guaranteed delivery.",
-    keywords: "nonprofit consulting, nonprofit tech, open source, self hosted, CRM, e-learning, donor tools",
+    description: "We provide self led online courses for self hosted cloud tools, and custom tech stacks for nonprofit organizations with guaranteed delivery.",
+    keywords: "nonprofit consulting, nonprofit tech, open source, self hosted, CRM, eLearning, donor tools",
     image: `${SITE_URL}/og.jpg`,
+    favicon: `${SITE_URL}/favicon.png`,
     twitterHandle: "@joinforkeeps",
   },
   social: {

@@ -64,6 +64,7 @@
 		"@lucide/astro": "^1.17.0",
 		"@tailwindcss/vite": "^4.1.14",
 		"aos": "^2.3.4",
+		"lucide-react": "^1.69.0",
 		"motion": "^12.23.24",
 		"satteri-callouts": "^1.0.1",
 		"satteri-imgattr": "^0.1.1",

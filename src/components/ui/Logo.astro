@@ -1,18 +1,23 @@
-<a
-  href="/"
-  class="h-10 text-base group relative z-30 flex items-center aspect-square"
->
-  <img src="/assets/logo.png" alt="Logo" class="w-10 h-10 rounded-full" />
-  <a
-    href="/"
-    aria-label="For Keeps home"
-    class="inline-flex items-center shrink-0"
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "h-15 w-auto" } = Astro.props;
+---
+
+<a href="/" class="flex items-center gap-2 group focus:outline-none">
+  <!-- Book + Pencil Logo Icon -->
+  <img
+    src="/assets/logo.png"
+    alt="For Keeps Logo"
+    class={`object-contain bg-transparent ${className}`}
+  />
+
+  <!-- Typography matching the uploaded asset -->
+  <span
+    class="font-brand text-3xl tracking-normal text-[#117a75] dark:text-[#2dd4bf] font-bold antialiased pt-0.5"
   >
-    <img
-      src="/assets/brand/for-keeps-logo.svg"
-      alt="For Keeps"
-      width="180"
-      height="48"
-      class="block h-10 w-auto max-w-[180px] object-contain"
-    />
-  </a>
+  For Keeps
+  </span>
+</a>

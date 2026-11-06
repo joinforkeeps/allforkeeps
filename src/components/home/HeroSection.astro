@@ -4,74 +4,369 @@ import Badge from "@/components/ui/Badge.astro";
 import AnimatedText from "@/components/ui/AnimatedText.astro";
 import BrowserFrame from "@/components/ui/BrowserFrame.astro";
 const stats = [
-  {label: "Course progress", values: ["25%", "50%", "75%", "100%"], note: "Learning"},
-  {label: "Guides completed", values: ["2 / 8", "3 / 8", "4 / 8", "5 / 8"], note: "Step by step"},
-  {label: "Practice tasks", values: ["3 / 12", "4 / 12", "5 / 12", "6 / 12"], note: "Hands-on"},
-  {label: "Learning streak", values: ["2 days", "3 days", "4 days", "5 days"], note: "Keep building"},
+  {
+    label: "Course progress",
+    values: ["25%", "50%", "75%", "100%"],
+    note: "Learning",
+  },
+  {
+    label: "Quests completed",
+    values: ["2 / 8", "3 / 8", "4 / 8", "5 / 8"],
+    note: "One step mile",
+  },
+  {
+    label: "Practice tasks",
+    values: ["3 / 12", "4 / 12", "5 / 12", "6 / 12"],
+    note: "Regenerate",
+  },
+  {
+    label: "Learning streak",
+    values: ["2 days", "3 days", "4 days", "5 days"],
+    note: "Keep digging",
+  },
 ];
 ---
+
 <section class="fk-hero site-container" aria-label="For Keeps introduction">
   <div class="fk-hero-grid">
     <div class="fk-hero-copy">
-      <div class="fk-badges"><Badge variant="primary">Open-source</Badge><Badge variant="accent">Built for nonprofits</Badge></div>
-      <h1><AnimatedText content="Own Your Tech." delay={0.1} duration={0.5} stagger={0.08} class="block text-4xl lg:text-6xl font-brand text-neutral-900 dark:text-white leading-tight" /><AnimatedText content="for keeps" delay={0.25} duration={0.5} stagger={0.08} class="block text-4xl lg:text-6xl font-brand text-primary leading-tight" /></h1>
-      <p class="fk-intro">Stop leasing Big Tech tools that lock you out.</p>
-      <p class="fk-intro text-primary">Free e-learning, interactive quickstarts, and custom open-source stacks for nonprofits.</p>
-      <div class="fk-actions"><Button url="/contact" type="fill">Join the Mailing List</Button><Button url="https://x.com/joinforkeeps" target="_blank">Follow on X</Button></div>
+      <div class="fk-badges">
+        <Badge variant="accent">Self Host</Badge><Badge variant="primary"
+          >Built for nonprofits</Badge
+        ><Badge variant="primary">Open to all</Badge>
+      </div>
+      <h1>
+        <AnimatedText
+          content="Own Your Tools."
+          delay={0.1}
+          duration={0.5}
+          stagger={0.08}
+          class="block text-4xl lg:text-6xl font-brand text-neutral-900 dark:text-white leading-tight"
+        /><AnimatedText
+          content="For Keeps"
+          delay={0.25}
+          duration={0.5}
+          stagger={0.08}
+          class="block text-4xl lg:text-6xl font-brand text-primary leading-tight"
+        />
+      </h1>
+      <p class="fk-intro">Stop leasing your tools and learn to self-host.</p>
+      <p class="fk-intro text-primary">
+        Get started today with our free introductory course. Join the community
+        for more courses, interactive quickstarts, and custom open-source stacks
+        for nonprofits.
+      </p>
+      <div class="fk-actions">
+        <Button url="/contact" type="fill">Join the Mailing List</Button><Button
+          url="https://x.com/joinforkeeps"
+          target="_blank">Follow on X</Button
+        >
+      </div>
     </div>
     <div class="fk-preview">
-      <BrowserFrame url="For Keeps Preview" className="w-full">
+      <BrowserFrame url="learn.allforkeeps.com" className="w-full">
         <div class="fk-tracker" data-fk-tracker>
-          <div class="fk-tracker-heading"><span class="fk-tracker-title"><span class="fk-live-dot" aria-hidden="true"></span>Learning tracker</span><span class="fk-demo-label">Demo</span></div>
-          <div class="fk-stats">{stats.map(stat => <div class="fk-stat"><span class="fk-stat-label">{stat.label}</span><span class="fk-stat-value" data-values={JSON.stringify(stat.values)}>{stat.values[0]}</span><span class="fk-stat-note">{stat.note}</span></div>)}</div>
-          <div class="fk-chart"><div class="fk-chart-heading"><span>Learning activity</span><span>7 days</span></div><div class="fk-bars" aria-hidden="true">{[32,48,40,64,56,80,72].map(height => <span class="fk-bar" style={`height:${height}%`}></span>)}</div></div>
+          <div class="fk-tracker-heading">
+            <span class="fk-tracker-title"
+              ><span class="fk-live-dot" aria-hidden="true"></span>Learning
+              Tracker</span
+            ><span class="fk-demo-label">Demo</span>
+          </div>
+          <div class="fk-stats">
+            {
+              stats.map((stat) => (
+                <div class="fk-stat">
+                  <>
+                    <span class="fk-stat-label">{stat.label}</span>
+                    <span
+                      class="fk-stat-value"
+                      data-values={JSON.stringify(stat.values)}
+                    >
+                      {stat.values[0]}
+                    </span>
+                    <span class="fk-stat-note">{stat.note}</span>
+                  </>
+                </div>
+              ))
+            }
+          </div>
+          <div class="fk-chart">
+            <div class="fk-chart-heading">
+              <span>Learning activity</span><span>7 days</span>
+            </div><div class="fk-bars" aria-hidden="true">
+              {
+                [32, 48, 40, 64, 56, 80, 72].map((height) => (
+                  <span class="fk-bar" style={`height:${height}%`} />
+                ))
+              }
+            </div>
+          </div>
         </div>
       </BrowserFrame>
-      <p class="fk-caption">Animated example · sample data, not a live account</p>
-      <button class="fk-motion-button" type="button" data-fk-motion aria-pressed="false">Pause preview</button>
+      <p class="fk-caption">
+        Animated Example
+      </p>
+      <button
+        class="fk-motion-button"
+        type="button"
+        data-fk-motion
+        aria-pressed="false">Pause preview</button
+      >
     </div>
   </div>
 </section>
 <style>
-.fk-hero{padding-top:clamp(2rem,5vw,4.5rem);padding-bottom:2rem}
-.fk-hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem;align-items:center}
-.fk-hero-copy,.fk-preview{min-width:0;width:100%}.fk-preview{max-width:42rem;justify-self:center}
-.fk-badges,.fk-actions{display:flex;flex-wrap:wrap;gap:.65rem}.fk-badges{margin-bottom:1.25rem}.fk-actions{margin-top:1.5rem}
-h1{margin:0 0 1.25rem}.fk-intro{font-size:1.05rem;line-height:1.7;margin:.5rem 0}
-.fk-tracker{box-sizing:border-box;width:100%;padding:clamp(.8rem,2vw,1.5rem);display:grid;gap:1rem;color:#252b37;background:rgba(245,248,255,.7)}
-.fk-tracker-heading,.fk-chart-heading{display:flex;justify-content:space-between;gap:.75rem;align-items:center}.fk-tracker-title{display:flex;gap:.5rem;align-items:center;font-size:.85rem;font-weight:600}
-.fk-demo-label{font-size:.7rem;border:1px solid #9aa7bc;border-radius:999px;padding:.2rem .5rem}
-.fk-live-dot{width:.5rem;height:.5rem;background:#10b981;border-radius:50%;box-shadow:0 0 0 0 #10b98166;animation:fk-ping 2s infinite;flex-shrink:0}
-.fk-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
-.fk-stat{display:flex;flex-direction:column;gap:.5rem;min-width:0;padding:.85rem;border:1px solid #b7caff77;border-radius:.65rem;background:#ffffff99}
-.fk-stat-label{font-size:.7rem;line-height:1.5;color:#526176;overflow-wrap:anywhere}.fk-stat-value{font-size:clamp(1.15rem,2vw,1.7rem);line-height:1.2;font-weight:700;font-variant-numeric:tabular-nums;transition:opacity .18s}.fk-stat-note{font-size:.65rem;line-height:1.4;color:#147554}
-.fk-chart{border:1px solid #b7caff77;border-radius:.65rem;padding:.85rem}.fk-chart-heading{font-size:.7rem;color:#526176}.fk-bars{height:4rem;display:flex;gap:.45rem;align-items:flex-end;margin-top:.8rem}.fk-bar{flex:1;min-width:0;border-radius:.2rem .2rem 0 0;background:#2d6dc388;transition:height .9s ease}.fk-bar:last-child{background:#2d6dc3}
-.fk-caption{font-size:.72rem;line-height:1.6;text-align:center;margin:.75rem 0 .3rem;color:#64748b}.fk-motion-button{display:block;margin:0 auto;padding:.25rem .5rem;font-size:.72rem;color:#2d6dc3;text-decoration:underline;background:none;border:0;cursor:pointer}
-:global(html.dark) .fk-tracker{background:#111827;color:#f1f5f9}:global(html.dark) .fk-stat{background:#1e293b}:global(html.dark) .fk-stat-label,:global(html.dark) .fk-chart-heading,:global(html.dark) .fk-caption{color:#b6c2d4}:global(html.dark) .fk-stat-note{color:#6ee7b7}
-@media(min-width:1024px){.fk-hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,4vw,4rem)}.fk-preview{align-self:center}}
-@media(max-width:359px){.fk-stats{grid-template-columns:minmax(0,1fr)}}
-@keyframes fk-ping{70%{box-shadow:0 0 0 7px #10b98100}100%{box-shadow:0 0 0 0 #10b98100}}
-.fk-paused .fk-live-dot{animation:none}
-@media(prefers-reduced-motion:reduce){.fk-live-dot{animation:none}.fk-bar,.fk-stat-value{transition:none}}
+  .fk-hero {
+    padding-top: clamp(2rem, 5vw, 4.5rem);
+    padding-bottom: 2rem;
+  }
+  .fk-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .fk-hero-copy,
+  .fk-preview {
+    min-width: 0;
+    width: 100%;
+  }
+  .fk-preview {
+    max-width: 42rem;
+    justify-self: center;
+  }
+  .fk-badges,
+  .fk-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+  .fk-badges {
+    margin-bottom: 1.25rem;
+  }
+  .fk-actions {
+    margin-top: 1.5rem;
+  }
+  h1 {
+    margin: 0 0 1.25rem;
+  }
+  .fk-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0.5rem 0;
+  }
+  .fk-tracker {
+    box-sizing: border-box;
+    width: 100%;
+    padding: clamp(0.8rem, 2vw, 1.5rem);
+    display: grid;
+    gap: 1rem;
+    color: #252b37;
+    background: rgba(245, 248, 255, 0.7);
+  }
+  .fk-tracker-heading,
+  .fk-chart-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .fk-tracker-title {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .fk-demo-label {
+    font-size: 0.7rem;
+    border: 1px solid #9aa7bc;
+    border-radius: 999px;
+    padding: 0.2rem 0.5rem;
+  }
+  .fk-live-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 #10b98166;
+    animation: fk-ping 2s infinite;
+    flex-shrink: 0;
+  }
+  .fk-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+  .fk-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.85rem;
+    border: 1px solid #b7caff77;
+    border-radius: 0.65rem;
+    background: #ffffff99;
+  }
+  .fk-stat-label {
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: #526176;
+    overflow-wrap: anywhere;
+  }
+  .fk-stat-value {
+    font-size: clamp(1.15rem, 2vw, 1.7rem);
+    line-height: 1.2;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    transition: opacity 0.18s;
+  }
+  .fk-stat-note {
+    font-size: 0.65rem;
+    line-height: 1.4;
+    color: #147554;
+  }
+  .fk-chart {
+    border: 1px solid #b7caff77;
+    border-radius: 0.65rem;
+    padding: 0.85rem;
+  }
+  .fk-chart-heading {
+    font-size: 0.7rem;
+    color: #526176;
+  }
+  .fk-bars {
+    height: 4rem;
+    display: flex;
+    gap: 0.45rem;
+    align-items: flex-end;
+    margin-top: 0.8rem;
+  }
+  .fk-bar {
+    flex: 1;
+    min-width: 0;
+    border-radius: 0.2rem 0.2rem 0 0;
+    background: #2d6dc388;
+    transition: height 0.9s ease;
+  }
+  .fk-bar:last-child {
+    background: #2d6dc3;
+  }
+  .fk-caption {
+    font-size: 0.72rem;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0.75rem 0 0.3rem;
+    color: #64748b;
+  }
+  .fk-motion-button {
+    display: block;
+    margin: 0 auto;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.72rem;
+    color: #2d6dc3;
+    text-decoration: underline;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  :global(html.dark) .fk-tracker {
+    background: #111827;
+    color: #f1f5f9;
+  }
+  :global(html.dark) .fk-stat {
+    background: #1e293b;
+  }
+  :global(html.dark) .fk-stat-label,
+  :global(html.dark) .fk-chart-heading,
+  :global(html.dark) .fk-caption {
+    color: #b6c2d4;
+  }
+  :global(html.dark) .fk-stat-note {
+    color: #6ee7b7;
+  }
+  @media (min-width: 1024px) {
+    .fk-hero-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+    .fk-preview {
+      align-self: center;
+    }
+  }
+  @media (max-width: 359px) {
+    .fk-stats {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @keyframes fk-ping {
+    70% {
+      box-shadow: 0 0 0 7px #10b98100;
+    }
+    100% {
+      box-shadow: 0 0 0 0 #10b98100;
+    }
+  }
+  .fk-paused .fk-live-dot {
+    animation: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fk-live-dot {
+      animation: none;
+    }
+    .fk-bar,
+    .fk-stat-value {
+      transition: none;
+    }
+  }
 </style>
 <script>
- document.querySelectorAll<HTMLElement>('[data-fk-tracker]').forEach(host => {
-  const preview=host.closest<HTMLElement>('.fk-preview');
-  const button=preview?.querySelector<HTMLButtonElement>('[data-fk-motion]');
-  const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
-  const values=host.querySelectorAll<HTMLElement>('[data-values]');
-  const bars=host.querySelectorAll<HTMLElement>('.fk-bar');
-  const cycles=[[32,48,40,64,56,80,72],[38,42,50,58,64,72,86],[28,54,44,68,50,76,80],[42,46,38,60,62,84,70]];
-  let tick=0, paused=preference.matches;
-  function sync(){host.classList.toggle('fk-paused',paused);button?.setAttribute('aria-pressed',String(paused));if(button)button.textContent=paused?'Play preview':'Pause preview';}
-  button?.addEventListener('click',()=>{paused=!paused;sync();});
-  preference.addEventListener('change',()=>{paused=preference.matches;sync();});sync();
-  const timer=window.setInterval(()=>{
-   if(!host.isConnected){window.clearInterval(timer);return;}
-   if(paused||document.hidden)return;
-   tick=(tick+1)%4;
-   values.forEach(el=>{const data=JSON.parse(el.dataset.values||'[]') as string[];if(data[tick])el.textContent=data[tick];});
-   bars.forEach((bar,i)=>{bar.style.height=`${cycles[tick][i]}%`;});
-  },3200);
- });
+  document
+    .querySelectorAll<HTMLElement>("[data-fk-tracker]")
+    .forEach((host) => {
+      const preview = host.closest<HTMLElement>(".fk-preview");
+      const button =
+        preview?.querySelector<HTMLButtonElement>("[data-fk-motion]");
+      const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const values = host.querySelectorAll<HTMLElement>("[data-values]");
+      const bars = host.querySelectorAll<HTMLElement>(".fk-bar");
+      const cycles = [
+        [32, 48, 40, 64, 56, 80, 72],
+        [38, 42, 50, 58, 64, 72, 86],
+        [28, 54, 44, 68, 50, 76, 80],
+        [42, 46, 38, 60, 62, 84, 70],
+      ];
+      let tick = 0,
+        paused = preference.matches;
+      function sync() {
+        host.classList.toggle("fk-paused", paused);
+        button?.setAttribute("aria-pressed", String(paused));
+        if (button)
+          button.textContent = paused ? "Play preview" : "Pause preview";
+      }
+      button?.addEventListener("click", () => {
+        paused = !paused;
+        sync();
+      });
+      preference.addEventListener("change", () => {
+        paused = preference.matches;
+        sync();
+      });
+      sync();
+      const timer = window.setInterval(() => {
+        if (!host.isConnected) {
+          window.clearInterval(timer);
+          return;
+        }
+        if (paused || document.hidden) return;
+        tick = (tick + 1) % 4;
+        values.forEach((el) => {
+          const data = JSON.parse(el.dataset.values || "[]") as string[];
+          if (data[tick]) el.textContent = data[tick];
+        });
+        bars.forEach((bar, i) => {
+          bar.style.height = `${cycles[tick][i]}%`;
+        });
+      }, 3200);
+    });
 </script>
