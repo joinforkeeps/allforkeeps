@@ -2,11 +2,13 @@
 import socials from "@/data/for-keeps-socials.json";
 ---
 <div class="fk-social-grid">
- {socials.map(s => <article class="fk-social-card">
+ {socials.map((s) => (
+  <article class="fk-social-card">
   <div class="fk-social-top"><img src={`https://cdn.simpleicons.org/${s.icon}/2d6dc3`} width="32" height="32" loading="lazy" alt="" referrerpolicy="no-referrer" /><h3>{s.name}</h3></div>
-  <p>{s.note}</p>
+  <p>{s.domain}</p>
   {s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">Visit {s.name} <span aria-hidden="true">↗</span></a> : <a href="/contact">Request the {s.name} link →</a>}
- </article>)}
+    </article>
+ ))}
 </div>
 <style>
 .fk-social-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem}.fk-social-card{min-width:0;padding:1.25rem;border:1px solid #b7caff66;border-radius:1rem;background:#f8faff}.fk-social-top{display:flex;gap:.8rem;align-items:center}.fk-social-top img{width:2rem;height:2rem;object-fit:contain}.fk-social-top h3{font-size:1rem;font-weight:600;margin:0}.fk-social-card p{font-size:.8rem;line-height:1.6;margin:.8rem 0;color:#64748b}.fk-social-card a{font-size:.85rem;color:#2d6dc3;text-decoration:underline;text-underline-offset:3px}:global(html.dark) .fk-social-card{background:#111827}:global(html.dark) .fk-social-card p{color:#b6c2d4}:global(html.dark) .fk-social-card a{color:#93c5fd}

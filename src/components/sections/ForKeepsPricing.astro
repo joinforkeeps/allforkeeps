@@ -6,7 +6,7 @@ const plans=[
 ];
 ---
 <section class="site-container fk-pricing">
- <header><h2>Transparent Service Options</h2><p>Learn through free resources, connect with the community, or discuss a custom project your organization can control.</p></header>
+ <header><h2>What’s free. What’s paid. What’s separate.</h2><p>Learn through free resources, connect with the community, or discuss a custom project your organization can control.</p></header>
  <div class="fk-pricing-grid">{plans.map(plan=><article><h3>{plan.name}</h3><p class="fk-price">{plan.price}</p><p>{plan.desc}</p><ul>{plan.features.map(feature=><li>{feature}</li>)}</ul><a href={plan.url}>{plan.cta} →</a></article>)}</div>
  <p class="fk-pricing-footnote">Self-hosting can still involve infrastructure, email delivery, maintenance, and other operating costs. Paid work begins only after the scope and price are agreed.</p>
 </section>

@@ -28,9 +28,9 @@ import {
 
 const faqItems = [
   {
-    question: "Is For Keeps really free to start?",
+    question: "What’s free?",
     answer:
-      "All of our starter kit courses and quickstarts are completely free with no mimics.",
+      "Select courses are available at no charge. Software, hosting, payment processing, hardware, and third-party support are separate unless explicitly listed. For Keeps provides education and advice, not a turnkey setup, migration, hosting, or ongoing system administration.",
   },
   {
     question: "What is the benefit of self-hosting?",
@@ -43,14 +43,14 @@ const faqItems = [
       "No prior technical background required. Our gamified learning will guide admins to volunteers, each click at a time.",
   },
   {
-    question: "How does For Keeps make money?",
+    question: "Will you build or install our tools for us?",
     answer:
-      "Through custom courses, custom stack builds, paid impact assessments, and consulting retainers for organizations that want a polished setup.",
+      "No. We help you choose tools, walk you through installation, and guide you on how to use them effectively. Your team or a technical provider handles installation, migration, maintenance, and security.",
   },
   {
-    question: "Why do you call out traditional nonprofit consultants?",
+    question: "Are your courses open source?",
     answer:
-      "Because they spent decades locking small budgets out and pushing expensive proprietary software instead of community impact. They know about self-hosting, but won't tell you becuase they signed an NDA with top vendors. We are here to help you take back control of your tools and data.",
+      "No. The platform is private and your profile can be confidential or shared in the community. Our goal is to teach you about the tools available, including open-source and self-hosted options. The courses themselves are not open-source software.",
   },
 ];
 
@@ -90,36 +90,36 @@ const features = [
 const problems = [
   {
     icon: "/assets/icon/battery.png",
-    title: "What is self-hosting?",
-    desc: "Self-hosting is the practice of hosting and managing applications on your own server(s) instead of consuming from SaaS providers.",
+    title: "Find your tools",
+    desc: "Get recommendations for donor management, grant research, fundraising, and AI.",
   },
   {
     icon: "/assets/icon/clock.png",
-    title: "Our nonprofit consulting work",
-    desc: "Skip steep learning curves and let For Keeps configure your infrastructure and hand you a detailed guide.",
+    title: "Learn to use them",
+    desc: "Take practical courses that teach your team what to do next.",
   },
   {
     icon: "/assets/icon/bell.png",
-    title: "Open source means no barriers to entry",
-    desc: "Gain absolute control over your donor and operational data on hardware you already own.",
+    title: "Get personalized advice",
+    desc: "Pay for an assessment or consulting focused on your organization’s needs.",
   },
 ];
 
 const useCases = [
   {
     icon: ChartNoAxesColumnIncreasing,
-    label: "Donor CRMs",
-    desc: "Track relationships without per seat fees",
+    label: "Find Donors",
+    desc: "Find and Track Donors without software guesswork",
   },
   {
     icon: GitFork,
-    label: "Volunteer Hubs",
-    desc: "Coordinate teams and event schedules",
+    label: "Stop buying tools",
+    desc: "Stop buying tools your team can’t use.",
   },
   {
     icon: PenTool,
     label: "eLearning",
-    desc: "Deliver training and educational resources",
+    desc: "Learn the tools behind better fundraising.",
   },
   {
     icon: Bot,
@@ -128,29 +128,29 @@ const useCases = [
   },
   {
     icon: Code,
-    label: "Secure Forms",
-    desc: "Collect sensitive intake data with privacy",
+    label: "Secure Data",
+    desc: "Pay for expertise. Know what software is free.",
   },
   {
     icon: Rocket,
-    label: "Custom Stacks",
+    label: "Custom Courses",
     desc: "Tailored options built for nonprofits",
   },
 ];
 
 const logos = [
-  { name: "CRM & Contacts", icon: Compass },
-  { name: "Email Campaigns", icon: Triangle },
-  { name: "Volunteer Workflows", icon: Sun },
-  { name: "Backups & Recovery", icon: CircleDot },
-  { name: "Connected Tools", icon: Orbit },
-  { name: "Self-Hosting Skills", icon: Anvil },
+  { name: "Open-source CRM", icon: Compass },
+  { name: "Find Donors", icon: Triangle },
+  { name: "No Software Spending", icon: Sun },
+  { name: "Pay for Expertise", icon: CircleDot },
+  { name: "Learn new skills", icon: Orbit },
+  { name: "Self-Hosted Tools", icon: Anvil },
 ];
 ---
 
 <Layout
-  title="For Keeps | Learn to Self-Host. Keep What You Build"
-  description="Self-hosting courses for nonprofits. Learn to run open-source tools, or hire For Keeps to build a stack your organization controls."
+  title="For Keeps | Nonprofit Technology Courses & Consulting"
+  description="Learn about selfhosting opensource tools for finding donors, grant research, and fundraising. Explore free and paid courses, technology assessments, and personalised consulting for nonprofits."
 >
   <!-- Hero Section -->
   <HeroSection />
@@ -158,8 +158,8 @@ const logos = [
   <!-- Logo Strip -->
   <section class="py-12 md:py-16 site-container">
     <p class="text-center text-sm text-neutral-400 dark:text-neutral-500 mb-6">
-      Supporting purpose-driven teams, grassroots leaders, and open-source
-      communities
+      Supporting the Nonprofit Community and Open Source Software.
+      Please support the official releases.
     </p>
     <div
       class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 opacity-75"
@@ -182,12 +182,10 @@ const logos = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <h2 class="text-3xl md:text-4xl font-brand mb-4">
-          Go AFK From Subscriptions
+          Better tools. Clear advice. Skills your team keeps.
         </h2>
         <p class="text-neutral-600 dark:text-neutral-300">
-          Using modern cloud and agentic tools shouldn't require enterprise
-          budgets, endless updates, or another name change. Take back ownership
-          of all your tools and focus on your mission. One course at a time.
+          For Keeps helps you choose and configure available open source tools that suit your mission. Then we teach you to use them. Keep what works. Replace what doesn’t. Pay for help and not unnecessary subscriptions.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -239,9 +237,9 @@ const logos = [
     <!-- Features Grid -->
     <section class="py-16 md:py-24 site-container">
       <SectionHeader
-        title="Everything You Need, Nothing You Don't"
-        description="A comprehensive platform designed specifically for curious minds and growing organizations. Clear, accessible, and completely independent online courses to take back ownership."
-      />
+        title="Know your options before you renew."
+        description="You don't need another subscription. You need a better option."
+        />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {
           features.map((feature) => (
@@ -268,8 +266,9 @@ const logos = [
     <!-- Dashboard / Product Preview -->
     <section class="py-16 md:py-24 site-container">
       <SectionHeader
-        title="Ready to Take Control of Your Tools?"
-        description="From donor intake forms to offline AI models, manage your entire tech ecosystem from a clean, intuitive platform."
+        title="The For Keeps Guarantee."
+        description="For years, traditional consultants gatekept your potential. Salesforce, Slack, and Claude want you locked into their seperate ecosystems, but we all know they change too often, get acquired quickly, and are not reliable options for low budgets and orgs resistant to AI. So we say try more options for FREE first. 
+        The For Keeps Guarantee: You can get enterprise software completely free. Join For Keeps to learn how to install it and build them on your own."
       />
       <div class="mt-8 max-w-4xl mx-auto">
         <BrowserFrame url="allforkeeps.com/dashboard">
@@ -326,7 +325,7 @@ const logos = [
                   class="p-3 rounded border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
                 >
                   <span class="text-[10px] text-neutral-400 uppercase"
-                    >Active Learners</span
+                    >Active Courses</span
                   ><span
                     class="block text-base font-brand text-neutral-800 dark:text-white mt-1"
                     >342</span
@@ -379,7 +378,7 @@ const logos = [
                   <div class="grid grid-cols-12 items-center py-1">
                     <span
                       class="col-span-6 font-medium text-neutral-800 dark:text-neutral-200"
-                      >Immich</span
+                      >CiviCRM</span
                     ><span class="col-span-3 text-primary">Self-Hosted</span
                     ><span class="col-span-3 text-right text-emerald-600"
                       >$0/mo</span
@@ -397,7 +396,7 @@ const logos = [
     <section class="py-16 md:py-24 site-container">
       <SectionHeader
         title="Built for Every Nonprofit Need"
-        description="Whether you need a donor CRM, private AI models, or automated volunteer onboarding, our open-source blueprints adapt to your mission."
+        description="Whether you need a donor database, private AI models, or automated volunteer onboarding, our open-source blueprints adapt to your mission."
       />
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-8">
         {
@@ -425,8 +424,8 @@ const logos = [
 
     <!-- Pricing Preview with Free, Community, Nonprofit Tiers -->
     <Pricing
-      title="Transparent Service Options"
-      description="Choose how you build: learn for free, join our peer network, or let us hand over your custom tech stack."
+      title="What’s free. What’s paid. What’s separate."
+      description="All open source tools are free to build and use. Building them is the barrier, therefore, our consulting work and expertise is paid. The base courses are free."
     />
 
     <!-- FAQ -->

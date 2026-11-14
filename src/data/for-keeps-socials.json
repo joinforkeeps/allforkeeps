@@ -3,91 +3,78 @@
     "name": "Instagram",
     "url": "https://www.instagram.com/joinforkeeps/",
     "icon": "instagram",
-    "domain": "instagram.com",
-    "note": "Profile from supplied handle"
+    "domain": "instagram.com"
   },
   {
     "name": "TikTok",
     "url": "https://www.tiktok.com/@joinforkeeps",
     "icon": "tiktok",
-    "domain": "tiktok.com",
-    "note": "Supplied profile"
+    "domain": "tiktok.com"
   },
   {
     "name": "YouTube",
     "url": "https://www.youtube.com/@joinforkeeps",
     "icon": "youtube",
-    "domain": "youtube.com",
-    "note": "Profile from supplied handle"
+    "domain": "youtube.com"
   },
   {
     "name": "Threads",
     "url": "https://www.threads.com/@joinforkeeps",
     "icon": "threads",
-    "domain": "threads.com",
-    "note": "Profile from supplied handle"
+    "domain": "threads.com"
   },
   {
     "name": "Twitter",
     "url": "https://x.com/joinforkeeps",
     "icon": "x",
-    "domain": "x.com",
-    "note": "Supplied profile"
+    "domain": "x.com"
   },
   {
     "name": "GitHub",
     "url": "https://github.com/joinforkeeps",
     "icon": "github",
-    "domain": "github.com",
-    "note": "Supplied profile"
+    "domain": "github.com"
   },
   {
     "name": "Reddit",
     "url": "https://www.reddit.com/user/allforkeeps/",
     "icon": "reddit",
-    "domain": "reddit.com",
-    "note": "Supplied allforkeeps profile"
+    "domain": "reddit.com"
   },
   {
     "name": "Hugging Face",
     "url": "https://huggingface.co/joinforkeeps",
     "icon": "huggingface",
-    "domain": "huggingface.co",
-    "note": "Profile from supplied handle"
+    "domain": "huggingface.co"
   },
   {
     "name": "Kick",
     "url": "https://kick.com/joinforkeeps",
     "icon": "kick",
-    "domain": "kick.com",
-    "note": "Supplied profile"
+    "domain": "kick.com"
   },
   {
     "name": "Linktree",
     "url": "https://linktr.ee/joinforkeeps",
     "icon": "linktree",
-    "domain": "linktr.ee",
-    "note": "All links in one place"
+    "domain": "linktr.ee"
   },
   {
     "name": "Mastodon",
     "url": "https://mastodon.social/@joinforkeeps",
     "icon": "mastodon",
-    "domain": "mastodon.social",
-    "note": "Profile from supplied handle"
+    "domain": "mastodon.social"
   },
   {
     "name": "Bluesky",
     "url": "https://bsky.app/profile/joinforkeeps.bsky.social",
     "icon": "bluesky",
-    "domain": "bsky.app",
-    "note": "Exact handle needed"
+    "domain": "bsky.app"
   },
   {
     "name": "Discord",
     "url": "https://discord.com/users/1563002896575107224",
     "icon": "discord",
-    "domain": "discord.com",
-    "note": "Server invite needed"
+    "domain": "discord.com"
   }
 ]

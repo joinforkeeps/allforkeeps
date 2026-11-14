@@ -1,6 +1,6 @@
 [
 	{
-		"name": "All",
+		"name": "AFK",
 		"children": [
 			{ "name": "About", "url": "/about" },
 			{ "name": "Pricing", "url": "/pricing" },
@@ -13,7 +13,7 @@
 		]
 	},
 	{
-		"name": "Elements",
+		"name": "Toolkit",
 		"url": "/elements"
 	},
 	{
