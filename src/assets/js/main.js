@@ -78,12 +78,12 @@ function initSite() {
 	updateHeader();
 	window.addEventListener("scroll", updateHeader, { passive: true });
 
-	document.querySelectorAll("#menu a").forEach((link) => {
+	for (const link of document.querySelectorAll("#menu a")) {
 		if (link.pathname === window.location.pathname) {
 			link.classList.add("text-neutral-900", "dark:text-white");
 			link.setAttribute("aria-current", "page");
 		}
-	});
+	}
 
 	AOS.init({
 		duration: 400,

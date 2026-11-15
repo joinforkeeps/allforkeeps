@@ -5,53 +5,42 @@ import { siteConfig, socialLinks } from "@/config/site.js";
 const currentYear = new Date().getFullYear();
 const footerLinks = {
   product: [
-    { name: "Starter", url: "/elements" },
+    { name: "Quickstarts", url: "/courses" },
     { name: "Pricing", url: "/pricing" },
-    { name: "Changelog", url: "/changelog" },
-    { name: "Sign in", url: "/sign-in" },
-    { name: "Sign up", url: "/sign-up" },
+    { name: "Community", url: "/community" },
+    { name: "Assessment", url: "/contact" },
   ],
   resources: [
     { name: "Blog", url: "/blog" },
-    { name: "Community", url: "/community" },
-    { name: "404", url: "/404" },
-    { name: "Project Toolkit", url: "/elements" },
-    { name: "Docs", url: siteConfig.social.github + "#readme" },
-    { name: "Mastodon", url: siteConfig.social.mastodon },
+    { name: "Changelog", url: "/changelog" },
+    { name: "Features", url: "/features" },
+    { name: "Guides", url: "/courses" },
   ],
   company: [
     { name: "About", url: "/about" },
     { name: "Contact", url: "/contact" },
   ],
-  legal: [
-    {
-      name: "License (MIT)",
-      url: siteConfig.social.github + "/blob/main/LICENSE",
-    },
-  ],
 };
-const templateVersion = "v1.0.0";
 ---
 
 <section
-  class="text-gray-700 border-t mt-20 md:mt-48 border-dashed border-primary/15 dark:border-primary-dark/15 border-[.75px]"
+  class="text-gray-700 border-t mt-10 md:mt-24 border-dashed border-primary/15 dark:border-primary-dark/15 border-[.75px]"
 >
-  <div class="container mx-auto px-7 max-w-7xl py-12 md:py-16">
+  <div class="container mx-auto px-7 max-w-7xl py-6 md:py-8">
     <!-- Top: Logo + Description -->
     <div
-      class="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-12"
+      class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6"
     >
       <div class="max-w-sm">
         <Logo />
         <p
           class="mt-4 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed"
         >
-          A practical starting point for nonprofit teams exploring open-source
-          tools, self-hosting, and technology they can maintain.
+          Practical technology education for nonprofit teams that want more
+          control over their tools, data, and operating costs.
         </p>
       </div>
-      <!-- Four columns -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12">
         <!-- Product -->
         <div>
           <h4
@@ -118,28 +107,6 @@ const templateVersion = "v1.0.0";
             }
           </ul>
         </div>
-        <!-- Legal -->
-        <div>
-          <h4
-            class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-4"
-          >
-            Legal
-          </h4>
-          <ul class="space-y-3">
-            {
-              footerLinks.legal.map((link) => (
-                <li>
-                  <a
-                    href={link.url}
-                    class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
       </div>
     </div>
     <!-- Bottom bar -->
@@ -153,7 +120,7 @@ const templateVersion = "v1.0.0";
           target="_blank"
           class="hover:text-primary dark:hover:text-primary-light transition-colors"
           >{siteConfig.author || " "}</a
-        >. Enter the Dungeon.
+        >. Learn it. Build it. Keep it.
       </p>
       <div class="flex items-center gap-4">
         <span
@@ -163,9 +130,9 @@ const templateVersion = "v1.0.0";
             class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-dashed border-primary/30 text-primary/80"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-            {templateVersion}
+            For Keeps
           </span>
-          <span>Learn it. Build it. Keep it.</span>
+          <span>Own the stack. Keep the keys.</span>
         </span>
         <span class="inline-flex justify-center space-x-4">
           {

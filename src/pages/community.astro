@@ -1,14 +1,637 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ForKeepsSocials from "@/components/sections/ForKeepsSocials.astro";
+
+const starters = [
+  {
+    key: "tool-cost",
+    label: "The cost behind the price tag",
+    text: "A tool cost our team did not expect was...",
+  },
+  {
+    key: "data-exit",
+    label: "Plan the exit",
+    text: "Before choosing a platform, we want to know how to export...",
+  },
+  {
+    key: "team-training",
+    label: "Train the whole crew",
+    text: "One thing that would make this tool easier for our team to learn is...",
+  },
+  {
+    key: "first-step",
+    label: "Start small",
+    text: "Our first safe test with sample data could be...",
+  },
+];
 ---
-<Layout title="Community | For Keeps" description="Connect with For Keeps, share open-source discoveries, and learn alongside nonprofit builders.">
- <main class="site-container fk-community">
-  <header><p class="text-primary">JOIN FOR KEEPS</p><h1>Build skills. Share what works.</h1><p>A place for nonprofit teams, grassroots organizers, volunteers, and open-source learners to connect around practical technology.</p><a class="fk-community-cta" href="https://linktr.ee/joinforkeeps" target="_blank" rel="noopener noreferrer">Open the For Keeps link hub ↗</a></header>
-  <section><h2>Find your way in</h2><p>Follow project updates, explore code, or share a useful tool. You do not need to publish a promotional post to contact us or follow our public channels.</p><ForKeepsSocials /></section>
-  <section class="fk-community-note"><h2>Ask questions safely</h2><p>Share what you are trying to do, what happened, and any non-sensitive error messages. Remove donor records, personal information, passwords, API keys, and private links before posting.</p><p>Public channels are for peer discussion, not guaranteed response times or emergency support. Use the contact page for private project enquiries.</p><a href="/contact">Contact For Keeps →</a></section>
- </main>
+
+<Layout
+  title="Community | For Keeps"
+  description="Share nonprofit technology field notes, questions, and practical lessons with the For Keeps community."
+>
+  <main class="site-container fk-community">
+    <header class="fk-community-hero">
+      <p class="fk-community-kicker">JOIN THE CREW / FIELD NOTES</p>
+      <h1>Build skills. Share what works.</h1>
+      <p>
+        Nonprofit teams, grassroots organizers, volunteers, and Open Source
+        learners: bring the question that is slowing you down, the lesson you
+        just earned, or the tool your crew is testing.
+      </p>
+      <a
+        class="fk-community-cta"
+        href="https://linktr.ee/joinforkeeps"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Find the community channels <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <section class="fk-post-room" aria-labelledby="post-room-title">
+      <div class="fk-post-intro">
+        <p class="fk-community-kicker">THE FIELD BOARD</p>
+        <h2 id="post-room-title">Drop a useful note. Help the next crew.</h2>
+        <p>
+          Sign in to submit a post. Every submission goes to review before it
+          appears here; your account details are not shown with published notes.
+        </p>
+      </div>
+
+      <div class="fk-post-grid">
+        <div class="fk-post-composer">
+          <div id="community-auth-note" class="fk-community-status" role="status" aria-live="polite">
+            Checking the account gate...
+          </div>
+          <p id="community-post-status" class="fk-community-status" role="status" aria-live="polite"></p>
+
+          <form id="community-post-form" hidden>
+            <label class="fk-field-label" for="community-prompt">
+              Pick a prompt
+            </label>
+            <select id="community-prompt" name="prompt_key" required>
+              {
+                starters.map((starter) => (
+                  <option value={starter.key}>{starter.label}</option>
+                ))
+              }
+              <option value="open-note">Write your own field note</option>
+            </select>
+
+            <div class="fk-prompt-buttons" aria-label="Starter prompts">
+              {
+                starters.map((starter) => (
+                  <button
+                    class="fk-prompt-button"
+                    type="button"
+                    data-starter={starter.key}
+                    data-template={starter.text}
+                  >
+                    {starter.label}
+                  </button>
+                ))
+              }
+            </div>
+
+            <label class="fk-field-label" for="community-body">
+              Your field note
+            </label>
+            <textarea
+              id="community-body"
+              name="body"
+              rows="6"
+              minlength="20"
+              maxlength="2000"
+              required
+              placeholder="What did you learn, what are you testing, or where are you stuck? (20–2,000 characters)"
+            ></textarea>
+            <p class="fk-safety-note">
+              Keep it safe for the whole crew: do not post donor records,
+              personal information, passwords, API keys, or private access links.
+            </p>
+            <button class="fk-community-cta fk-submit" type="submit">
+              Send to review
+            </button>
+          </form>
+
+          <div id="community-posts" class="fk-post-list" aria-live="polite">
+            <p>Loading published field notes...</p>
+          </div>
+        </div>
+
+        <aside class="fk-community-rule">
+          <p class="fk-community-kicker">KEEPER’S FIELD RULE</p>
+          <h3>One useful contribution every 30 days.</h3>
+          <p>
+            To maintain access to gated courses and guides, members must share
+            at least one substantive contribution every 30 days. A tool review,
+            a nonprofit technology pain point, a project update, or a correction
+            that improves a guide all count.
+          </p>
+          <p>
+            No promotional post is required. Public guides on this site remain
+            ungated; access controls for future gated materials are not active
+            here yet.
+          </p>
+          <blockquote>
+            “Leave a better map than the one you found.”
+          </blockquote>
+        </aside>
+      </div>
+    </section>
+
+    <section class="fk-community-channels">
+      <h2>Find your way in</h2>
+      <p>
+        Follow project updates, explore the tools we discuss, or ask about a
+        nonprofit assessment. You do not need to publish anything to follow
+        public channels or contact us.
+      </p>
+      <ForKeepsSocials />
+    </section>
+
+    <section class="fk-community-note">
+      <h2>Ask questions safely</h2>
+      <p>
+        Share what you are trying to do, what happened, and any non-sensitive
+        error messages. Remove donor records, personal information, passwords,
+        API keys, and private links before posting.
+      </p>
+      <p>
+        Public channels are for peer discussion, not guaranteed response times
+        or emergency support. Use the contact page for private project enquiries.
+      </p>
+      <a href="/contact">Contact For Keeps <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
 </Layout>
+
+<script>
+  import { getSupabaseClient } from "@/lib/supabase";
+
+  const supabase = getSupabaseClient();
+  const authNote = document.querySelector<HTMLElement>("#community-auth-note");
+  const postStatus = document.querySelector<HTMLElement>("#community-post-status");
+  const form = document.querySelector<HTMLFormElement>("#community-post-form");
+  const promptSelect = document.querySelector<HTMLSelectElement>("#community-prompt");
+  const bodyInput = document.querySelector<HTMLTextAreaElement>("#community-body");
+  const postList = document.querySelector<HTMLElement>("#community-posts");
+  const submitButton = form?.querySelector<HTMLButtonElement>('[type="submit"]');
+
+  const promptLabels: Record<string, string> = {
+    "tool-cost": "Cost behind the price tag",
+    "data-exit": "Plan the exit",
+    "team-training": "Train the whole crew",
+    "first-step": "Start small",
+    "open-note": "Field note",
+  };
+
+  function showMessage(element: HTMLElement | null, message: string, isError = false) {
+    if (!element) return;
+    element.textContent = message;
+    element.classList.toggle("is-error", isError);
+  }
+
+  function renderPosts(posts: Array<{
+    id: string;
+    prompt_key: string;
+    body: string;
+    created_at: string;
+  }>) {
+    if (!postList) return;
+    postList.replaceChildren();
+
+    if (posts.length === 0) {
+      const empty = document.createElement("p");
+      empty.textContent = "No field notes have cleared review yet. Your crew can start the map.";
+      postList.append(empty);
+      return;
+    }
+
+    for (const post of posts) {
+      const article = document.createElement("article");
+      article.className = "fk-post-card";
+
+      const heading = document.createElement("h3");
+      heading.textContent = promptLabels[post.prompt_key] || "Field note";
+
+      const body = document.createElement("p");
+      body.textContent = post.body;
+
+      const time = document.createElement("time");
+      time.dateTime = post.created_at;
+      const date = new Date(post.created_at);
+      time.textContent = Number.isNaN(date.getTime())
+        ? "Community field note"
+        : date.toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+
+      article.append(heading, body, time);
+      postList.append(article);
+    }
+  }
+
+  if (!supabase) {
+    showMessage(
+      authNote,
+      "Posting and the field-note board are not available yet. The dedicated For Keeps account service still needs configuration.",
+      true,
+    );
+    showMessage(postList, "Published notes will appear here after the community service is configured.");
+  } else {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        const signedIn = Boolean(session?.user);
+        if (form) form.hidden = !signedIn;
+
+        if (signedIn) {
+          showMessage(authNote, "You are signed in. Choose a prompt and send a note for review.");
+        } else {
+          if (authNote) {
+            authNote.replaceChildren(
+              document.createTextNode("Posting requires an account. "),
+            );
+            const signIn = document.createElement("a");
+            signIn.href = "/sign-in?next=%2Fcommunity";
+            signIn.textContent = "Sign in";
+            authNote.append(signIn, document.createTextNode(" or "));
+            const signUp = document.createElement("a");
+            signUp.href = "/sign-up?next=%2Fcommunity";
+            signUp.textContent = "create an account";
+            authNote.append(signUp, document.createTextNode(" to post."));
+          }
+        }
+      },
+    );
+
+    supabase.auth.getSession().then(({ data, error }) => {
+      if (error) {
+        console.error("Could not check community sign-in state", error);
+        showMessage(authNote, "We could not check your account. Refresh the page or sign in again.", true);
+        return;
+      }
+
+      const signedIn = Boolean(data.session?.user);
+      if (form) form.hidden = !signedIn;
+      if (signedIn) {
+        showMessage(authNote, "You are signed in. Choose a prompt and send a note for review.");
+      } else if (authNote && authNote.childElementCount === 0) {
+        const signIn = document.createElement("a");
+        signIn.href = "/sign-in?next=%2Fcommunity";
+        signIn.textContent = "Sign in";
+        const signUp = document.createElement("a");
+        signUp.href = "/sign-up?next=%2Fcommunity";
+        signUp.textContent = "create an account";
+        authNote.replaceChildren(
+          document.createTextNode("Posting requires an account. "),
+          signIn,
+          document.createTextNode(" or "),
+          signUp,
+          document.createTextNode(" to post."),
+        );
+      }
+    }).catch((error: unknown) => {
+      console.error("Could not check community sign-in state", error);
+      showMessage(authNote, "We could not reach the account service. Try again later.", true);
+    });
+
+    void (async () => {
+      try {
+        const { data, error } = await supabase
+          .from("community_posts")
+          .select("id,prompt_key,body,created_at")
+          .order("created_at", { ascending: false })
+          .limit(20);
+
+        if (error) {
+          console.error("Could not load published community posts", error);
+          showMessage(postList, "Published field notes could not be loaded. Try again later.", true);
+          return;
+        }
+        renderPosts(data || []);
+      } catch (error) {
+        console.error("Could not load published community posts", error);
+        showMessage(postList, "We could not reach the field-note board. Try again later.", true);
+      }
+    })();
+
+    document.querySelectorAll<HTMLButtonElement>("[data-starter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!promptSelect || !bodyInput) return;
+        promptSelect.value = button.dataset.starter || "open-note";
+        bodyInput.value = button.dataset.template || "";
+        bodyInput.focus();
+      });
+    });
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!form || !postStatus || !submitButton || !supabase) return;
+
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError) {
+        console.error("Could not verify community member session", sessionError);
+        showMessage(postStatus, "We could not verify your account. Sign in again and retry.", true);
+        return;
+      }
+
+      const user = sessionData.session?.user;
+      if (!user) {
+        showMessage(postStatus, "Your session has ended. Sign in again before sending a post.", true);
+        if (form) form.hidden = true;
+        return;
+      }
+
+      const promptKey = promptSelect?.value || "";
+      const body = bodyInput?.value.trim() || "";
+      if (body.length < 20 || body.length > 2000) {
+        showMessage(postStatus, "Field notes must be between 20 and 2,000 characters.", true);
+        return;
+      }
+
+      submitButton.disabled = true;
+      showMessage(postStatus, "Sending your note to review...");
+
+      try {
+        const { error } = await supabase.from("community_posts").insert({
+          user_id: user.id,
+          prompt_key: promptKey,
+          body,
+        });
+
+        if (error) {
+          console.error("Community post submission failed", error);
+          showMessage(postStatus, "We could not submit that note. Check your connection and try again.", true);
+          return;
+        }
+
+        form.reset();
+        showMessage(postStatus, "Field note received. It will appear on the board after review.");
+      } catch (error) {
+        console.error("Community post submission failed", error);
+        showMessage(postStatus, "We could not reach the review queue. Try again later.", true);
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+
+    window.addEventListener("pagehide", () => authListener.subscription.unsubscribe(), {
+      once: true,
+    });
+  }
+</script>
+
 <style>
-.fk-community{padding-top:rem;padding-bottom:3rem}.fk-community header{max-width:48rem}.fk-community h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.15;margin:1rem 0}.fk-community h2{font-size:1.8rem;margin-bottom:1rem}.fk-community p{line-height:1.8;margin:.75rem 0 1.25rem}.fk-community section{margin-top:2.5rem}.fk-community a{color:#2d6dc3}.fk-community-cta{display:inline-block;border:1px solid #b7caff;border-radius:.7rem;padding:.8rem 1rem}.fk-community-note{border:1px solid #b7caff66;padding:1.5rem;border-radius:1rem}:global(html.dark) .fk-community a{color:#93c5fd}
+  .fk-community {
+    padding-block: 1.5rem;
+  }
+
+  .fk-community-hero,
+  .fk-post-intro {
+    max-width: 48rem;
+  }
+
+  .fk-community-kicker {
+    color: var(--color-primary);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .fk-community h1,
+  .fk-community h2,
+  .fk-community h3 {
+    font-family: var(--font-brand);
+    font-weight: 400;
+    line-height: 1.12;
+  }
+
+  .fk-community h1 {
+    max-width: 14ch;
+    margin: 0.65rem 0 0.85rem;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .fk-community h2 {
+    margin: 0.35rem 0 0.7rem;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+  }
+
+  .fk-community h3 {
+    font-size: 1.5rem;
+  }
+
+  .fk-community p {
+    max-width: 70ch;
+    line-height: 1.7;
+  }
+
+  .fk-community section {
+    margin-top: 1.75rem;
+  }
+
+  .fk-community-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 0.7rem;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .fk-community-cta:hover {
+    background: var(--color-primary-strong);
+  }
+
+  .fk-community-cta:focus-visible,
+  .fk-community a:focus-visible,
+  .fk-prompt-button:focus-visible,
+  .fk-post-composer :focus-visible {
+    outline: 3px solid var(--color-accent-yellow);
+    outline-offset: 3px;
+  }
+
+  .fk-post-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .fk-post-composer,
+  .fk-community-rule,
+  .fk-community-note {
+    min-width: 0;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border: 1px solid rgba(143, 185, 255, 0.28);
+    border-radius: 1rem;
+    background: var(--color-bg-secondary);
+  }
+
+  .fk-community-rule {
+    align-self: start;
+    border-inline-start: 3px solid var(--color-accent-yellow);
+    background: var(--color-bg-primary-dark);
+    color: #f2f6fd;
+  }
+
+  .fk-community-rule .fk-community-kicker {
+    color: var(--color-accent-yellow);
+  }
+
+  .fk-community-rule h3 {
+    margin: 0.4rem 0 0.75rem;
+  }
+
+  .fk-community-rule blockquote {
+    margin: 1rem 0 0;
+    color: var(--color-primary-light);
+    font-family: var(--font-brand);
+    font-size: 1.35rem;
+  }
+
+  .fk-community-status {
+    min-height: 1.5rem;
+    margin: 0 0 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .fk-community-status a,
+  .fk-community-note a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .fk-community-status.is-error {
+    color: #b42318;
+  }
+
+  .fk-field-label {
+    display: block;
+    margin: 0.9rem 0 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .fk-post-composer select,
+  .fk-post-composer textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--mission-line, rgba(143, 185, 255, 0.35));
+    border-radius: 0.65rem;
+    background: var(--color-bg-primary);
+    color: var(--color-text-secondary);
+    font: inherit;
+  }
+
+  .fk-post-composer textarea {
+    min-height: 8rem;
+    resize: vertical;
+  }
+
+  .fk-prompt-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+
+  .fk-prompt-button {
+    padding: 0.45rem 0.65rem;
+    border: 1px solid rgba(45, 109, 195, 0.3);
+    border-radius: 999px;
+    background: var(--color-primary-bg);
+    color: var(--color-primary);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+  }
+
+  .fk-safety-note {
+    color: var(--color-text-tertiary);
+    font-size: 0.82rem;
+  }
+
+  .fk-submit {
+    margin-top: 0.35rem;
+    cursor: pointer;
+  }
+
+  .fk-submit:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+
+  .fk-post-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .fk-post-card {
+    padding: 1rem;
+    border: 1px solid rgba(143, 185, 255, 0.2);
+    border-radius: 0.75rem;
+    background: var(--color-bg-primary);
+  }
+
+  .fk-post-card h3 {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .fk-post-card p {
+    margin: 0.25rem 0 0.65rem;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+  }
+
+  .fk-post-card time {
+    color: var(--color-text-tertiary);
+    font-size: 0.76rem;
+  }
+
+  .fk-community-note {
+    background:
+      linear-gradient(135deg, rgba(250, 209, 59, 0.1), transparent 55%),
+      var(--color-bg-secondary);
+  }
+
+  @media (min-width: 900px) {
+    .fk-post-grid {
+      grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+      align-items: start;
+    }
+  }
+
+  :global(html.dark) .fk-post-composer,
+  :global(html.dark) .fk-community-note {
+    background: var(--color-bg-secondary-dark);
+  }
+
+  :global(html.dark) .fk-post-composer select,
+  :global(html.dark) .fk-post-composer textarea,
+  :global(html.dark) .fk-post-card {
+    background: var(--color-bg-primary-dark);
+    color: var(--color-text-secondary-dark);
+  }
+
+  :global(html.dark) .fk-community-status.is-error {
+    color: #fda29b;
+  }
 </style>

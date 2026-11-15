@@ -11,9 +11,9 @@
 
 /* Define theme font mappings */
 @theme {
-  --font-brand: "Instrument Serif", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-sans: "Inter", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-body: "Inter", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-brand: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --max-screen: 1200px;
   --inner-screen: 800px;
 
@@ -29,55 +29,49 @@
   --color-neutral-900: #19222f;
   --color-neutral-950: #10161f;
 
-  --color-primary: #1b365d;
-  --color-primary-rgb: 45, 109, 195;
-  --color-primary-strong: #0f2442;
-  --color-primary-dark: #2d6dc3;
-  --color-primary-light: #5ba4e6;
-  --color-primary-light-dark: #1a1a1a;
-  --color-primary-lighter: #6da7ff;
-  /* Article-specific variables */
-  --color-primary-bg: var(--color-bg-primary-light);
-  --color-primary-bg-light: var(--color-bg-secondary);
+  --color-reef: #2d6dc3;
+  --color-reef-strong: #0066ff;
+  --color-reef-light: #8fb9ff;
+  --color-logo-green: #04a7a4;
+  --color-accent-yellow: #fad13b;
 
+  --color-primary: #2d6dc3;
+  --color-primary-rgb: 45, 109, 195;
+  --color-primary-strong: #0066ff;
+  --color-primary-dark: #1d4f91;
+  --color-primary-light: #8fb9ff;
+  --color-primary-light-dark: #8fb9ff;
+  --color-primary-lighter: #b6d1ff;
+  --color-primary-bg: #eaf2ff;
+  --color-primary-bg-light: var(--color-bg-secondary);
 
   --color-btn-primary: #2d6dc3;
   --color-btn-primary-hover: #0066ff;
-  --color-btn-primary-dark: #2871e9;
-  --color-btn-primary-dark-hover: #2d6dc3;
+  --color-btn-primary-dark: #8fb9ff;
+  --color-btn-primary-dark-hover: #b6d1ff;
 
-  /* Accent colors */
-  --color-accent: #e76f51;
-  --color-accent-light: #c2410c;
-
-  /* Background colors */
+  --color-accent: #fad13b;
+  --color-accent-light: #e3b51f;
 
   --color-bg-primary: #f7f9fc;
   --color-bg-secondary: #fff;
-  --color-bg-primary-light: #faf9f5;
-  --color-bg-primary-deep: #fefcf4;
-
+  --color-bg-primary-light: #fff;
+  --color-bg-primary-deep: #f1f5fb;
   --color-bg-primary-dark: #0b1220;
   --color-bg-secondary-dark: #0f1b2d;
 
-
-  /* Text colors */
-  --color-text-primary: #2d6dc3;
+  --color-text-primary: #17365b;
   --color-text-secondary: #3f4a5a;
-  --color-text-tertiary: #7a6550;
-
-  --color-text-primary-dark: #3884eb;
+  --color-text-tertiary: #53647b;
+  --color-text-primary-dark: #f2f6fd;
   --color-text-secondary-dark: #c5cedb;
-  --color-text-tertiary-dark: #9bb3d7;
+  --color-text-tertiary-dark: #a9bad1;
 }
 
-/* Dark mode variable overrides */
 html.dark {
-  --color-primary-rgb: 56, 132, 235;
-  --color-primary-light-dark: #3884eb;
-  --color-primary-lighter: #8fb9ff;
-  --color-primary-bg: rgba(56, 132, 235, 0.15);
-  --color-primary-bg-light: rgba(56, 132, 235, 0.05);
+  --color-primary-rgb: 143, 185, 255;
+  --color-primary-bg: rgba(143, 185, 255, 0.15);
+  --color-primary-bg-light: rgba(143, 185, 255, 0.06);
 }
 
 /* Add typography styles */
@@ -113,29 +107,53 @@ html.dark {
     padding-right: 1rem;
   }
   .gradient-title {
-    background: linear-gradient(to right, #746aff, #0b046d);
+    background: linear-gradient(to right, #2d6dc3, #0066ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
  .gradient-title-light{
-    background: linear-gradient(to right, #bcb7ff, #746aff);
+    background: linear-gradient(to right, #ffffff, #8fb9ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 }
-html,body{
+
+html,
+body {
   color: var(--color-text-secondary);
 }
-html.dark,html.dark body{
+
+body {
+  background-image: radial-gradient(
+    ellipse at 12% 0%,
+    color-mix(in srgb, var(--color-logo-green) 5.5%, transparent),
+    transparent 42%
+  );
+}
+
+html.dark,
+html.dark body {
   color: var(--color-text-secondary-dark);
 }
-h1,h2,h3{
-  color:var(--color-text-primary);
+
+html.dark body {
+  background-image:
+    radial-gradient(ellipse at 12% 0%, color-mix(in srgb, var(--color-logo-green) 13%, transparent), transparent 40%),
+    radial-gradient(ellipse at 90% 62%, rgba(45, 109, 195, 0.08), transparent 44%);
 }
-html.dark h1,html.dark h2,html.dark h3{
-  color:var(--color-text-primary-dark);
+
+h1,
+h2,
+h3 {
+  color: var(--color-text-primary);
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3 {
+  color: var(--color-text-primary-dark);
 }
 
 /* Custom CSS styles */

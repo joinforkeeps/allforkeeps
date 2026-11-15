@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
-const currentPage = parseInt(page);
+const currentPage = Number.parseInt(page);
 ---
 
 <Layout title={`Blog For Keeps`} description="Latest articles, updates, and insights from the For Keeps team.">

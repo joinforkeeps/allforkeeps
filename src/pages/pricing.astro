@@ -1,144 +1,40 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import PageHeader from "@/components/elements/PageHeader.astro";
+import Pricing from "@/components/sections/Pricing.astro";
 import FAQ from "@/components/sections/FAQ.astro";
-import Button from "@/components/ui/Button.astro";
-import { Check } from "@lucide/astro";
+import PageHeader from "@/components/elements/PageHeader.astro";
 
 const pricingFaq = [
   {
-    question: "Is the Community tier really free?",
+    question: "Do the free resources require a subscription?",
     answer:
-      "Yes. All you need to do is share a post on the community page promoting a self-hosted tool you love.",
+      "No. Public guides on this site are free to read. The software they discuss may have separate license, infrastructure, hosting, support, or maintenance costs.",
   },
   {
-    question: "What does the Nonprofit Assessment include?",
+    question: "What is the Join For Keeps community rule?",
     answer:
-      "Complete surveyed look into the current deployment of your CRM, forms, and donor systems configured on hardware you own, plus staff training.",
+      "To maintain access to gated courses and guides, members must make at least one substantive contribution every 30 days. A tool review, project update, nonprofit technology pain point, or guide improvement qualifies. Public resources remain ungated.",
+  },
+  {
+    question: "What does Enterprise mean?",
+    answer:
+      "Enterprise work is scoped per project. We agree on deliverables, responsibilities, costs, and any ongoing support before work begins. It is not a recurring subscription by default.",
   },
 ];
 ---
 
 <Layout
-  title="For Keeps: Pricing & Tiers"
-  description="Self led courses, peer learning community access, and custom nonprofit tech stack assessments."
+  title="Pricing"
+  description="Clear access rules for free nonprofit technology guides, the For Keeps community, and custom enterprise projects."
 >
-  <div class="py-16 md:py-24 site-container">
+  <main class="py-6 md:py-8">
     <PageHeader
-      title="Transparent Pricing for Nonprofits"
-      description=" Stop leasing cloud tools critical to your mission. Try our self-led learning or complete our custom assessment form."
+      title="Straight answers. No subscription trap."
+      description="Read the free guides, contribute to the community, or request a project quote with a written scope."
     />
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
-      <!-- Free Tier -->
-      <div
-        class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col"
-      >
-        <h3 class="text-xl font-bold text-neutral-900 dark:text-white">
-          Free Courses Available
-        </h3>
-        <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2">
-          Introductory courses on selfhosting and rotating custom quickstarts
-        </p>
-        <div class="my-6">
-          <span class="text-4xl font-extrabold text-neutral-900 dark:text-white"
-            >$0</span
-          ><span class="text-neutral-500"> / forever</span>
-        </div>
-        <ul
-          class="space-y-3 mb-8 flex-1 text-sm text-neutral-600 dark:text-neutral-300"
-        >
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Beginner's Guide to Selfhosting
-          </li>
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Self-paced technical quickstarts
-          </li>
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Mailing list access
-          </li>
-        </ul>
-        <Button url="/courses" className="w-full text-center justify-center"
-          >Start Learning Now</Button
-        >
-      </div>
-
-      <!-- Community Tier -->
-      <div
-        class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-primary shadow-md flex flex-col relative"
-      >
-        <span
-          class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs px-3 py-1 rounded-full font-semibold"
-          >For Builders</span
-        >
-        <h3 class="text-xl font-bold text-neutral-900 dark:text-white">
-          Community Crew
-        </h3>
-        <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2">
-          Peer learning community access & early course releases.
-        </p>
-        <div class="my-6">
-          <span class="text-4xl font-extrabold text-neutral-900 dark:text-white"
-            >Free</span
-          ><span class="text-neutral-500"> (with social post)</span>
-        </div>
-        <ul
-          class="space-y-3 mb-8 flex-1 text-sm text-neutral-600 dark:text-neutral-300"
-        >
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Discord, Mastodon & Telegram access
-          </li>
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Early access to upcoming courses
-          </li>
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Share open-source starter pack
-            items
-          </li>
-        </ul>
-        <Button url="/community" className="w-full text-center justify-center"
-          >Join Community</Button
-        >
-      </div>
-
-      <!-- Nonprofit Assessment Tier -->
-      <div
-        class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col"
-      >
-        <h3 class="text-xl font-bold text-neutral-900 dark:text-white">
-          Nonprofit Assessment
-        </h3>
-        <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2">
-          Custom tools assessed for your size / needs / goals; configured to
-          your current tech stack.
-        </p>
-        <div class="my-6">
-          <span class="text-4xl font-extrabold text-neutral-900 dark:text-white"
-            >Custom</span
-          ><span class="text-neutral-500"> / project</span>
-        </div>
-        <ul
-          class="space-y-3 mb-8 flex-1 text-sm text-neutral-600 dark:text-neutral-300"
-        >
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Custom CRM & donor stack assessment
-          </li>
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Grant & funding tool assessment
-          </li>
-          <li class="flex items-center gap-2">
-            <Check class="w-4 h-4 text-primary" /> Full ownership guarantee & training
-            documentation
-          </li>
-        </ul>
-        <Button url="/contact" className="w-full text-center justify-center"
-          >Book Assessment</Button
-        >
-      </div>
+    <Pricing showHeader={false} />
+    <div class="site-container mt-4">
+      <FAQ title="Pricing and access" items={pricingFaq} />
     </div>
-
-    <div class="mt-20">
-      <FAQ title="Pricing & Access FAQ" items={pricingFaq} />
-    </div>
-  </div>
+  </main>
 </Layout>

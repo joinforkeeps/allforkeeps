@@ -296,8 +296,7 @@
     }
 
     .back-to-top,
-    .reading-progress,
-    .toc-sticky-wrapper {
+    .reading-progress {
       display: none;
     }
   }

@@ -30,60 +30,50 @@ const faqItems = [
   {
     question: "What’s free?",
     answer:
-      "Select courses are available at no charge. Software, hosting, payment processing, hardware, and third-party support are separate unless explicitly listed. For Keeps provides education and advice, not a turnkey setup, migration, hosting, or ongoing system administration.",
+      "Our published learning resources are free to read. Software licenses, hardware, hosting, email delivery, maintenance, and optional services can still cost money. Any paid For Keeps work is scoped and priced before you commit.",
   },
   {
     question: "What is the benefit of self-hosting?",
     answer:
-      "Imagine deploying enterprise-grade, ai-powered, open-source tools directly on infrastructure you control for free. No one can ever force update your app, add future pricing, or sunset the app. Take ownership back.",
+      "Self-hosting can give your organization more control over its data, software, and exit plan. It also makes your team responsible for updates, backups, security, and infrastructure. We explain those trade-offs instead of promising that ownership means zero cost or effort.",
   },
   {
     question: "Do I need coding experience?",
     answer:
-      "No prior technical background required. Our gamified learning will guide admins to volunteers, each click at a time.",
+      "You can start without a coding background. Our guides explain the steps and the decisions; some tools still require technical setup or outside help.",
   },
   {
     question: "Will you build or install our tools for us?",
     answer:
-      "No. We help you choose tools, walk you through installation, and guide you on how to use them effectively. Your team or a technical provider handles installation, migration, maintenance, and security.",
+      "The free guides teach you how to evaluate and set up tools. If you want hands-on help, ask about a separately scoped project. Hosting, migration, maintenance, and security responsibilities are agreed in writing before work begins.",
   },
   {
-    question: "Are your courses open source?",
+    question: "What do your guides cover?",
     answer:
-      "No. The platform is private and your profile can be confidential or shared in the community. Our goal is to teach you about the tools available, including open-source and self-hosted options. The courses themselves are not open-source software.",
+      "We focus on Open Source tools and the choices around them: licenses, setup, hosting, support, maintenance, and the route out. Each tool has its own terms, so we help teams find and review the right license information before they adopt it.",
   },
 ];
 
 const features = [
   {
     icon: "/assets/icon/structure.png",
-    title: "Self Led Quickstarts",
-    desc: "Interactive courses built for nonprofit admins, staff, and volunteers.",
+    title: "Self-Led Quickstarts",
+    desc: "Work through practical steps at your team’s pace, with sample data before you touch live records.",
   },
   {
     icon: "/assets/icon/components.png",
     title: "Open Source Stacks",
-    desc: "Curated suites from CRMs to self-hosted AI built to replace costly SaaS.",
+    desc: "Compare tools for fundraising, operations, and local AI, including the trade-offs and operating needs.",
   },
   {
     icon: "/assets/icon/document.png",
-    title: "Clear Guides & Blueprints",
-    desc: "Point-and-click instructions walking you through setup and management.",
+    title: "Clear Guides",
+    desc: "Know what a tool does, what it depends on, how to maintain it, and how to leave.",
   },
   {
     icon: "/assets/icon/fast.png",
     title: "Zero Hidden Fees",
-    desc: "No freemium options or per-user price hikes. What you build is yours to keep.",
-  },
-  {
-    icon: "/assets/icon/motion.png",
-    title: "Our Learning Engine",
-    desc: "Earn achievements and master self-hosting through engaging progress paths.",
-  },
-  {
-    icon: "/assets/icon/customize.png",
-    title: "Nonprofit Assessments",
-    desc: "Not sure where to start? We offer paid asssessments for custom tech stacks with full operational guarantees.",
+    desc: "No surprise charge for our free guides. Paid work has a written scope and price before it starts.",
   },
 ];
 
@@ -128,8 +118,8 @@ const useCases = [
   },
   {
     icon: Code,
-    label: "Secure Data",
-    desc: "Pay for expertise. Know what software is free.",
+    label: "Data control",
+    desc: "Plan access, backups, and a workable exit before sensitive records move.",
   },
   {
     icon: Rocket,
@@ -139,9 +129,9 @@ const useCases = [
 ];
 
 const logos = [
-  { name: "Open-source CRM", icon: Compass },
+  { name: "Open Source CRM", icon: Compass },
   { name: "Find Donors", icon: Triangle },
-  { name: "No Software Spending", icon: Sun },
+  { name: "Know the real costs", icon: Sun },
   { name: "Pay for Expertise", icon: CircleDot },
   { name: "Learn new skills", icon: Orbit },
   { name: "Self-Hosted Tools", icon: Anvil },
@@ -149,17 +139,16 @@ const logos = [
 ---
 
 <Layout
-  title="For Keeps | Nonprofit Technology Courses & Consulting"
-  description="Learn about selfhosting opensource tools for finding donors, grant research, and fundraising. Explore free and paid courses, technology assessments, and personalised consulting for nonprofits."
+  title="For Keeps"
+  description="Learn to choose, build, and maintain nonprofit technology you control. Start with practical Open Source guides; pay for scoped expertise when you need it."
 >
   <!-- Hero Section -->
   <HeroSection />
 
   <!-- Logo Strip -->
-  <section class="py-12 md:py-16 site-container">
+  <section class="py-6 md:py-8 site-container">
     <p class="text-center text-sm text-neutral-400 dark:text-neutral-500 mb-6">
-      Supporting the Nonprofit Community and Open Source Software.
-      Please support the official releases.
+      Nonprofit technology education for teams who want more control and a clear exit.
     </p>
     <div
       class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 opacity-75"
@@ -178,14 +167,14 @@ const logos = [
   </section>
 
   <!-- Problem Section -->
-  <section class="py-16 md:py-24 bg-neutral-50 dark:bg-neutral-900/40">
+  <section class="py-8 md:py-12 bg-neutral-50 dark:bg-neutral-900/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="text-center max-w-3xl mx-auto mb-6">
         <h2 class="text-3xl md:text-4xl font-brand mb-4">
-          Better tools. Clear advice. Skills your team keeps.
+          The tools are only half the story
         </h2>
         <p class="text-neutral-600 dark:text-neutral-300">
-          For Keeps helps you choose and configure available open source tools that suit your mission. Then we teach you to use them. Keep what works. Replace what doesn’t. Pay for help and not unnecessary subscriptions.
+          Before you pay for Salesforce, GoFundMe, Perplexity, or DonorSearch, know your options. We help you look at Open Source tools, real operating costs, and the skills needed to run them.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -213,34 +202,26 @@ const logos = [
   </section>
 
   <!-- Solution narrative -->
-  <section class="py-16 md:py-24 site-container">
+  <section class="py-8 md:py-12 site-container">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-brand mb-6">
-        A Community Built Engine, Not Just Courses
+        A Community-Built Engine, Not Just Courses
       </h2>
       <p class="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
-        For Keeps brings together 10 years of nonprofit experience to offer a
-        straightforward alternative to traditonal consulting. Building it
-        yourself! Digital technology can give you freedom, but it can also take
-        your freedom away.
-        <p
-          class="mt-4 text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg"
-        >
-          Remove the need for forced subscriptions, renewals, and cloud only models. Our community believes in the private
-          ownership of data, media, games, and internet. We combine eLearning,
-          interactive quickstarts, and modern D&D elements to help you skip the
-          code and budget questions.
-        </p>
+        We bring years of nonprofit experience to a straightforward alternative to traditional consulting: learn the tools, build what fits, and keep the skills. Technology can give your team freedom, but only when you understand what it depends on.
+      </p>
+      <p class="mt-4 text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
+        We combine self-led courses, interactive quickstarts, and a community that shares what works. No waiting for a grant to understand your options. No pretending that a free software license means free hosting or maintenance.
       </p>
     </div>
 
     <!-- Features Grid -->
-    <section class="py-16 md:py-24 site-container">
+    <section class="py-8 md:py-12 site-container">
       <SectionHeader
-        title="Know your options before you renew."
-        description="You don't need another subscription. You need a better option."
+        title="Know your options before you renew"
+        description="You don't need another subscription. You need a better option"
         />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
         {
           features.map((feature) => (
             <div class="h-full p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm">
@@ -264,14 +245,13 @@ const logos = [
     </section>
 
     <!-- Dashboard / Product Preview -->
-    <section class="py-16 md:py-24 site-container">
+    <section class="py-8 md:py-12 site-container">
       <SectionHeader
-        title="The For Keeps Guarantee."
-        description="For years, traditional consultants gatekept your potential. Salesforce, Slack, and Claude want you locked into their seperate ecosystems, but we all know they change too often, get acquired quickly, and are not reliable options for low budgets and orgs resistant to AI. So we say try more options for FREE first. 
-        The For Keeps Guarantee: You can get enterprise software completely free. Join For Keeps to learn how to install it and build them on your own."
+        title="The For Keeps Guarantee"
+        description="We teach your team to evaluate tools before it commits. Every stack has dependencies and upkeep; our learning tracker and dashboard previews use sample data, not made-up claims about savings or live learners"
       />
       <div class="mt-8 max-w-4xl mx-auto">
-        <BrowserFrame url="allforkeeps.com/dashboard">
+        <BrowserFrame url="allforkeeps.com/example">
           <div class="flex h-[320px] md:h-[380px]">
             <aside
               class="hidden sm:flex flex-col w-16 border-r border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 py-4 px-3 gap-2"
@@ -303,12 +283,12 @@ const logos = [
                     Impact Summary
                   </h3>
                   <p class="text-[10px] text-neutral-400">
-                    Total active time: 1,420 hours
+                    Example workspace · sample data only
                   </p>
                 </div>
                 <span
                   class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-600 text-[10px] font-medium"
-                  >100% Owned</span
+                  >Plan ownership</span
                 >
               </div>
               <div class="grid grid-cols-3 gap-2">
@@ -316,32 +296,35 @@ const logos = [
                   class="p-3 rounded border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
                 >
                   <span class="text-[10px] text-neutral-400 uppercase"
-                    >SaaS Fees Saved</span
+                    >Operating costs</span
                   ><span class="block text-base font-brand text-primary mt-1"
-                    >$48.2k</span
+                    >0*</span
                   >
                 </div>
                 <div
                   class="p-3 rounded border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
                 >
                   <span class="text-[10px] text-neutral-400 uppercase"
-                    >Active Courses</span
+                    >Learning paths</span
                   ><span
                     class="block text-base font-brand text-neutral-800 dark:text-white mt-1"
-                    >342</span
+                    >In progress</span
                   >
                 </div>
                 <div
                   class="p-3 rounded border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
                 >
                   <span class="text-[10px] text-neutral-400 uppercase"
-                    >Open Guides</span
+                    >Open guides</span
                   ><span
                     class="block text-base font-brand text-neutral-800 dark:text-white mt-1"
-                    >24</span
+                    >Public</span
                   >
                 </div>
               </div>
+              <p class="text-[10px] leading-relaxed text-neutral-500 dark:text-neutral-400">
+                *Hardware, cloud, and other costs may apply; you may be able to start with what you already have.
+              </p>
               <div
                 class="flex-1 rounded border border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50 dark:bg-neutral-900"
               >
@@ -361,7 +344,7 @@ const logos = [
                       >Twenty CRM</span
                     ><span class="col-span-3 text-primary">Self-Hosted</span
                     ><span class="col-span-3 text-right text-emerald-600"
-                      >$0/mo</span
+                      >Estimate</span
                     >
                   </div>
                   <div
@@ -372,7 +355,7 @@ const logos = [
                       >Ollama</span
                     ><span class="col-span-3 text-primary">Self-Hosted</span
                     ><span class="col-span-3 text-right text-emerald-600"
-                      >$0/mo</span
+                      >Estimate</span
                     >
                   </div>
                   <div class="grid grid-cols-12 items-center py-1">
@@ -381,7 +364,7 @@ const logos = [
                       >CiviCRM</span
                     ><span class="col-span-3 text-primary">Self-Hosted</span
                     ><span class="col-span-3 text-right text-emerald-600"
-                      >$0/mo</span
+                      >Estimate</span
                     >
                   </div>
                 </div>
@@ -393,10 +376,10 @@ const logos = [
     </section>
 
     <!-- Use Cases Grid -->
-    <section class="py-16 md:py-24 site-container">
+    <section class="py-8 md:py-12 site-container">
       <SectionHeader
         title="Built for Every Nonprofit Need"
-        description="Whether you need a donor database, private AI models, or automated volunteer onboarding, our open-source blueprints adapt to your mission."
+        description="Whether you need a donor database, private AI models, or automated volunteer onboarding, our Open Source blueprints adapt to your mission"
       />
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-8">
         {
@@ -414,10 +397,10 @@ const logos = [
     </section>
 
     <!-- Tech Stack -->
-    <section class="py-16 md:py-24 site-container">
+    <section class="py-8 md:py-12 site-container">
       <SectionHeader
-        title="Built on Free & Open-Source Foundations"
-        description="We test, configure, and refine leading open-source tools so your team can deploy them smoothly."
+        title="Open Source tools, chosen with care"
+        description="From nonprofit CRMs to local AI, compare licenses, setup needs, maintenance, and operating costs before adopting a tool"
       />
       <div class="mt-8"><TechStackCard /></div>
     </section>
@@ -425,33 +408,31 @@ const logos = [
     <!-- Pricing Preview with Free, Community, Nonprofit Tiers -->
     <Pricing
       title="What’s free. What’s paid. What’s separate."
-      description="All open source tools are free to build and use. Building them is the barrier, therefore, our consulting work and expertise is paid. The base courses are free."
+      description="Read the guides at no charge. Join the community under a clear participation rule. Request a custom project only after you see its scope and price"
     />
 
     <!-- FAQ -->
     <FAQ title="Frequently Asked Questions" items={faqItems} />
 
     <!-- Blog -->
-    <div class="py-16 md:py-24">
-      <BlogSection title="Guides & Open-Source Insights" />
+    <div class="py-8 md:py-12">
+      <BlogSection title="Guides and Open Source Insights" />
     </div>
 
     <!-- Final CTA -->
     <section
-      class="py-12 md:py-20 site-container rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm text-center"
+      class="py-6 md:py-10 site-container rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm text-center"
     >
       <div class="max-w-2xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-brand mb-4">
-          Ready to Take Control of Your Tech?
+          Ready to own your tools?
         </h2>
         <p class="text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed">
-          Join our community mailing list to receive free open-source guides,
-          step-by-step tech quickstarts, and updates—no noise, no high-pressure
-          sales calls.
+          Start with a quickstart. If the stack is bigger than your team can take on alone, we can scope an assessment and map the next steps together.
         </p>
         <div class="flex flex-wrap justify-center gap-3">
           <Button url="/contact" className="text-lg px-8 py-3">
-            Join the Mailing List <ArrowRight size={18} class="ml-2" />
+            Request an Assessment <ArrowRight size={18} class="ml-2" />
           </Button>
           <Button url="/courses" className="text-lg px-8 py-3">
             Explore Quickstarts

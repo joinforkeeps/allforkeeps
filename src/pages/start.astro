@@ -1,0 +1,521 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import KeeperTransmission from "@/components/content/KeeperTransmission.astro";
+
+const frappeUrl = import.meta.env.PUBLIC_FRAPPE_LEARNING_URL || "";
+const hasFrappeUrl =
+  frappeUrl.startsWith("https://") || frappeUrl.startsWith("http://");
+
+const checkpoints = [
+  {
+    number: "01",
+    title: "Read the license on the door",
+    label: "Open Source",
+    copy:
+      "Open Source software gives people rights to use, study, change, and share code under its license. Every project has its own terms. A public code repository or free download alone does not tell you what those terms allow.",
+  },
+  {
+    number: "02",
+    title: "Find who holds the keys",
+    label: "Self-hosting",
+    copy:
+      "Self-hosting means your organization runs software on infrastructure it operates or controls. That can mean a machine in your office or a rented server. Your team also plans updates, access, backups, security, and recovery.",
+  },
+  {
+    number: "03",
+    title: "Mark the exit before you move in",
+    label: "Ownership",
+    copy:
+      "List the data you need to keep, the format it can leave in, the people who can export it, the full operating cost, and the person who will test a restore. An exit plan is part of the build, not a fire escape added later.",
+  },
+];
+---
+
+<Layout
+  title="Start Mission"
+  description="A KEEPER-guided introduction to Open Source software, self-hosting, and planning a safe exit from nonprofit technology."
+>
+  <main class="fk-start">
+    <section class="fk-start-hero site-container">
+      <div class="fk-start-copy">
+        <p class="fk-start-kicker">START MISSION / THE FIRST DOOR</p>
+        <h1>Before you claim the keys, learn what they open.</h1>
+        <p class="fk-start-lede">
+          Welcome to the practice vault. We will separate Open Source from
+          self-hosting, map the work behind both, and leave with a first exit
+          plan. No server purchase. No donor records. No mysterious button
+          labeled “production.”
+        </p>
+        <a class="fk-start-button" href="#briefing">
+          Enter the briefing <span aria-hidden="true">↓</span>
+        </a>
+        <p class="fk-start-note">
+          This field briefing is ready to read. The full Frappe Learning course
+          is in development; paid enrollment is not open.
+        </p>
+      </div>
+
+      <figure class="fk-start-cover">
+        <img
+          src="/assets/keeper.jpg"
+          alt="KEEPER marks a route through the For Keeps practice vault."
+          width="1200"
+          height="630"
+          fetchpriority="high"
+        />
+        <figcaption>
+          Training room: fictional danger. Real-world care.
+        </figcaption>
+      </figure>
+
+      <div class="fk-start-stats" aria-label="Mission facts">
+        <div><strong>3</strong><span>checkpoints</span></div>
+        <div><strong>0</strong><span>donor records needed</span></div>
+        <div><strong>Free</strong><span>to read</span></div>
+      </div>
+    </section>
+
+    <section id="briefing" class="fk-mission site-container">
+      <div class="fk-section-heading">
+        <p class="fk-start-kicker">THE MAP</p>
+        <h2>Three doors. One better question.</h2>
+        <p>
+          “Can we run this?” is only the first question. We also ask who can
+          change it, what it costs to keep it working, and how the team leaves.
+        </p>
+      </div>
+
+      <ol class="fk-route">
+        {
+          checkpoints.map((checkpoint) => (
+            <li class="fk-route-step">
+              <span class="fk-route-number" aria-hidden="true">
+                {checkpoint.number}
+              </span>
+              <div class="fk-route-content">
+                <p class="fk-route-label">{checkpoint.label}</p>
+                <h3>{checkpoint.title}</h3>
+                <p>{checkpoint.copy}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="fk-keeper-room site-container">
+      <KeeperTransmission room="Orientation Bay">
+        <blockquote>
+          <p>
+            You do not need to own the whole dungeon today. Start by learning
+            who holds the keys, what keeps the lights on, and where the exit is.
+          </p>
+          <cite>KEEPER’s first rule</cite>
+        </blockquote>
+      </KeeperTransmission>
+    </section>
+
+    <section class="fk-checkpoint site-container" aria-labelledby="check-title">
+      <div class="fk-checkpoint-card">
+        <p class="fk-start-kicker">CHECKPOINT / KNOWLEDGE TEST</p>
+        <h2 id="check-title">Self-hosted means maintenance-free. True?</h2>
+        <p>
+          Make your call before opening the answer. The dungeon rewards careful
+          reading, not speed-running the warning label.
+        </p>
+        <details class="fk-answer">
+          <summary>Open the answer</summary>
+          <p>
+            False. Self-hosting changes who operates the infrastructure; it
+            does not remove the work. Plan updates, backups, security, access,
+            staff time, and a tested recovery route.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section class="fk-next-step site-container">
+      <div class="fk-next-card">
+        <div>
+          <p class="fk-start-kicker">THE NEXT ROOM</p>
+          <h2>The full course is being built for Frappe Learning.</h2>
+          <p>
+            We are shaping the next training steps now. Stay tuned in the
+            community for updates as we get closer to holiday training.
+          </p>
+        </div>
+        <div class="fk-next-actions">
+          {
+            hasFrappeUrl ? (
+              <a class="fk-start-button" href={frappeUrl} target="_blank" rel="noopener noreferrer">
+                Continue to Frappe Learning
+              </a>
+            ) : (
+              <a class="fk-start-button" href="/community">
+                Follow community updates
+              </a>
+            )
+          }
+          <a class="fk-secondary-link" href="/courses">Browse the field guides</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .fk-start {
+    --mission-line: rgba(143, 185, 255, 0.28);
+    color: var(--color-text-secondary);
+  }
+
+  .fk-start-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    padding-block: 1.5rem;
+  }
+
+  .fk-start-copy {
+    align-self: center;
+    max-width: 42rem;
+  }
+
+  .fk-start-kicker,
+  .fk-route-label {
+    color: var(--color-primary);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .fk-start h1,
+  .fk-start h2,
+  .fk-start h3 {
+    font-family: var(--font-brand);
+    font-weight: 400;
+    line-height: 1.08;
+  }
+
+  .fk-start h1 {
+    max-width: 12ch;
+    margin: 0.65rem 0 0.85rem;
+    font-size: clamp(2.7rem, 6vw, 5rem);
+  }
+
+  .fk-start-lede,
+  .fk-section-heading > p:last-child,
+  .fk-route-content > p:last-child,
+  .fk-checkpoint-card > p,
+  .fk-next-card > div > p:last-child {
+    max-width: 68ch;
+    line-height: 1.7;
+  }
+
+  .fk-start-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-top: 0.75rem;
+    padding: 0.8rem 1.1rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 0.75rem;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 180ms ease, transform 180ms ease;
+  }
+
+  .fk-start-button:hover {
+    background: var(--color-primary-strong);
+    transform: translateY(-2px);
+  }
+
+  .fk-start-button:focus-visible,
+  .fk-secondary-link:focus-visible,
+  .fk-answer summary:focus-visible {
+    outline: 3px solid var(--color-accent-yellow);
+    outline-offset: 3px;
+  }
+
+  .fk-start-note {
+    max-width: 58ch;
+    margin-top: 0.8rem;
+    color: var(--color-text-tertiary);
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  .fk-start-cover {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    align-self: center;
+    border: 1px solid var(--mission-line);
+    border-radius: 1rem;
+    background: var(--color-bg-primary-dark);
+  }
+
+  .fk-start-cover img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1200 / 630;
+    object-fit: cover;
+  }
+
+  .fk-start-cover figcaption {
+    padding: 0.65rem 0.85rem;
+    color: #c5cedb;
+    font-size: 0.78rem;
+  }
+
+  .fk-start-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+    grid-column: 1 / -1;
+  }
+
+  .fk-start-stats > div {
+    display: grid;
+    gap: 0.2rem;
+    min-width: 0;
+    padding: 0.8rem;
+    border-top: 2px solid var(--color-primary);
+    background: var(--color-bg-primary-deep);
+  }
+
+  .fk-start-stats > div:nth-child(2) {
+    border-color: var(--color-accent-yellow);
+  }
+
+  .fk-start-stats strong {
+    color: var(--color-text-primary);
+    font-family: var(--font-brand);
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  .fk-start-stats span {
+    color: var(--color-text-tertiary);
+    font-size: 0.78rem;
+  }
+
+  .fk-mission,
+  .fk-keeper-room,
+  .fk-checkpoint,
+  .fk-next-step {
+    padding-block: 1.5rem;
+  }
+
+  .fk-section-heading {
+    max-width: 46rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .fk-section-heading h2,
+  .fk-checkpoint-card h2,
+  .fk-next-card h2 {
+    margin: 0.4rem 0 0.65rem;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+  }
+
+  .fk-route {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 58rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .fk-route-step {
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: 0.85rem;
+    align-items: start;
+    padding: 1rem;
+    border: 1px solid var(--mission-line);
+    border-radius: 0.85rem;
+    background: var(--color-bg-secondary);
+  }
+
+  .fk-route-step:nth-child(2) {
+    margin-inline-start: clamp(0rem, 4vw, 2rem);
+    border-inline-start: 3px solid var(--color-accent-yellow);
+  }
+
+  .fk-route-step:nth-child(3) {
+    margin-inline-start: clamp(0rem, 8vw, 4rem);
+  }
+
+  .fk-route-number {
+    display: grid;
+    width: 2.5rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+
+  .fk-route-label {
+    margin: 0 0 0.3rem;
+    font-size: 0.7rem;
+  }
+
+  .fk-route-content h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.45rem;
+  }
+
+  .fk-route-content > p:last-child {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .fk-keeper-room :global(.fk-callout) {
+    max-width: 54rem;
+    margin: 0 auto;
+    border-color: var(--mission-line);
+    border-inline-start-color: var(--color-accent-yellow);
+    background: var(--color-bg-primary-dark);
+    color: #f2f6fd;
+  }
+
+  .fk-keeper-room :global(.fk-label) {
+    color: var(--color-primary-light);
+  }
+
+  .fk-keeper-room blockquote {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-brand);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    line-height: 1.3;
+  }
+
+  .fk-keeper-room cite {
+    display: block;
+    margin-top: 0.6rem;
+    color: var(--color-accent-yellow);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-style: normal;
+  }
+
+  .fk-checkpoint-card,
+  .fk-next-card {
+    padding: clamp(1.1rem, 4vw, 2rem);
+    border: 1px solid var(--mission-line);
+    border-radius: 1rem;
+    background:
+      linear-gradient(135deg, rgba(45, 109, 195, 0.09), transparent 55%),
+      var(--color-bg-secondary);
+  }
+
+  .fk-answer {
+    margin-top: 1rem;
+    padding: 0.9rem 1rem;
+    border-inline-start: 3px solid var(--color-accent-yellow);
+    background: var(--color-bg-primary-deep);
+  }
+
+  .fk-answer summary {
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .fk-answer p {
+    max-width: 68ch;
+    margin-bottom: 0;
+    line-height: 1.65;
+  }
+
+  .fk-next-card {
+    display: grid;
+    gap: 1rem;
+    background:
+      linear-gradient(135deg, rgba(250, 209, 59, 0.12), transparent 45%),
+      var(--color-bg-primary-dark);
+    color: #f2f6fd;
+  }
+
+  .fk-next-card h2 {
+    color: #f2f6fd;
+  }
+
+  .fk-next-card .fk-start-kicker {
+    color: var(--color-accent-yellow);
+  }
+
+  .fk-next-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .fk-secondary-link {
+    color: var(--color-primary-light);
+    font-weight: 600;
+    text-underline-offset: 0.2em;
+  }
+
+  :global(html.dark) .fk-route-step,
+  :global(html.dark) .fk-checkpoint-card {
+    background: var(--color-bg-secondary-dark);
+  }
+
+  :global(html.dark) .fk-start-stats > div,
+  :global(html.dark) .fk-answer {
+    background: rgba(15, 27, 45, 0.9);
+  }
+
+  :global(html.dark) .fk-start-stats strong {
+    color: var(--color-text-primary-dark);
+  }
+
+  :global(html.dark) .fk-start-stats span,
+  :global(html.dark) .fk-route-content > p:last-child {
+    color: var(--color-text-secondary-dark);
+  }
+
+  @media (min-width: 900px) {
+    .fk-start-hero {
+      grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
+      align-items: center;
+      gap: 1.5rem 2rem;
+    }
+
+    .fk-start-stats {
+      max-width: 38rem;
+    }
+
+    .fk-next-card {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .fk-start-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .fk-route-step:nth-child(2),
+    .fk-route-step:nth-child(3) {
+      margin-inline-start: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fk-start-button {
+      transition: none;
+    }
+  }
+</style>

@@ -3,22 +3,18 @@
 	"type": "module",
 	"version": "1.0.0",
 	"packageManager": "pnpm@9.14.2",
-	"description": "A practical starting point for nonprofit teams exploring open-source tools, self-hosting, and technology they can maintain.",
+	"description": "For Keeps helps nonprofits choose, build, and maintain Open Source tools they control.",
 	"keywords": [
 		"astro",
-		"astro-template",
-		"saas",
-		"saas-template",
-		"landing-page",
-		"startup",
+		"nonprofit technology",
+		"open source",
+		"self-hosting",
+		"technology ownership",
+		"quickstarts",
 		"tailwindcss",
 		"tailwindcss-v4",
 		"mdx",
-		"blog",
-		"changelog",
-		"dark-mode",
-		"responsive",
-		"typescript"
+		"community"
 	],
 	"author": {
 		"name": "For Keeps",
@@ -27,13 +23,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/joinforkeeps"
+		"url": "https://github.com/joinforkeeps/allforkeeps.git"
 	},
 	"bugs": {
-		"url": "https://github.com/joinforkeepss"
+		"url": "https://github.com/joinforkeeps/allforkeeps/issues"
 	},
-	"homepage": "https://github.com/joinforkeeps",
-	"license": "MIT",
+	"homepage": "https://allforkeeps.com",
 	"engines": {
 		"node": ">=22.12.0",
 		"pnpm": ">=9"
@@ -44,7 +39,7 @@
 		"build": "astro check && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"check": "biome check --apply-unsafe ."
+		"check": "biome lint src functions"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.9",
@@ -62,12 +57,10 @@
 		"@astrojs/rss": "^4.0.18",
 		"@astrojs/sitemap": "^3.7.3",
 		"@lucide/astro": "^1.17.0",
+		"@supabase/supabase-js": "^2.119.0",
 		"@tailwindcss/vite": "^4.1.14",
 		"aos": "^2.3.4",
-		"lucide-react": "^1.69.0",
 		"motion": "^12.23.24",
-		"satteri-callouts": "^1.0.1",
-		"satteri-imgattr": "^0.1.1",
 		"sharp": "^0.34.4"
 	}
 }

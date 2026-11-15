@@ -4,78 +4,234 @@ import PageHeader from "@/components/elements/PageHeader.astro";
 import Button from "@/components/ui/Button.astro";
 import { BookOpen } from "@lucide/astro";
 
-const coursesList = [
-    {
-        title: "Self-Hosted CRM Foundations",
-        level: "Beginner",
-        desc: "Deploy Twenty CRM and manage donor relationships without per-seat licensing fees.",
-        badge: "Free",
-    },
-    {
-        title: "Private AI for Nonprofits",
-        level: "Intermediate",
-        desc: "Run secure, offline Ollama models on your local hardware to draft grants with total privacy.",
-        badge: "Free",
-    },
-    {
-        title: "Automated Volunteer Onboarding",
-        level: "Beginner",
-        desc: "Build n8n workflows that handle event signups, calendar sync, and welcome packets automatically.",
-        badge: "Free",
-    },
-    {
-        title: "Grant Writing with Open Data",
-        level: "Advanced",
-        desc: "Connect public grant databases to local search tooling to fund your next community initiative.",
-        badge: "Quickstart",
-    },
+const guides = [
+  {
+    title: "Your first server might already be in the office",
+    category: "Self-hosting",
+    image: "/assets/elearning.jpg",
+    imageAlt: "For Keeps eLearning guide cover",
+    description:
+      "Cadet, before you buy a server, check the old office computer. We’ll start a small lab, learn what it can handle, and keep real donor records out of the training zone.",
+    url: "/blog/first-server-office",
+  },
+  {
+    title: "The nonprofit discount is not the whole bill",
+    category: "Costs and planning",
+    image: "/assets/nonprofits.jpg",
+    imageAlt: "For Keeps nonprofit technology guide cover",
+    description:
+      "A donated license is not an escape pod. Follow the costs for setup, staff time, hosting, support, and the route out before calling a platform free.",
+    url: "/blog/nonprofit-discount-whole-bill",
+  },
+  {
+    title: "Keep the disc. Check the server.",
+    category: "Ownership",
+    image: "/assets/ownership.jpg",
+    imageAlt: "For Keeps ownership guide cover",
+    description:
+      "The dungeon has a new door and a familiar lock. Find out who controls access to your records, what happens when service ends, and how to keep a recovery plan.",
+    url: "/blog/keep-the-disc-check-the-server",
+  },
 ];
 ---
 
 <Layout
-    title="Free Courses & Quickstarts For Keeps"
-    description="Self-led e-learning courses and technical quickstarts for nonprofit teams."
+  title="Courses and Quickstarts"
+  description="Enter the For Keeps training dungeon. Learn nonprofit technology through practical missions, Open Source tools, and KEEPER's field notes."
 >
-    <div class="py-16 md:py-24 site-container">
-        <PageHeader
-            title="Free Courses & Quickstarts"
-            description="Self-led learning paths designed for nonprofit directors, staff, and volunteers with zero prior tech background."
-        />
+  <main class="fk-courses py-8 md:py-12 site-container">
+    <PageHeader
+      title="Cadet, the door is open. Pick a mission."
+      description="We built these quickstarts for the people asked to make a donor database, a server, or a grant workflow work with three people and no spare budget. KEEPER has the map. You still get to choose the route."
+    />
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            {
-                coursesList.map((course) => (
-                    <div class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary">
-                                    {course.level}
-                                </span>
-                                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">
-                                    {course.badge}
-                                </span>
-                            </div>
-                            <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">
-                                {course.title}
-                            </h3>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6">
-                                {course.desc}
-                            </p>
-                        </div>
-                        <div class="flex items-center justify-between pt-4 border-t border-neutral-100 dark:border-neutral-800">
-                            <span class="text-xs text-neutral-400 flex items-center gap-1">
-                                <BookOpen class="w-3.5 h-3.5" /> Self-paced
-                            </span>
-                            <Button
-                                url="/sign-in"
-                                className="text-sm px-4 py-2"
-                            >
-                                Start Course
-                            </Button>
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
+    <figure class="mt-5 overflow-hidden rounded-2xl border border-primary/15 bg-neutral-950">
+      <img
+        src="/assets/keeper.jpg"
+        alt="KEEPER: enter the practice vault. Own the setup. Learn the upkeep."
+        width="1200"
+        height="630"
+        fetchpriority="high"
+        class="w-full aspect-[1200/630] object-cover"
+      />
+      <figcaption class="px-5 py-3 text-sm text-neutral-300">
+        FIELD NOTE 001 · The practice vault. Fictional danger, real verification.
+      </figcaption>
+    </figure>
+
+    <section class="fk-start-feature" aria-labelledby="fk-start-title">
+      <div class="fk-start-feature-copy">
+        <p class="fk-start-label">MISSION 00 / START HERE</p>
+        <h2 id="fk-start-title">The first room is a practice room.</h2>
+        <p>
+          Meet Open Source and self-hosting without putting donor data on the
+          table. KEEPER marks three checkpoints: read the license, find who
+          holds the keys, and plan the exit before you move in.
+        </p>
+        <blockquote>
+          “Learn the map before you carry the mission into the dungeon.”
+        </blockquote>
+        <a class="fk-start-link" href="/start">
+          Enter the START mission <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="fk-start-facts" aria-label="START mission facts">
+        <div><strong>3</strong><span>learning checkpoints</span></div>
+        <div><strong>0</strong><span>donor records needed</span></div>
+        <div><strong>Free</strong><span>to read</span></div>
+        <p>The full Frappe Learning course is in development.</p>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+      {
+        guides.map((guide) => (
+          <article class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <img
+                src={guide.image}
+                alt={guide.imageAlt}
+                width="1200"
+                height="630"
+                loading="lazy"
+                class="mb-6 w-full aspect-[1200/630] rounded-xl object-cover"
+              />
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary">
+                  {guide.category}
+                </span>
+                <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                  Free to read
+                </span>
+              </div>
+              <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+                {guide.title}
+              </h2>
+              <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6">
+                {guide.description}
+              </p>
+            </div>
+            <div class="flex items-center justify-between gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+              <span class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
+                <BookOpen class="w-3.5 h-3.5" /> Open mission
+              </span>
+              <Button url={guide.url} className="text-sm px-4 py-2">
+                Enter mission
+              </Button>
+            </div>
+          </article>
+        ))
+      }
     </div>
+    <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-300">
+      KEEPER can make the briefing dramatic. The costs and risks are not
+      fictional. Review licensing, hosting, support, security, and maintenance
+      before moving real data or exposing a service to the internet.
+    </p>
+  </main>
 </Layout>
+
+<style>
+  .fk-start-feature {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    padding: clamp(1.1rem, 3vw, 2rem);
+    border: 1px solid rgba(143, 185, 255, 0.28);
+    border-inline-start: 4px solid var(--color-accent-yellow);
+    border-radius: 1rem;
+    background:
+      linear-gradient(125deg, rgba(45, 109, 195, 0.12), transparent 58%),
+      var(--color-bg-primary-dark);
+    color: #f2f6fd;
+  }
+
+  .fk-start-feature h2 {
+    max-width: 16ch;
+    margin: 0.35rem 0 0.6rem;
+    color: #f2f6fd;
+    font-family: var(--font-brand);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .fk-start-feature-copy > p:not(.fk-start-label) {
+    max-width: 64ch;
+    line-height: 1.65;
+  }
+
+  .fk-start-label {
+    color: var(--color-accent-yellow);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .fk-start-feature blockquote {
+    margin: 1rem 0;
+    color: var(--color-primary-light);
+    font-family: var(--font-brand);
+    font-size: 1.35rem;
+  }
+
+  .fk-start-link {
+    display: inline-flex;
+    gap: 0.6rem;
+    align-items: center;
+    color: var(--color-accent-yellow);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .fk-start-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+    align-content: center;
+  }
+
+  .fk-start-facts > div {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.7rem;
+    border-top: 2px solid var(--color-primary-light);
+    background: rgba(15, 27, 45, 0.85);
+  }
+
+  .fk-start-facts > div:nth-child(2) {
+    border-color: var(--color-accent-yellow);
+  }
+
+  .fk-start-facts strong {
+    font-family: var(--font-brand);
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .fk-start-facts span,
+  .fk-start-facts > p {
+    color: #c5cedb;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .fk-start-facts > p {
+    grid-column: 1 / -1;
+    margin: 0.25rem 0 0;
+  }
+
+  @media (min-width: 800px) {
+    .fk-start-feature {
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.75fr);
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .fk-start-facts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

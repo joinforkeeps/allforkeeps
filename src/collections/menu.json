@@ -1,4 +1,7 @@
 [
+	{ "name": "Quickstarts", "url": "/courses" },
+	{ "name": "Community", "url": "/community" },
+	{ "name": "Contact", "url": "/contact" },
 	{
 		"name": "AFK",
 		"children": [
@@ -6,18 +9,7 @@
 			{ "name": "Pricing", "url": "/pricing" },
 			{ "name": "Features", "url": "/features" },
 			{ "name": "Blog", "url": "/blog" },
-			{ "name": "Changelog", "url": "/changelog" },
-			{ "name": "Sign in", "url": "/sign-in" },
-			{ "name": "Sign up", "url": "/sign-up" },
-			{ "name": "404", "url": "/404" }
+			{ "name": "Changelog", "url": "/changelog" }
 		]
-	},
-	{
-		"name": "Toolkit",
-		"url": "/elements"
-	},
-	{
-		"name": "Contact",
-		"url": "/contact"
 	}
 ]

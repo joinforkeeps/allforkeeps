@@ -1,83 +1,267 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/elements/PageHeader.astro";
+
+const ndaVersion = "mutual-nda-2026-11-15-v1";
 ---
 
 <Layout
-  title="Assessment & Contact: For Keeps"
-  description="Get in touch for custom tech stack assessments, community access, or course feedback."
+  title="Nonprofit Assessment Intake"
+  description="Request a For Keeps nonprofit technology assessment. Read and accept the mutual nondisclosure agreement before submitting."
 >
-  <div class="py-16 md:py-24 site-container">
+  <main class="py-8 md:py-12 site-container">
     <PageHeader
-      title="Nonprofit Technology Assessment"
-      description="Tell us about your organization. Complete our intake form and we'll get back to you with a customized assessment."
+      title="Before we open the blueprint, we sign the NDA."
+      description="Tell us what your organization is trying to build. We’ll record the clickwrap acceptance with your intake. Do not include donor records, passwords, API keys, or other sensitive details."
     />
 
-    <div
-      class="max-w-2xl mx-auto mt-12 bg-white dark:bg-neutral-900 p-8 md:p-12 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-sm"
-    >
-      <form class="space-y-6" action="#" method="POST">
+    <div class="max-w-3xl mx-auto mt-6 space-y-4">
+      <details class="rounded-2xl border border-primary/20 bg-white dark:bg-neutral-900 p-6 md:p-8">
+        <summary class="cursor-pointer font-semibold text-neutral-900 dark:text-white">
+          Read the Mutual Nondisclosure Agreement
+        </summary>
+        <div class="mt-6 space-y-4 text-sm leading-7 text-neutral-700 dark:text-neutral-300">
+          <h2 class="text-xl font-semibold text-neutral-900 dark:text-white">
+            ALL FOR KEEPS LLC MUTUAL NONDISCLOSURE AGREEMENT
+          </h2>
+          <p><strong>Effective Date:</strong> Upon electronic acceptance</p>
+          <p>
+            This Mutual Nondisclosure Agreement ("Agreement") is entered into
+            by and between All For Keeps LLC, a New Mexico limited liability
+            company doing business as "For Keeps" or "AFK" ("All For Keeps"),
+            and the individual or organization submitting an assessment,
+            consultation, or intake form ("Client").
+          </p>
+          <p>
+            <strong>1. Purpose.</strong> The parties wish to explore a
+            potential business relationship, technical consulting, or
+            Open Source infrastructure assessment (the "Purpose").
+          </p>
+          <p>
+            <strong>2. Confidential Information.</strong> "Confidential
+            Information" means all non-public information disclosed by one
+            party ("Disclosing Party") to the other ("Receiving Party"),
+            including technical data, trade secrets, software blueprints,
+            donor records, pricing models, and operational playbooks.
+          </p>
+          <p>
+            <strong>3. Exclusions.</strong> Confidential Information does not
+            include information that is publicly known, already known to the
+            Receiving Party without restriction, independently developed, or
+            lawfully received from a third party.
+          </p>
+          <p>
+            <strong>4. Obligations.</strong> Receiving Party agrees to protect
+            Confidential Information with standard care, use it solely for the
+            Purpose, and disclose it only to personnel or advisors bound by
+            similar confidentiality duties.
+          </p>
+          <p>
+            <strong>5. Term and Governing Law.</strong> This Agreement governs
+            disclosures made within two (2) years of acceptance. Confidentiality
+            obligations persist for three (3) years thereafter (or indefinitely
+            for trade secrets). This Agreement is governed by the laws of the
+            State of New Mexico.
+          </p>
+        </div>
+      </details>
+
+      <form
+        id="assessment-intake"
+        class="space-y-6 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 md:p-10"
+      >
         <div>
-          <label
-            class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
-            >Organization Name</label
-          >
+          <label for="organization" class="mb-2 block text-sm font-medium">
+            Organization name
+          </label>
           <input
+            id="organization"
+            name="organization_name"
             type="text"
             required
-            placeholder="e.g., Save the Children"
-            class="w-full px-4 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:border-primary"
+            minlength="2"
+            maxlength="200"
+            autocomplete="organization"
+            class="w-full rounded-lg border border-neutral-300 bg-transparent px-4 py-3 dark:border-neutral-700"
           />
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
-            <label
-              class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
-              >Your Name</label
-            >
+            <label for="contact-name" class="mb-2 block text-sm font-medium">
+              Your name
+            </label>
             <input
+              id="contact-name"
+              name="contact_name"
               type="text"
               required
-              placeholder="Alan Keeps"
-              class="w-full px-4 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:border-primary"
+              minlength="1"
+              maxlength="200"
+              autocomplete="name"
+              class="w-full rounded-lg border border-neutral-300 bg-transparent px-4 py-3 dark:border-neutral-700"
             />
           </div>
           <div>
-            <label
-              class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
-              >Email Address</label
-            >
+            <label for="contact-title" class="mb-2 block text-sm font-medium">
+              Your role (optional)
+            </label>
             <input
-              type="email"
-              required
-              placeholder="alan@allforkeeps.com"
-              class="w-full px-4 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:border-primary"
+              id="contact-title"
+              name="contact_title"
+              type="text"
+              maxlength="200"
+              autocomplete="organization-title"
+              class="w-full rounded-lg border border-neutral-300 bg-transparent px-4 py-3 dark:border-neutral-700"
             />
           </div>
         </div>
 
         <div>
-          <label
-            class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
-            >What tools, nonprofit systems,or AI features are you trying to build first?</label
-          >
-          <textarea
-            rows="4"
-            placeholder="Donor CRM, volunteer scheduling, grant intake forms..."
-            class="w-full px-4 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white focus:outline-none focus:border-primary"
-          ></textarea>
+          <label for="email" class="mb-2 block text-sm font-medium">
+            Email address
+          </label>
+          <input
+            id="email"
+            name="contact_email"
+            type="email"
+            required
+            maxlength="254"
+            autocomplete="email"
+            class="w-full rounded-lg border border-neutral-300 bg-transparent px-4 py-3 dark:border-neutral-700"
+          />
         </div>
 
         <div>
-          <button
-            type="submit"
-            class="w-full py-4 rounded-lg bg-primary text-white font-semibold hover:bg-primary-strong transition-colors"
-          >
-            Submit Assessment Intake
-          </button>
+          <label for="project-details" class="mb-2 block text-sm font-medium">
+            What are you trying to build, fix, or understand?
+          </label>
+          <textarea
+            id="project-details"
+            name="project_details"
+            rows="5"
+            required
+            minlength="10"
+            maxlength="5000"
+            class="w-full rounded-lg border border-neutral-300 bg-transparent px-4 py-3 dark:border-neutral-700"
+          ></textarea>
+          <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+            Keep it high-level. Do not submit donor records, personal records,
+            passwords, API keys, or private access links.
+          </p>
         </div>
+
+        <div class="sr-only" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <label class="flex items-start gap-3 text-sm leading-6">
+          <input
+            id="nda-accepted"
+            name="nda_accepted"
+            type="checkbox"
+            required
+            class="mt-1 h-4 w-4 rounded border-neutral-300 text-primary focus:ring-primary"
+          />
+          <span>
+            I have read and agree to the Mutual Nondisclosure Agreement above.
+            I am authorized to accept it for the organization named in this
+            intake, if applicable.
+          </span>
+        </label>
+
+        <input type="hidden" name="nda_version" value={ndaVersion} />
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-primary-strong"
+        >
+          Submit Assessment Intake
+        </button>
+        <p id="assessment-status" class="text-sm" role="status" aria-live="polite"></p>
       </form>
+
+      <p class="text-xs leading-6 text-neutral-500 dark:text-neutral-400">
+        When configured, intake submissions will be stored in the Supabase
+        database dedicated to For Keeps. The form does not send email or expose
+        a database service-role key. It will not accept submissions until the
+        public Supabase URL, anonymous key, and database migration are configured.
+      </p>
     </div>
-  </div>
+  </main>
 </Layout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#assessment-intake");
+  const status = document.querySelector<HTMLElement>("#assessment-status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity() || !status) return;
+
+    const data = new FormData(form);
+    if (data.get("website")) return;
+
+    const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+    const anonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+    if (!supabaseUrl || !anonKey) {
+      status.textContent =
+        "Intake is not available yet. Secure database settings have not been configured.";
+      status.setAttribute("class", "text-sm text-red-700 dark:text-red-300");
+      return;
+    }
+
+    const payload = {
+      organization_name: String(data.get("organization_name")).trim(),
+      contact_name: String(data.get("contact_name")).trim(),
+      contact_title: String(data.get("contact_title") || "").trim() || null,
+      contact_email: String(data.get("contact_email")).trim(),
+      project_details: String(data.get("project_details")).trim(),
+      nda_accepted: data.get("nda_accepted") === "on",
+      nda_version: String(data.get("nda_version")),
+    };
+
+    const submit = form.querySelector<HTMLButtonElement>(
+      'button[type="submit"]',
+    );
+    if (submit) submit.disabled = true;
+    status.textContent = "Saving your intake…";
+    status.setAttribute("class", "text-sm text-neutral-600 dark:text-neutral-300");
+
+    try {
+      const response = await fetch(
+        `${supabaseUrl.replace(/\/+$/, "")}/rest/v1/assessment_intakes`,
+        {
+          method: "POST",
+          headers: {
+            apikey: anonKey,
+            Authorization: `Bearer ${anonKey}`,
+            "Content-Type": "application/json",
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+
+      if (!response.ok) {
+        console.error("Assessment intake storage failed", response.status);
+        status.textContent =
+          "We could not save your intake. Check the connection and database setup, then try again.";
+        status.setAttribute("class", "text-sm text-red-700 dark:text-red-300");
+        return;
+      }
+
+      form.reset();
+      status.textContent =
+        "Your intake and NDA acceptance were recorded. No email was sent.";
+      status.setAttribute("class", "text-sm text-emerald-700 dark:text-emerald-300");
+    } catch (error) {
+      console.error("Assessment intake request failed", error);
+      status.textContent =
+        "We could not reach the intake service. Please try again later.";
+      status.setAttribute("class", "text-sm text-red-700 dark:text-red-300");
+    } finally {
+      if (submit) submit.disabled = false;
+    }
+  });
+</script>

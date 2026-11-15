@@ -8,9 +8,9 @@ const areas = [
 ];
 const checklist=["Define the operational problem and who will use the tool.","Identify data sensitivity and access requirements.","Budget for hosting, maintenance, training, and recovery—not just software.","Document setup, ownership, and the handover process.","Test a backup restoration before depending on the system."];
 ---
-<Layout title="Project Toolkit | For Keeps" description="Explore the For Keeps approach to learning, open-source tools, project planning, and community.">
+<Layout title="Project Toolkit | For Keeps" description="Explore the For Keeps approach to learning, Open Source tools, project planning, and community.">
  <main class="site-container fk-toolkit">
-  <header><p class="text-primary">THE FOR KEEPS TOOLKIT</p><h1>Learn it. Build it. Keep it.</h1><p>A practical starting point for nonprofit teams exploring open-source tools, self-hosting, and technology they can maintain.</p></header>
+  <header><p class="text-primary">THE FOR KEEPS TOOLKIT</p><h1>Learn it. Build it. Keep it.</h1><p>A practical starting point for nonprofit teams exploring Open Source tools, self-hosting, and technology they can maintain.</p></header>
   <section aria-labelledby="approach"><h2 id="approach">The building blocks</h2><div class="fk-tool-grid">{areas.map(([title,desc,url,label])=><article><h3>{title}</h3><p>{desc}</p><a href={url}>{label} →</a></article>)}</div></section>
   <section aria-labelledby="planning"><h2 id="planning">Before you choose a tool</h2><p>A useful stack starts with a clear plan—not a long list of apps.</p><ol>{checklist.map(item=><li>{item}</li>)}</ol></section>
   <section aria-labelledby="funding"><h2 id="funding">Build a funding-ready project brief</h2><p>Describe your organization’s need, the people it serves, the intended outcome, the implementation timeline, and the full operating budget. Keep software, hosting, training, and ongoing support as separate cost lines.</p><p>This is a planning checklist, not a list of available grants or a promise of eligibility. Review the current criteria of any funder before applying.</p><a href="/contact">Discuss your project scope →</a></section>

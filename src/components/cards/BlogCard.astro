@@ -26,7 +26,7 @@ const isHorizontal = layout === "horizontal";
 
 <article
   class:list={[
-    "group relative overflow-hidden bg-bg-secondary border-primary/35 p-4 dark:bg-neutral-900 rounded-2xl backdrop-blur-sm transition-all duration-500" ,
+    "blog-card group relative overflow-hidden bg-bg-secondary border-primary/35 p-4 dark:bg-neutral-900 rounded-2xl backdrop-blur-sm transition-all duration-500" ,
     { "md:flex md:items-center": isHorizontal }
   ]}
   data-aos={dataAos}
@@ -35,7 +35,7 @@ const isHorizontal = layout === "horizontal";
   <!-- Image container -->
   <div
     class:list={[
-      "relative overflow-hidden rounded-2xl  dark:border-neutral-800/60 border-4 border-white ",
+      "blog-image-frame relative overflow-hidden rounded-2xl dark:border-neutral-800/60 border-4 border-white ",
       isHorizontal ? "md:w-1/2" : "aspect-[3/2]"
     ]}
   >
@@ -104,7 +104,7 @@ const isHorizontal = layout === "horizontal";
       {tags && tags.length > 0 && (
         <>
           <span class="text-neutral-400 dark:text-neutral-500">·</span>
-          <span class="inline-flex items-center rounded-full bg-bg-secondary/8 dark:bg-bg-secondary/15 px-3 py-1 text-[11px] font-light text-primary/75 dark:text-primary-light/85 border border-primary/25 dark:border-primary/25">
+          <span class="blog-tag inline-flex items-center rounded-full px-3 py-1 text-[11px] font-light border">
             {tags[0]}
           </span>
         </>
@@ -112,7 +112,7 @@ const isHorizontal = layout === "horizontal";
     </div>
     <!-- Title -->
     <a href={postLink}>
-      <h2 class:list={["font-brand text-neutral-900 dark:text-white mb-3 leading-tight transition-colors duration-300 group-hover:text-primary dark:group-hover:text-primary-light line-clamp-2", isHorizontal ? "text-3xl" : "text-2xl"]}>
+      <h2 class:list={["blog-title font-brand text-neutral-900 dark:text-white mb-3 leading-tight transition-colors duration-300 line-clamp-2", isHorizontal ? "text-3xl" : "text-2xl"]}>
           {title}
         </h2>
     </a>
@@ -128,11 +128,11 @@ const isHorizontal = layout === "horizontal";
     <div class="mt-auto pt-4">
       <a
         href={postLink}
-        class="inline-flex items-center gap-2 text-sm font-semibold text-primary dark:text-primary-light transition-all duration-300 group/link"
+        class="blog-read-more inline-flex items-center gap-2 text-sm font-semibold transition-all duration-300 group/link"
       >
         <span class="relative">
           Read More
-          <span class="absolute bottom-0 left-0 w-0 h-0.25 bg-bg-secondary dark:bg-bg-secondary-light transition-all duration-300 group-hover/link:w-full"></span>
+          <span class="blog-underline absolute bottom-0 left-0 w-0 h-0.25 transition-all duration-300 group-hover/link:w-full"></span>
         </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -154,3 +154,55 @@ const isHorizontal = layout === "horizontal";
   </div>
 
 </article>
+<style>
+  .blog-card {
+    border-color: color-mix(in srgb, var(--color-logo-green) 24%, transparent);
+    background-image:
+      radial-gradient(ellipse at 0% 0%, color-mix(in srgb, var(--color-logo-green) 8%, transparent), transparent 54%);
+  }
+
+  .blog-card:hover {
+    border-color: color-mix(in srgb, var(--color-logo-green) 56%, transparent);
+    box-shadow: 0 16px 36px color-mix(in srgb, var(--color-logo-green) 12%, transparent);
+  }
+
+  .blog-image-frame {
+    border-color: color-mix(in srgb, var(--color-logo-green) 25%, transparent);
+  }
+
+  .blog-tag {
+    color: #056b68;
+    background: color-mix(in srgb, var(--color-logo-green) 9%, white);
+    border-color: color-mix(in srgb, var(--color-logo-green) 32%, transparent);
+  }
+
+  .blog-card:hover .blog-title,
+  .blog-read-more {
+    color: #056b68;
+  }
+
+  .blog-underline {
+    background: currentColor;
+  }
+
+  :global(html.dark) .blog-card {
+    border-color: color-mix(in srgb, var(--color-logo-green) 32%, transparent);
+    background-image:
+      radial-gradient(ellipse at 0% 0%, color-mix(in srgb, var(--color-logo-green) 15%, transparent), transparent 56%);
+  }
+
+  :global(html.dark) .blog-image-frame {
+    border-color: color-mix(in srgb, var(--color-logo-green) 34%, transparent);
+  }
+
+  :global(html.dark) .blog-tag {
+    color: #8ce2dc;
+    background: color-mix(in srgb, var(--color-logo-green) 14%, #0b1220);
+    border-color: color-mix(in srgb, var(--color-logo-green) 40%, transparent);
+  }
+
+  :global(html.dark) .blog-card:hover .blog-title,
+  :global(html.dark) .blog-read-more {
+    color: #8ce2dc;
+  }
+</style>

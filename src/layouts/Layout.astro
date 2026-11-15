@@ -48,5 +48,20 @@ import "../styles/article-enhancements.css";
 </div>
     <Footer />
     <script src="../assets/js/main.js"></script>
+    <script>
+      import { inView } from "motion";
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+
+      if (!reducedMotion.matches) {
+        document.querySelectorAll<HTMLElement>(".animated-text").forEach((text) => {
+          inView(text, (element) => {
+            element.classList.add("is-animated");
+          });
+        });
+      }
+    </script>
   </body>
 </html>

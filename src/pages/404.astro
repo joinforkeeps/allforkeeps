@@ -9,14 +9,13 @@ import {
   Search,
   ShieldAlert,
 } from "@lucide/astro";
-import { siteConfig } from "@/config/site";
 ---
 
 <PageLayout
-  title="Builder AFK 404"
+  title="Page not found"
   description="The page you're looking for doesn't exist."
 >
-  <section class="site-container py-14 md:py-24">
+  <section class="site-container py-7 md:py-12">
     <div
       class="grid min-h-[62vh] items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)]"
     >
@@ -31,24 +30,21 @@ import { siteConfig } from "@/config/site";
         <h1
           class="max-w-2xl font-brand text-5xl leading-[1.04] tracking-normal text-neutral-800 dark:text-neutral-100 md:text-6xl"
         >
-          You shouldnt be here.
+          This page is not here.
         </h1>
 
         <p
           class="mt-5 max-w-xl text-base leading-8 text-neutral-600 dark:text-neutral-300"
         >
-          Welcome to Haven, Leasehold owns the tools, the tunnels, and the
-          approved list of things you are allowed to call yours.
+          That link has gone somewhere else. Your tools should not be this hard to find.
         </p>
 
         <div class="mt-7 flex flex-wrap gap-3">
           <Button url="/" type="fill">
             <ArrowLeft size={16} /> Back to Safety
           </Button>
-          <Button
-            url={`mailto:${siteConfig.mail}?subject=Broken%20link%20on%20RicoFast`}
-          >
-            <Mail size={16} /> Report Keeper
+          <Button url="/contact">
+            <Mail size={16} /> Report a Broken Link
           </Button>
         </div>
       </div>

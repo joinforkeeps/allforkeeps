@@ -1,32 +1,23 @@
 [
 	{
 		"id": 1,
-		"name": "Astro",
-		"desc": "Zero JS by default",
-		"image": "/assets/stack/astro.jpg"
+		"name": "Build small and keep control",
+		"desc": "A small computer is a good place to practice before your team puts real records on a system.",
+		"image": "/assets/mission/microcontrollers-office.svg",
+		"alt": "Illustrated home office with a small computer board, laptop, and organized tools."
 	},
 	{
 		"id": 2,
-		"name": "Tailwind CSS",
-		"desc": "@theme tokens + utilities",
-		"image": "/assets/stack/tailwind.jpg"
+		"name": "Move food, not your data",
+		"desc": "Coordinate volunteers and supplies with tools your organization can inspect, adapt, and hand off.",
+		"image": "/assets/mission/community-food-drive.svg",
+		"alt": "Illustrated community food drive with volunteers, supply boxes, and a shared logistics dashboard."
 	},
 	{
 		"id": 3,
-		"name": "Node.js",
-		"desc": "Runtime & tooling",
-		"image": "/assets/stack/node.jpg"
-	},
-	{
-		"id": 4,
-		"name": "GitHub",
-		"desc": "Version control & CI",
-		"image": "/assets/stack/figma.jpg"
-	},
-	{
-		"id": 5,
-		"name": "Cloudflare",
-		"desc": "Edge & CDN",
-		"image": "/assets/stack/motion.jpg"
+		"name": "Coordinate relief on your terms",
+		"desc": "Keep maps, contacts, and decisions accessible when a community is responding under pressure.",
+		"image": "/assets/mission/hurricane-relief.svg",
+		"alt": "Illustrated relief volunteers reviewing a map and coordinating supplies at a community center."
 	}
 ]
