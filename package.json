@@ -3,7 +3,7 @@
 	"type": "module",
 	"version": "1.0.0",
 	"packageManager": "pnpm@9.14.2",
-	"description": "For Keeps helps nonprofits choose, build, and maintain Open Source tools they control.",
+	"description": "For Keeps helps nonprofits choose, build, and maintain open source tools they control.",
 	"keywords": [
 		"astro",
 		"nonprofit technology",
@@ -57,7 +57,6 @@
 		"@astrojs/rss": "^4.0.18",
 		"@astrojs/sitemap": "^3.7.3",
 		"@lucide/astro": "^1.17.0",
-		"@supabase/supabase-js": "^2.119.0",
 		"@tailwindcss/vite": "^4.1.14",
 		"aos": "^2.3.4",
 		"motion": "^12.23.24",

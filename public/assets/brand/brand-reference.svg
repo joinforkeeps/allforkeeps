@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">For Keeps brand reference</title>
+  <desc id="description">A palette and type reference for the For Keeps book mark, Reef blues, yellow accent, dark teal dashboard, and Instrument Serif and Inter fonts.</desc>
+  <rect width="1200" height="760" rx="32" fill="#f7f9fc"/>
+  <rect width="1200" height="18" rx="9" fill="#04a7a4"/>
+  <text x="72" y="106" fill="#12363a" font-family="Instrument Serif, Georgia, serif" font-size="58">For Keeps</text>
+  <text x="74" y="150" fill="#53686a" font-family="Inter, Arial, sans-serif" font-size="20">Brand colours and type</text>
+  <text x="74" y="220" fill="#12363a" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">BOOK MARK</text>
+  <rect x="74" y="242" width="330" height="82" rx="14" fill="#04a7a4"/>
+  <text x="94" y="291" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Teal · #04A7A4</text>
+  <rect x="424" y="242" width="330" height="82" rx="14" fill="#F49915"/>
+  <text x="444" y="291" fill="#24150a" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Book orange · #F49915</text>
+  <rect x="774" y="242" width="350" height="82" rx="14" fill="#702236"/>
+  <text x="794" y="291" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Pencil · #702236</text>
+  <text x="74" y="380" fill="#12363a" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">REEF AND ACCENT</text>
+  <rect x="74" y="402" width="245" height="70" rx="12" fill="#2d6dc3"/>
+  <text x="94" y="445" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="21">Reef · #2D6DC3</text>
+  <rect x="334" y="402" width="245" height="70" rx="12" fill="#0066ff"/>
+  <text x="354" y="445" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="21">Strong · #0066FF</text>
+  <rect x="594" y="402" width="245" height="70" rx="12" fill="#8fb9ff"/>
+  <text x="614" y="445" fill="#10243b" font-family="Inter, Arial, sans-serif" font-size="21">Light · #8FB9FF</text>
+  <rect x="854" y="402" width="270" height="70" rx="12" fill="#fad13b"/>
+  <text x="874" y="445" fill="#241e0b" font-family="Inter, Arial, sans-serif" font-size="21">Yellow · #FAD13B</text>
+  <text x="74" y="528" fill="#12363a" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">DASHBOARD</text>
+  <rect x="74" y="550" width="510" height="84" rx="14" fill="#083a3a"/>
+  <text x="96" y="600" fill="#effffc" font-family="Inter, Arial, sans-serif" font-size="22">Dark teal · #083A3A</text>
+  <rect x="594" y="550" width="255" height="84" rx="14" fill="#9f3f0b"/>
+  <text x="614" y="586" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="18">Burnt orange</text>
+  <text x="614" y="612" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="18">#9F3F0B</text>
+  <rect x="859" y="550" width="265" height="84" rx="14" fill="#ffb36b"/>
+  <text x="879" y="586" fill="#36200c" font-family="Inter, Arial, sans-serif" font-size="18">Dark mode orange</text>
+  <text x="879" y="612" fill="#36200c" font-family="Inter, Arial, sans-serif" font-size="18">#FFB36B</text>
+  <text x="74" y="694" fill="#12363a" font-family="Instrument Serif, Georgia, serif" font-size="27">Headings: Instrument Serif, 400</text>
+  <text x="530" y="694" fill="#12363a" font-family="Inter, Arial, sans-serif" font-size="22">Body and controls: Inter</text>
+</svg>

@@ -1,0 +1,46 @@
+---
+const isSpanish = Astro.url.pathname.startsWith("/es/");
+---
+
+<select
+  aria-label="Choose language"
+  title={isSpanish ? "Español de México" : "English"}
+  class="fk-language-picker"
+  data-language-picker
+>
+  <option value="/" selected={!isSpanish}>ENG</option>
+  <option value="/es/" selected={isSpanish}>ESP</option>
+</select>
+
+<script>
+  document
+    .querySelectorAll<HTMLSelectElement>("[data-language-picker]")
+    .forEach((picker) => {
+      picker.addEventListener("change", () => {
+        window.location.assign(picker.value);
+      });
+    });
+</script>
+
+<style>
+  .fk-language-picker {
+    height: 2.25rem;
+    min-width: 3.5rem;
+    padding: 0 0.45rem;
+    border: 1px solid rgb(45 109 195 / 20%);
+    border-radius: 999px;
+    background: linear-gradient(to bottom, #fff, #edf1fa);
+    color: #2c3542;
+    font: 650 0.7rem var(--font-sans);
+    cursor: pointer;
+  }
+  :global(html.dark) .fk-language-picker {
+    border-color: #4b6471;
+    background: linear-gradient(to bottom, #243940, #102d33);
+    color: #effffc;
+  }
+  .fk-language-picker:focus-visible {
+    outline: 2px solid var(--color-primary-strong);
+    outline-offset: 2px;
+  }
+</style>

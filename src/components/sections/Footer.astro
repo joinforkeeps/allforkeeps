@@ -1,41 +1,44 @@
 ---
 import Logo from "@/components/ui/Logo.astro";
 import ToTop from "@/components/widgets/ToTop.astro";
-import { siteConfig, socialLinks } from "@/config/site.js";
-const currentYear = new Date().getFullYear();
+import SupportNote from "@/components/content/SupportNote.astro";
+import { pageFlags } from "@/config/pages.js";
+import { serviceLinks, siteConfig } from "@/config/site.js";
+import socials from "@/data/for-keeps-socials.json";
+const footerSocials = socials
+  .filter((social) => social.public !== false && social.priority && social.url)
+  .sort((left, right) => left.order - right.order);
 const footerLinks = {
   product: [
-    { name: "Quickstarts", url: "/courses" },
-    { name: "Pricing", url: "/pricing" },
-    { name: "Community", url: "/community" },
-    { name: "Assessment", url: "/contact" },
+    { name: "Learn", url: serviceLinks.learning, pageKey: "learn" },
+    { name: "Shop", url: serviceLinks.shop, pageKey: "shop" },
+    { name: "Assessment", url: serviceLinks.assessment, pageKey: "assessment" },
+    { name: "Pricing", url: "/pricing", pageKey: "pricing" },
   ],
   resources: [
-    { name: "Blog", url: "/blog" },
-    { name: "Changelog", url: "/changelog" },
-    { name: "Features", url: "/features" },
-    { name: "Guides", url: "/courses" },
+    { name: "Blog", url: "/blog", pageKey: "blog" },
+    { name: "Changelog", url: "/changelog", pageKey: "changelog" },
+    { name: "Enter the Dungeon", url: "/start", pageKey: "start" },
+    { name: "Support our Work", url: "/support", pageKey: "support" },
   ],
-  company: [
-    { name: "About", url: "/about" },
-    { name: "Contact", url: "/contact" },
-  ],
+  company: [{ name: "About", url: "/about", pageKey: "about" }],
 };
+const visibleFooterLinks = Object.fromEntries(
+  Object.entries(footerLinks).map(([group, links]) => [
+    group,
+    links.filter((link) => pageFlags[link.pageKey]),
+  ]),
+);
 ---
 
-<section
-  class="text-gray-700 border-t mt-10 md:mt-24 border-dashed border-primary/15 dark:border-primary-dark/15 border-[.75px]"
->
+<section class="text-gray-700 border-t mt-10 md:mt-24 border-dashed border-primary/15 dark:border-primary-dark/15 border-[.75px]">
   <div class="container mx-auto px-7 max-w-7xl py-6 md:py-8">
     <!-- Top: Logo + Description -->
-    <div
-      class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6"
-    >
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
       <div class="max-w-sm">
         <Logo />
-        <p
-          class="mt-4 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed"
-        >
+        <SupportNote compact />
+        <p class="mt-4 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
           Practical technology education for nonprofit teams that want more
           control over their tools, data, and operating costs.
         </p>
@@ -43,113 +46,121 @@ const footerLinks = {
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12">
         <!-- Product -->
         <div>
-          <h4
-            class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-4"
-          >
+          <h4 class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-4">
             Product
           </h4>
           <ul class="space-y-3">
-            {
-              footerLinks.product.map((link) => (
-                <li>
-                  <a
-                    href={link.url}
-                    class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))
-            }
+            {visibleFooterLinks.product.map((link) => (
+              <li>
+                <a
+                  href={link.url}
+                  class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
         <!-- Resources -->
         <div>
-          <h4
-            class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-4"
-          >
+          <h4 class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-4">
             Resources
           </h4>
           <ul class="space-y-3">
-            {
-              footerLinks.resources.map((link) => (
-                <li>
-                  <a
-                    href={link.url}
-                    class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))
-            }
+            {visibleFooterLinks.resources.map((link) => (
+              <li>
+                <a
+                  href={link.url}
+                  class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
         <!-- Company -->
         <div>
-          <h4
-            class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-4"
-          >
+          <h4 class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-4">
             Company
           </h4>
           <ul class="space-y-3">
-            {
-              footerLinks.company.map((link) => (
-                <li>
-                  <a
-                    href={link.url}
-                    class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))
-            }
+            {visibleFooterLinks.company.map((link) => (
+              <li>
+                <a
+                  href={link.url}
+                  class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
     </div>
     <!-- Bottom bar -->
-    <div
-      class="border-t border-dashed border-primary/10 dark:border-primary-dark/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
-    >
-      <p class="text-sm text-neutral-400 dark:text-neutral-500">
-        © {currentYear}
+    <div class="border-t border-dashed border-primary/10 dark:border-primary-dark/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+        © 2026
         <a
           href={siteConfig.url || " "}
-          target="_blank"
           class="hover:text-primary dark:hover:text-primary-light transition-colors"
-          >{siteConfig.author || " "}</a
-        >. Learn it. Build it. Keep it.
+        >
+          All For Keeps™
+        </a>
+        <a
+          href={serviceLinks.enterDungeon}
+          class="ml-3 underline underline-offset-4 hover:text-primary dark:hover:text-primary-light"
+        >
+          Enter the Dungeon
+        </a>
       </p>
       <div class="flex items-center gap-4">
-        <span
-          class="inline-flex items-center gap-2 text-xs text-neutral-400 dark:text-neutral-500"
-        >
-          <span
-            class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-dashed border-primary/30 text-primary/80"
-          >
+        <span class="inline-flex items-center gap-2 text-xs text-neutral-400 dark:text-neutral-500">
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-dashed border-primary/30 text-primary/80">
             <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
             For Keeps
           </span>
-          <span>Own the stack. Keep the keys.</span>
         </span>
         <span class="inline-flex justify-center space-x-4">
-          {
-            socialLinks.map((social) => (
-              <a
-                href={social.url}
-                target="_blank"
-                class="footer-social-icon-link text-neutral-400 dark:text-neutral-500 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
-                title={social.name}
-              >
-                <span class="sr-only">{social.name}</span>
-                <div class="footer-social-icon">
-                  <Fragment set:html={social.icon} />
-                </div>
-              </a>
-            ))
-          }
+          {footerSocials.map((social) => (
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-icon-link text-neutral-400 dark:text-neutral-500 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
+              title={social.name}
+            >
+              <span class="sr-only">{social.name}</span>
+              <div class="footer-social-icon">
+                <img
+                  src={`https://cdn.simpleicons.org/${social.icon}/2d6dc3`}
+                  width="18"
+                  height="18"
+                  loading="lazy"
+                  alt=""
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+            </a>
+          ))}
+          <a
+            href="/"
+            class="footer-social-icon-link text-neutral-400 dark:text-neutral-500 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
+            title="For Keeps"
+            aria-label="For Keeps home"
+          >
+            <img
+              src="/assets/brand/book-mark-32.png"
+              width="24"
+              height="24"
+              loading="lazy"
+              alt=""
+              class="footer-book-mark"
+            />
+          </a>
         </span>
       </div>
     </div>
@@ -166,18 +177,13 @@ const footerLinks = {
     justify-content: center;
     overflow: hidden;
   }
-  .footer-social-icon svg {
+  .footer-social-icon img {
     width: 18px;
     height: 18px;
-    fill: currentColor;
   }
-  .footer-social-icon-link:hover .ic-twitter {
-    color: #1da1f2;
-  }
-  .footer-social-icon-link:hover .ic-github {
-    color: #333;
-  }
-  .footer-social-icon-link:hover .ic-rss {
-    color: #f26522;
+  .footer-book-mark {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
   }
 </style>

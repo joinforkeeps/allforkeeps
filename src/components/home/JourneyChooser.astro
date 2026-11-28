@@ -1,0 +1,124 @@
+---
+const journeys = [
+  {
+    id: "unused-crm",
+    label: "We pay for a CRM we barely use",
+    title: "Find the cost and workflow that do not fit.",
+    description:
+      "An assessment starts with your current tools, the work your team needs to do, and a practical next step.",
+    action: "Book an Assessment",
+    url: "/assessment",
+  },
+  {
+    id: "donor-tracking",
+    label: "We need to find and track donors",
+    title: "Start with a safe, free introduction.",
+    description:
+      "Learn the basic choices behind open-source tools and self-hosting before you put real donor information anywhere.",
+    action: "Read the free introduction",
+    url: "/start",
+  },
+  {
+    id: "private-ai",
+    label: "We want AI that keeps our data private",
+    title: "Get the course update before you choose a tool.",
+    description:
+      "The upcoming learning path covers practical options and the hardware and upkeep they require.",
+    action: "Browse upcoming courses",
+    url: "https://learn.allforkeeps.com/lms/courses",
+  },
+];
+const firstJourney = journeys[0];
+---
+
+<section class="site-container py-8 md:py-12" aria-labelledby="journey-title">
+  <div class="mx-auto max-w-5xl rounded-2xl border border-primary/20 bg-gradient-to-br from-white/90 via-white/75 to-logo-green/5 p-5 shadow-sm dark:from-bg-secondary-dark/90 dark:via-bg-secondary-dark/75 dark:to-reef/10 md:p-8">
+    <p class="text-sm font-semibold uppercase tracking-[0.12em] text-primary">
+      Choose your journey
+    </p>
+    <h2
+      id="journey-title"
+      class="mt-2 font-brand text-3xl text-neutral-900 dark:text-white md:text-4xl"
+    >
+      Start with the problem in front of you.
+    </h2>
+    <div class="mt-5 grid gap-3 md:grid-cols-3">
+      {journeys.map((journey, index) => (
+        <button
+          type="button"
+          class="fk-journey-choice rounded-xl border border-primary/20 bg-white/70 p-4 text-left transition hover:border-primary hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-bg-primary-dark/40"
+          data-journey={journey.id}
+          data-title={journey.title}
+          data-description={journey.description}
+          data-action={journey.action}
+          data-url={journey.url}
+          data-umami-event="journeyChoice"
+          aria-pressed={index === 0 ? "true" : "false"}
+        >
+          <span class="block text-xs font-semibold uppercase tracking-wide text-primary">
+            0{index + 1}
+          </span>
+          <span class="mt-2 block font-semibold text-neutral-900 dark:text-white">
+            {journey.label}
+          </span>
+        </button>
+      ))}
+    </div>
+    <div
+      class="mt-5 rounded-xl border border-primary/15 bg-white/80 p-5 dark:bg-bg-primary-dark/50"
+      aria-live="polite"
+    >
+      <h3
+        id="journey-result-title"
+        class="font-brand text-2xl text-neutral-900 dark:text-white"
+      >
+        {firstJourney.title}
+      </h3>
+      <p
+        id="journey-result-description"
+        class="mt-2 max-w-3xl leading-7 text-neutral-600 dark:text-neutral-300"
+      >
+        {firstJourney.description}
+      </p>
+      <a
+        id="journey-result-action"
+        class="mt-4 inline-flex items-center gap-2 font-semibold text-primary underline underline-offset-4"
+        href={firstJourney.url}
+        data-umami-event="journeyNextStep"
+      >
+        {firstJourney.action}
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const choices =
+    document.querySelectorAll<HTMLButtonElement>("[data-journey]");
+  const resultTitle = document.querySelector<HTMLElement>(
+    "#journey-result-title",
+  );
+  const resultDescription = document.querySelector<HTMLElement>(
+    "#journey-result-description",
+  );
+  const resultAction = document.querySelector<HTMLAnchorElement>(
+    "#journey-result-action",
+  );
+
+  choices.forEach((choice) => {
+    choice.addEventListener("click", () => {
+      choices.forEach((candidate) =>
+        candidate.setAttribute("aria-pressed", "false"),
+      );
+      choice.setAttribute("aria-pressed", "true");
+      if (resultTitle) resultTitle.textContent = choice.dataset.title || "";
+      if (resultDescription)
+        resultDescription.textContent = choice.dataset.description || "";
+      if (resultAction) {
+        resultAction.href = choice.dataset.url || "/";
+        resultAction.firstChild!.textContent = choice.dataset.action || "";
+      }
+    });
+  });
+</script>

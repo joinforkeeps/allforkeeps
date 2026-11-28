@@ -1,14 +1,48 @@
 ---
-import { Moon, SunMedium, ChevronDown, ChevronRight, Menu, X } from "@lucide/astro";
+import {
+  Moon,
+  SunMedium,
+  ChevronDown,
+  ChevronRight,
+  Menu,
+  X,
+} from "@lucide/astro";
 import menus from "@/collections/menu.json";
 import Button from "@/components/ui/Button.astro";
 import Logo from "@/components/ui/Logo.astro";
+import LanguagePicker from "@/components/sections/LanguagePicker.astro";
+import { pageFlags } from "@/config/pages.js";
+import { primaryCta, primaryCtaLabel, serviceLinks } from "@/config/site.js";
+const visibleMenus = menus.filter((menu) => {
+  if ("children" in menu) {
+    return menu.children.some((child) => pageFlags[child.pageKey]);
+  }
+  return pageFlags[menu.pageKey];
+});
+const primaryUrl = serviceLinks[primaryCta];
+const isSpanish = Astro.url.pathname.startsWith("/es/");
+const spanishNavLabels = new Map<string, string>([
+  ["Home", "Inicio"],
+  ["About", "Nosotros"],
+  ["Assessment", "Evaluación"],
+  ["Learn", "Cursos"],
+  ["Shop", "Tienda"],
+  ["Pricing", "Precios"],
+  ["Changelog", "Novedades"],
+]);
+const navLabel = (label: string) =>
+  isSpanish ? spanishNavLabels.get(label) || label : label;
+const ctaLabel = isSpanish ? "Únete a la lista de correo" : primaryCtaLabel;
 ---
 
 <!-- This is an invisible div with relative position so that it takes up the height of the menu (because menu is absolute/fixed) -->
 <div class="relative w-full h-12 sm:h-16 opacity-0 pointer-events-none"></div>
-<header id="header" class="fixed top-2 sm:top-4 z-50 w-full px-3 sm:px-4 lg:px-6">
-  <div id="site-container"
+<header
+  id="header"
+  class="fixed top-2 sm:top-4 z-50 w-full px-3 sm:px-4 lg:px-6"
+>
+  <div
+    id="site-container"
     class="flex items-center justify-between h-1 sm:h-15 site-container mx-auto px-4 sm:px-6 py-2.5 border-transparent border-[0.5px] transition-all duration-300"
   >
     <!-- Logo -->
@@ -20,155 +54,184 @@ import Logo from "@/components/ui/Logo.astro";
     <div
       id="mobileMenuBackground"
       class="fixed inset-0 z-20 hidden w-screen h-screen duration-300 ease-out bg-white/90 backdrop-blur-sm dark:bg-neutral-950/90"
-    >
-    </div>
+    ></div>
 
     <!-- Navigation -->
-    <nav
-      class="relative z-30 flex flex-row-reverse justify-start w-full text-sm sm:justify-end text-neutral-500 dark:text-neutral-400 sm:flex-row sm:items-center"
-    >
+    <nav class="relative z-30 flex flex-row-reverse justify-start w-full text-sm lg:justify-end text-neutral-500 dark:text-neutral-400 lg:flex-row lg:items-center">
       <!-- Mobile Menu Toggle Buttons -->
-      <div class="flex items-center gap-2 sm:hidden">
+      <div class="flex items-center gap-1.5 lg:hidden">
         <!-- Dark Mode Toggle (Mobile) -->
-        <div
+        <button
+          type="button"
           id="darkToggleMobile"
-          class="flex items-center justify-center w-10 h-10 cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edeefa] border-[0.5px] border-[#f3f3ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-transform duration-200 active:scale-95"
+          aria-label={isSpanish ? "Cambiar tema de color" : "Toggle colour theme"}
+          class="flex items-center justify-center w-9 h-9 cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edeefa] border-[0.5px] border-[#f3f3ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-transform duration-200 active:scale-95"
         >
           <div
-            class="flex justify-center items-center w-6 h-6 relative overflow-hidden rounded-full bg-[#7fa1ff]  bg-gradient-to-b from-[#85a6ff] to-[#2d6dc3] border-[0.5px] border-[#7fa1ff]"
+            class="flex justify-center items-center w-6 h-6 relative overflow-hidden rounded-full bg-[#7fa1ff] bg-gradient-to-b from-[#85a6ff] to-[#2d6dc3] border-[0.5px] border-[#7fa1ff]"
             style="box-shadow: 0px 2px 3px 0 rgba(55,52,209,0.21);"
           >
-            <SunMedium
-              class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease mobile-sun" />
-            <Moon
-              class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease mobile-moon" />
+            <SunMedium class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease mobile-sun" />
+            <Moon class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease mobile-moon" />
           </div>
-        </div>
+        </button>
+
+        <LanguagePicker />
 
         <!-- Hamburger Menu Button -->
         <button
           type="button"
           id="openMenu"
-          aria-label="Open menu"
-          class="flex items-center justify-center w-10 h-10 cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edeefa] border-[0.5px] border-[#f3f3ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-all duration-200 hover:shadow-md active:scale-90"
+          aria-label={isSpanish ? "Abrir menú" : "Open menu"}
+          class="flex items-center justify-center w-9 h-9 cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edeefa] border-[0.5px] border-[#f3f3ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-all duration-200 hover:shadow-md active:scale-90"
         >
-          <Menu class="w-5 h-5 text-neutral-700 dark:text-neutral-200" stroke-width={2} />
+          <Menu
+            class="w-5 h-5 text-neutral-700 dark:text-neutral-200"
+            stroke-width={2}
+          />
         </button>
 
         <!-- Close Menu Button -->
         <button
           type="button"
           id="closeMenu"
-          aria-label="Close menu"
-          class="hidden items-center justify-center w-10 h-10 cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edeefa] border-[0.5px] border-[#f3f3ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-all duration-200 hover:shadow-md active:scale-90"
+          aria-label={isSpanish ? "Cerrar menú" : "Close menu"}
+          class="hidden items-center justify-center w-9 h-9 cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edeefa] border-[0.5px] border-[#f3f3ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-all duration-200 hover:shadow-md active:scale-90"
         >
-          <X class="w-5 h-5 text-neutral-700 dark:text-neutral-200" stroke-width={2} />
+          <X
+            class="w-5 h-5 text-neutral-700 dark:text-neutral-200"
+            stroke-width={2}
+          />
         </button>
       </div>
 
       <!-- Menu Items -->
       <div
         id="menu"
-        class="fixed top-[68px] sm:top-0 left-3 right-3 sm:left-0 sm:right-0 ease-out duration-300 z-40 flex-col items-center justify-start hidden w-auto h-auto text-sm pt-4 pb-4 sm:py-0 sm:relative sm:flex-row sm:flex"
+        class="fixed top-[68px] lg:top-0 left-3 right-3 lg:left-0 lg:right-0 ease-out duration-300 z-40 flex-col items-center justify-start hidden w-auto h-auto text-sm pt-4 pb-4 lg:py-0 lg:relative lg:flex-row lg:flex"
       >
         <!-- Mobile Menu Background -->
-        <div
-          class="absolute inset-0 top-0 right-0 block w-full h-full sm:hidden"
-        >
-          <div
-            class="relative w-full h-full bg-white/95 dark:bg-bg-primary-dark/95 border border-dashed border-neutral-300 dark:border-neutral-700 backdrop-blur-md rounded-2xl shadow-lg"
-          >
-          </div>
+        <div class="absolute inset-0 top-0 right-0 block w-full h-full lg:hidden">
+          <div class="relative w-full h-full bg-white/95 dark:bg-bg-primary-dark/95 border border-dashed border-neutral-300 dark:border-neutral-700 backdrop-blur-md rounded-2xl shadow-lg"></div>
         </div>
 
         <!-- Menu Links -->
-        <div class="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center w-full sm:w-auto px-2 sm:px-0 gap-0.5 sm:gap-0">
+        <div class="relative z-10 flex flex-col lg:flex-row items-stretch lg:items-center w-full lg:w-auto px-2 lg:px-0 gap-0.5 lg:gap-0">
           <!-- Mobile menu label -->
-          <div class="block sm:hidden px-3 pt-1 pb-2">
-            <span class="text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500">Navigation</span>
+          <div class="block lg:hidden px-3 pt-1 pb-2">
+            <span class="text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500">
+              {isSpanish ? "Navegación" : "Navigation"}
+            </span>
           </div>
-          {
-            menus.map((menu) => {
-              if (menu.children && menu.children.length > 0) {
-                return (
-                  <div class="dropdown-wrapper relative w-full sm:w-auto" data-open="false">
-                    <button
-                      type="button"
-                      class="dropdown-toggle fk-afk-toggle group relative flex items-center justify-between sm:justify-center w-full sm:w-auto px-3 py-3 sm:py-2 sm:px-3 md:px-4 font-medium tracking-wide duration-200 ease-out rounded-lg sm:rounded-none text-neutral-700 dark:text-neutral-200 hover:text-primary hover:bg-primary/5 sm:hover:bg-transparent dark:hover:text-white dark:hover:bg-primary/10 sm:dark:hover:bg-primary/10 active:scale-[0.98] sm:active:scale-100 transition-all gap-1 text-left sm:text-center"
-                      aria-expanded="false"
-                      aria-haspopup="true"
-                    >
-                      <span class="afk-label flex-1 sm:flex-initial">{menu.name}</span>
-                      <ChevronDown class="dropdown-chevron w-4 h-4 transition-transform duration-200 text-neutral-400 group-hover:text-primary dark:text-neutral-500" />
-                    </button>
-                    <div class="dropdown-panel sm:absolute sm:top-full sm:left-1/2 sm:mt-2 sm:min-w-[200px] sm:rounded-xl sm:border sm:border-dashed sm:border-primary/20 dark:sm:border-neutral-700 sm:bg-white/95 dark:sm:bg-bg-secondary-dark sm:p-2 hidden sm:invisible sm:opacity-0 sm:flex sm:flex-col sm:transition-all sm:duration-200">
-                      {menu.children.map((child) => (
+          {visibleMenus.map((menu) => {
+            if ("children" in menu) {
+              return (
+                <div
+                  class="dropdown-wrapper relative w-full lg:w-auto"
+                  data-open="false"
+                >
+                  <button
+                    type="button"
+                    class="dropdown-toggle fk-afk-toggle group relative flex items-center justify-between lg:justify-center w-full lg:w-auto px-3 py-3 lg:py-2 lg:px-3 md:px-4 font-medium tracking-wide duration-200 ease-out rounded-lg lg:rounded-none text-neutral-700 dark:text-neutral-200 hover:text-primary hover:bg-primary/5 lg:hover:bg-transparent dark:hover:text-white dark:hover:bg-primary/10 lg:dark:hover:bg-primary/10 active:scale-[0.98] lg:active:scale-100 transition-all gap-1 text-left lg:text-center"
+                    aria-label={navLabel(menu.name)}
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    aria-controls="afk-submenu"
+                  >
+                    <span class="afk-label" aria-hidden="true">
+                      {navLabel(menu.name).split("").map((letter, index) => (
+                        <span
+                          class="afk-letter"
+                          style={`--letter-index: ${index}`}
+                        >
+                          {letter}
+                        </span>
+                      ))}
+                    </span>
+                    <ChevronDown class="dropdown-chevron w-4 h-4 transition-transform duration-200 text-neutral-400 group-hover:text-primary dark:text-neutral-500" />
+                    <ChevronRight class="w-4 h-4 lg:hidden text-neutral-300 dark:text-neutral-600 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+                  </button>
+                  <div
+                    id="afk-submenu"
+                    class="dropdown-panel lg:absolute lg:top-full lg:left-1/2 lg:mt-2 lg:min-w-[200px] lg:rounded-xl lg:border lg:border-dashed lg:border-primary/20 dark:lg:border-neutral-700 lg:bg-white/95 dark:lg:bg-bg-secondary-dark lg:p-2 hidden lg:invisible lg:opacity-0 lg:flex lg:flex-col lg:transition-all lg:duration-200"
+                  >
+                    {menu.children
+                      .filter((child) => pageFlags[child.pageKey])
+                      .map((child) => (
                         <a
                           href={child.url}
-                          class="dropdown-link group/link flex items-center justify-between sm:justify-start w-full px-3 sm:px-4 py-2.5 sm:py-2 rounded-md text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary dark:hover:text-primary-light hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors duration-150 text-left"
+                          data-umami-event="navigationClick"
+                          class="dropdown-link group/link flex items-center justify-between lg:justify-start w-full px-3 lg:px-4 py-2.5 lg:py-2 rounded-md text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary dark:hover:text-primary-light hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors duration-150 text-left"
                         >
-                          <span>{child.name}</span>
-                          <ChevronRight class="w-3.5 h-3.5 sm:hidden text-neutral-300 dark:text-neutral-600 group-hover/link:text-primary transition-colors" />
+                          <span>{navLabel(child.name)}</span>
+                          <ChevronRight class="w-3.5 h-3.5 lg:hidden text-neutral-300 dark:text-neutral-600 group-hover/link:text-primary transition-colors" />
                         </a>
                       ))}
-                    </div>
                   </div>
-                );
-              }
-              return (
-                <a
-                  href={menu.url}
-                  class="group relative flex items-center justify-between sm:justify-center w-full sm:w-auto px-3 py-3 sm:py-2 sm:px-3 md:px-4 font-medium tracking-wide duration-200 ease-out rounded-lg sm:rounded-none text-neutral-700 dark:text-neutral-200 hover:text-primary hover:bg-primary/5 sm:hover:bg-transparent dark:hover:text-white dark:hover:bg-primary/10 sm:dark:hover:bg-transparent active:scale-[0.98] sm:active:scale-100 transition-all text-left sm:text-center"
-                >
-                  <span>{menu.name}</span>
-                  <ChevronRight class="w-4 h-4 sm:hidden text-neutral-300 dark:text-neutral-600 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
-                </a>
+                </div>
               );
-            })
-          }
+            }
+            return (
+              <a
+                href={menu.url}
+                data-umami-event="navigationClick"
+                class="group relative flex items-center justify-between lg:justify-center w-full lg:w-auto px-3 py-3 lg:py-2 lg:px-3 md:px-4 font-medium tracking-wide duration-200 ease-out rounded-lg lg:rounded-none text-neutral-700 dark:text-neutral-200 hover:text-primary hover:bg-primary/5 lg:hover:bg-transparent dark:hover:text-white dark:hover:bg-primary/10 lg:dark:hover:bg-transparent active:scale-[0.98] lg:active:scale-100 transition-all text-left lg:text-center"
+              >
+                <span>{navLabel(menu.name)}</span>
+                <ChevronRight class="w-4 h-4 lg:hidden text-neutral-300 dark:text-neutral-600 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+              </a>
+            );
+          })}
         </div>
 
         <!-- Divider before CTA on mobile -->
-        <div class="relative z-10 w-full px-5 sm:hidden mt-3">
+        <div class="relative z-10 w-full px-5 lg:hidden mt-3">
           <div class="w-full border-t border-dashed border-neutral-200 dark:border-neutral-700"></div>
         </div>
 
         <!-- CTA Button (Mobile) -->
-        <div class="relative z-10 w-full px-5 mt-3 sm:hidden">
-          <Button url="/start" type="fill" className="m-auto w-full justify-center">
-            <span>Start Mission</span>
+        <div class="relative z-10 w-full px-5 mt-3 lg:hidden">
+          <Button
+            url={primaryUrl}
+            type="fill"
+            className="m-auto w-full justify-center"
+          >
+            <span>{ctaLabel}</span>
           </Button>
         </div>
       </div>
 
       <!-- Desktop Actions -->
-      <div class="relative hidden sm:flex items-center gap-2 ml-4 lg:ml-6">
+      <div class="relative hidden lg:flex items-center gap-2 ml-4 lg:ml-6">
         <!-- CTA Button (Desktop) -->
-        <Button url="/start" type="fill" className="md:flex mx-1">
-          <span>Start Mission</span>
+        <Button url={primaryUrl} type="fill" className="md:flex mx-1">
+          <span>{ctaLabel}</span>
         </Button>
 
-        <span class="separator-line  hidden sm:inline-block bg-[rgba(183,202,255,0.5)] mt-[20px] -translate-y-1/2 w-px h-[20px]"></span>
+        <span class="separator-line hidden lg:inline-block bg-[rgba(183,202,255,0.5)] mt-[20px] -translate-y-1/2 w-px h-[20px]"></span>
 
         <!-- Dark Mode Toggle (Desktop) -->
-        <div
+        <button
+          type="button"
           id="darkToggle"
+          aria-label={isSpanish ? "Cambiar tema de color" : "Toggle colour theme"}
           class="relative flex items-center h-9 px-2 gap-1.5 font-medium cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edf1fa] border-[0.5px] border-[#f3f5ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95 mx-1"
         >
           <div
             class="flex justify-center items-center flex-shrink-0 w-6 h-6 relative overflow-hidden rounded-full bg-gradient-to-b from-[#85a6ff] to-[#2d6dc3] border-[0.5px] border-[#7fa1ff]"
             style="box-shadow: 0px 2px 3px 0 rgba(55,52,209,0.21);"
           >
-            <SunMedium id="sun"
-               class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease" />
-            <Moon class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease"
-              id="moon" />
+            <SunMedium
+              id="sun"
+              class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease"
+            />
+            <Moon
+              class="absolute hidden text-white w-4 h-4 transition duration-200 transform ease"
+              id="moon"
+            />
           </div>
-          <span class="hidden sm:inline-block whitespace-nowrap">
-            <span id="dayText" class="flex-shrink-0 text-sm text-left text-[#6f6c8f] dark:text-neutral-400">Light</span>
-            <span id="nightText" class="hidden flex-shrink-0 text-sm text-left text-[#6f6c8f] dark:text-neutral-400">Dark</span>
-          </span>
-        </div>
+        </button>
+        <LanguagePicker />
       </div>
     </nav>
   </div>
@@ -181,8 +244,18 @@ import Logo from "@/components/ui/Logo.astro";
   }
 
   .fk-afk-toggle .afk-label {
+    display: inline-flex;
     position: relative;
-    transition: opacity 0.16s ease 0s;
+    white-space: nowrap;
+  }
+
+  .fk-afk-toggle .afk-letter {
+    display: inline-block;
+    transition:
+      opacity 0.32s ease,
+      filter 0.32s ease,
+      transform 0.32s ease;
+    transition-delay: calc((2 - var(--letter-index)) * 80ms);
   }
 
   .fk-afk-toggle .afk-label::after {
@@ -197,14 +270,16 @@ import Logo from "@/components/ui/Logo.astro";
     transform: scaleX(0);
     transform-origin: left center;
     transition:
-      transform 0.42s ease,
+      transform 0.58s ease,
       opacity 0.12s ease 0.42s;
   }
 
-  @media (min-width: 640px) {
-    .fk-afk-toggle:hover .afk-label {
+  @media (min-width: 1024px) and (hover: hover) {
+    .fk-afk-toggle:hover .afk-letter {
       opacity: 0;
-      transition-delay: 0.36s;
+      filter: blur(4px);
+      transform: translateX(0.08em);
+      transition-delay: calc(0.48s + var(--letter-index) * 100ms);
     }
 
     .fk-afk-toggle:hover .afk-label::after {
@@ -221,9 +296,15 @@ import Logo from "@/components/ui/Logo.astro";
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .fk-afk-toggle .afk-label,
+    .fk-afk-toggle .afk-letter,
     .fk-afk-toggle .afk-label::after {
       transition: none;
+    }
+
+    .fk-afk-toggle .afk-letter {
+      opacity: 1;
+      filter: none;
+      transform: none;
     }
 
     .fk-afk-toggle .afk-label::after {
@@ -232,14 +313,14 @@ import Logo from "@/components/ui/Logo.astro";
   }
 
   /* Ensure mobile menu doesn't stick to edges */
-  @media (max-width: 639px) {
+  @media (max-width: 1023px) {
     #menu {
       max-width: calc(100vw - 24px); /* 12px margin on each side */
     }
   }
 
   /* Mobile menu animation */
-  @media (max-width: 639px) {
+  @media (max-width: 1023px) {
     #menu {
       transform: translateY(-10px);
       opacity: 0;
@@ -259,15 +340,25 @@ import Logo from "@/components/ui/Logo.astro";
       animation: menuItemIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
     }
     #menu:not(.hidden) > div > a:nth-child(2),
-    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(2) { animation-delay: 0.05s; }
+    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(2) {
+      animation-delay: 0.05s;
+    }
     #menu:not(.hidden) > div > a:nth-child(3),
-    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(3) { animation-delay: 0.1s; }
+    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(3) {
+      animation-delay: 0.1s;
+    }
     #menu:not(.hidden) > div > a:nth-child(4),
-    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(4) { animation-delay: 0.15s; }
+    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(4) {
+      animation-delay: 0.15s;
+    }
     #menu:not(.hidden) > div > a:nth-child(5),
-    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(5) { animation-delay: 0.2s; }
+    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(5) {
+      animation-delay: 0.2s;
+    }
     #menu:not(.hidden) > div > a:nth-child(6),
-    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(6) { animation-delay: 0.25s; }
+    #menu:not(.hidden) > div > .dropdown-wrapper:nth-child(6) {
+      animation-delay: 0.25s;
+    }
   }
 
   @keyframes menuItemIn {
@@ -294,9 +385,9 @@ import Logo from "@/components/ui/Logo.astro";
   }
 
   /* Desktop underline animation */
-  @media (min-width: 640px) {
+  @media (min-width: 1024px) {
     nav a::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -312,14 +403,14 @@ import Logo from "@/components/ui/Logo.astro";
       transform: translateX(-50%) scaleX(1);
     }
 
-    /* Dropdown links inside the panel — no underline, panel has its own hover style */
+    /* Dropdown links inside the panel, no underline, panel has its own hover style */
     .dropdown-panel a::after {
       display: none;
     }
   }
 
-  /* Dropdown — desktop hover behavior */
-  @media (min-width: 640px) {
+  /* Dropdown desktop hover behavior */
+  @media (min-width: 1024px) {
     .dropdown-panel {
       /* Horizontal centering + entry offset.
          Using `translate` (the CSS property) avoids stacking with `transform`
@@ -338,7 +429,7 @@ import Logo from "@/components/ui/Logo.astro";
     .dropdown-wrapper[data-open="true"] .dropdown-chevron {
       transform: rotate(180deg);
     }
-    /* Hover bridge — avoids gap between trigger and panel breaking the hover state */
+    /* Hover bridge , avoids gap between trigger and panel breaking the hover state */
     .dropdown-wrapper::after {
       content: "";
       position: absolute;
@@ -349,8 +440,8 @@ import Logo from "@/components/ui/Logo.astro";
     }
   }
 
-  /* Dropdown — mobile click-to-expand */
-  @media (max-width: 639px) {
+  /* Dropdown, mobile click-to-expand */
+  @media (max-width: 1023px) {
     .dropdown-panel {
       display: none;
       width: calc(100% - 0.75rem);
@@ -385,7 +476,7 @@ import Logo from "@/components/ui/Logo.astro";
   }
 
   /* Mobile menu item click feedback */
-  @media (max-width: 639px) {
+  @media (max-width: 1023px) {
     nav a:active {
       background-color: var(--color-neutral-100);
     }
@@ -394,7 +485,6 @@ import Logo from "@/components/ui/Logo.astro";
       background-color: rgba(255, 255, 255, 0.05);
     }
   }
-
 
   /* Dark mode toggle button optimization */
   #darkToggle,
@@ -409,7 +499,7 @@ import Logo from "@/components/ui/Logo.astro";
       backdrop-filter: blur(12px);
     }
 
-    @media (max-width: 639px) {
+    @media (max-width: 1023px) {
       #menu > div > div {
         backdrop-filter: blur(16px);
       }
@@ -422,7 +512,7 @@ import Logo from "@/components/ui/Logo.astro";
   }
 
   /* Tablet compact layout */
-  @media (min-width: 640px) and (max-width: 767px) {
+  @media (min-width: 640px) and (max-width: 1023px) {
     nav a {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
@@ -431,21 +521,23 @@ import Logo from "@/components/ui/Logo.astro";
   }
 
   /* Prevent horizontal scrolling on mobile */
-  @media (max-width: 639px) {
+  @media (max-width: 1023px) {
     body {
       overflow-x: hidden;
     }
   }
 
   /* Optimize mobile touch feedback */
-  @media (max-width: 639px) {
-    button, a, [role="button"] {
+  @media (max-width: 1023px) {
+    button,
+    a,
+    [role="button"] {
       -webkit-tap-highlight-color: transparent;
     }
   }
 
   /* Menu background on small screens */
-  @media (max-width: 639px) {
+  @media (max-width: 1023px) {
     #mobileMenuBackground {
       opacity: 0;
       transition: opacity 0.3s ease-out;
@@ -455,8 +547,6 @@ import Logo from "@/components/ui/Logo.astro";
       opacity: 1;
     }
   }
-
-
 </style>
 
 <script>
@@ -468,96 +558,99 @@ import Logo from "@/components/ui/Logo.astro";
   }
 
   // Sync dark mode toggle between mobile and desktop
-  const darkToggle = document.getElementById('darkToggle');
-  const darkToggleMobile = document.getElementById('darkToggleMobile');
+  const desktopBreakpoint = 1024;
+  const darkToggle = document.getElementById("darkToggle");
+  const darkToggleMobile = document.getElementById("darkToggleMobile");
 
   function syncDarkModeIcons() {
-    const isDark = document.documentElement.classList.contains('dark');
-    const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
-    const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
+    const isDark = document.documentElement.classList.contains("dark");
+    const sunIcons = document.querySelectorAll("#sun, .mobile-sun");
+    const moonIcons = document.querySelectorAll("#moon, .mobile-moon");
 
     if (isDark) {
-      moonIcons.forEach(icon => icon.classList.remove('hidden'));
-      sunIcons.forEach(icon => icon.classList.add('hidden'));
-      document.getElementById('dayText')?.classList.add('hidden');
-      document.getElementById('nightText')?.classList.remove('hidden');
+      moonIcons.forEach((icon) => icon.classList.remove("hidden"));
+      sunIcons.forEach((icon) => icon.classList.add("hidden"));
+      document.getElementById("dayText")?.classList.add("hidden");
+      document.getElementById("nightText")?.classList.remove("hidden");
     } else {
-      sunIcons.forEach(icon => icon.classList.remove('hidden'));
-      moonIcons.forEach(icon => icon.classList.add('hidden'));
-      document.getElementById('dayText')?.classList.remove('hidden');
-      document.getElementById('nightText')?.classList.add('hidden');
+      sunIcons.forEach((icon) => icon.classList.remove("hidden"));
+      moonIcons.forEach((icon) => icon.classList.add("hidden"));
+      document.getElementById("dayText")?.classList.remove("hidden");
+      document.getElementById("nightText")?.classList.add("hidden");
     }
   }
 
   // Sync on initialization
-  document.addEventListener('DOMContentLoaded', syncDarkModeIcons);
+  document.addEventListener("DOMContentLoaded", syncDarkModeIcons);
 
   // Listen for dark mode changes
   const observer = new MutationObserver(syncDarkModeIcons);
   observer.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ['class']
+    attributeFilter: ["class"],
   });
 
   // Mobile dark mode toggle
-  darkToggleMobile?.addEventListener('click', () => {
+  darkToggleMobile?.addEventListener("click", () => {
     darkToggle?.click();
   });
 
   // Optimize mobile menu open/close
-  const openMenu = document.getElementById('openMenu');
-  const closeMenu = document.getElementById('closeMenu');
-  const menu = document.getElementById('menu');
-  const mobileMenuBackground = document.getElementById('mobileMenuBackground');
+  const openMenu = document.getElementById("openMenu");
+  const closeMenu = document.getElementById("closeMenu");
+  const menu = document.getElementById("menu");
+  const mobileMenuBackground = document.getElementById("mobileMenuBackground");
 
   // Mobile menu open function
   function openMobileMenu() {
-    menu?.classList.remove('hidden');
-    mobileMenuBackground?.classList.remove('hidden');
-    openMenu?.classList.add('hidden');
-    closeMenu?.classList.remove('hidden');
-    closeMenu?.classList.add('flex');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    menu?.classList.remove("hidden");
+    mobileMenuBackground?.classList.remove("hidden");
+    openMenu?.classList.add("hidden");
+    closeMenu?.classList.remove("hidden");
+    closeMenu?.classList.add("flex");
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
   }
 
   // Mobile menu close function
   function closeMobileMenu() {
-    menu?.classList.add('hidden');
-    mobileMenuBackground?.classList.add('hidden');
-    closeMenu?.classList.add('hidden');
-    closeMenu?.classList.remove('flex');
-    openMenu?.classList.remove('hidden');
-    document.body.style.overflow = ''; // Restore scrolling
+    menu?.classList.add("hidden");
+    mobileMenuBackground?.classList.add("hidden");
+    closeMenu?.classList.add("hidden");
+    closeMenu?.classList.remove("flex");
+    openMenu?.classList.remove("hidden");
+    document.body.style.overflow = ""; // Restore scrolling
   }
 
   // Click hamburger button to open menu
-  openMenu?.addEventListener('click', openMobileMenu);
+  openMenu?.addEventListener("click", openMobileMenu);
 
   // Click close button to close menu
-  closeMenu?.addEventListener('click', closeMobileMenu);
+  closeMenu?.addEventListener("click", closeMobileMenu);
 
   // Click background to close menu
-  mobileMenuBackground?.addEventListener('click', closeMobileMenu);
+  mobileMenuBackground?.addEventListener("click", closeMobileMenu);
 
   // Add click-to-close functionality for mobile menu items
-  const menuLinks = menu?.querySelectorAll('a');
-  menuLinks?.forEach(link => {
-    link.addEventListener('click', () => {
+  const menuLinks = menu?.querySelectorAll("a");
+  menuLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
       // Check if in mobile view
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < desktopBreakpoint) {
         closeMobileMenu();
       }
     });
   });
 
   // Handle window resize
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 640) {
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= desktopBreakpoint) {
       // If resizing from mobile to desktop, ensure menu state is correct
-      document.body.style.overflow = '';
-      if (menu?.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
+      document.body.style.overflow = "";
+      if (menu?.classList.contains("hidden")) {
+        menu.classList.remove("hidden");
       }
+    } else {
+      closeMobileMenu();
     }
   });
 
@@ -565,49 +658,52 @@ import Logo from "@/components/ui/Logo.astro";
   window.closeMobileMenu = closeMobileMenu;
 
   // ─── Dropdown menu (mobile click-to-expand) ────────────────────────────
-  const dropdownToggles = document.querySelectorAll<HTMLButtonElement>('.dropdown-toggle');
+  const dropdownToggles =
+    document.querySelectorAll<HTMLButtonElement>(".dropdown-toggle");
 
   function closeAllDropdowns(except?: Element) {
-    document.querySelectorAll<HTMLElement>('.dropdown-wrapper').forEach((w) => {
+    document.querySelectorAll<HTMLElement>(".dropdown-wrapper").forEach((w) => {
       if (w !== except) {
-        w.setAttribute('data-open', 'false');
-        const t = w.querySelector<HTMLButtonElement>('.dropdown-toggle');
-        t?.setAttribute('aria-expanded', 'false');
+        w.setAttribute("data-open", "false");
+        const t = w.querySelector<HTMLButtonElement>(".dropdown-toggle");
+        t?.setAttribute("aria-expanded", "false");
       }
     });
   }
 
   dropdownToggles.forEach((toggle) => {
-    toggle.addEventListener('click', (e) => {
-      // Desktop uses CSS :hover — no JS toggle needed there
-      if (window.innerWidth >= 640) return;
+    toggle.addEventListener("click", (e) => {
+      // Desktop uses CSS :hover , no JS toggle needed there
+      if (window.innerWidth >= desktopBreakpoint) return;
       e.preventDefault();
       e.stopPropagation();
-      const wrapper = toggle.closest<HTMLElement>('.dropdown-wrapper');
+      const wrapper = toggle.closest<HTMLElement>(".dropdown-wrapper");
       if (!wrapper) return;
-      const isOpen = wrapper.getAttribute('data-open') === 'true';
+      const isOpen = wrapper.getAttribute("data-open") === "true";
       closeAllDropdowns(wrapper);
-      wrapper.setAttribute('data-open', isOpen ? 'false' : 'true');
-      toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      wrapper.setAttribute("data-open", isOpen ? "false" : "true");
+      toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
     });
   });
 
-  // Close dropdowns when navigating via mobile dropdown link — defer so the link still fires
-  document.querySelectorAll<HTMLAnchorElement>('.dropdown-panel a').forEach((link) => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth < 640) {
-        // Let the navigation happen; close menu state for next visit
-        setTimeout(() => {
-          closeAllDropdowns();
-          closeMobileMenu();
-        }, 0);
-      }
+  // Close dropdowns when navigating via mobile dropdown link , defer so the link still fires
+  document
+    .querySelectorAll<HTMLAnchorElement>(".dropdown-panel a")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < desktopBreakpoint) {
+          // Let the navigation happen; close menu state for next visit
+          setTimeout(() => {
+            closeAllDropdowns();
+            closeMobileMenu();
+          }, 0);
+        }
+      });
     });
-  });
 
   // Reset dropdown state when resizing across the sm breakpoint
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 640) {
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= desktopBreakpoint) {
       closeAllDropdowns();
     }
   });

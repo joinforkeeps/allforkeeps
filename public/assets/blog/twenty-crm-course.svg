@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Twenty CRM course preview</title>
+  <desc id="description">A nonprofit team reviewing a sample CRM workflow on a laptop, with a bright reef-green path connecting sample contacts and tasks.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#18375b"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#255386"/>
+      <stop offset="1" stop-color="#10243b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#background)"/>
+  <circle cx="945" cy="105" r="245" fill="#04a7a4" opacity=".13"/>
+  <rect x="117" y="95" width="966" height="485" rx="28" fill="#0f1b2d" stroke="#8fb9ff" stroke-opacity=".55" stroke-width="4"/>
+  <rect x="151" y="130" width="898" height="405" rx="15" fill="url(#panel)"/>
+  <rect x="188" y="165" width="825" height="56" rx="9" fill="#0b1220" opacity=".62"/>
+  <circle cx="222" cy="193" r="12" fill="#04a7a4"/>
+  <path d="M255 193h206m40 0h165" stroke="#c5d5e8" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+  <rect x="193" y="250" width="358" height="236" rx="12" fill="#0b1220" opacity=".58" stroke="#8fb9ff" stroke-opacity=".42" stroke-width="2"/>
+  <path d="M224 284h125m-125 42h260m-260 42h225m-225 42h277m-277 42h195" stroke="#8fb9ff" stroke-linecap="round" stroke-width="8" opacity=".78"/>
+  <rect x="574" y="250" width="405" height="107" rx="12" fill="#0b1220" opacity=".58" stroke="#8fb9ff" stroke-opacity=".42" stroke-width="2"/>
+  <path d="M605 283h116m30 0h195" stroke="#c5d5e8" stroke-linecap="round" stroke-width="8" opacity=".78"/>
+  <circle cx="620" cy="326" r="13" fill="#04a7a4"/>
+  <path d="M652 326h267" stroke="#8fb9ff" stroke-linecap="round" stroke-width="7" opacity=".72"/>
+  <rect x="574" y="380" width="405" height="106" rx="12" fill="#0b1220" opacity=".58" stroke="#8fb9ff" stroke-opacity=".42" stroke-width="2"/>
+  <circle cx="621" cy="433" r="13" fill="#d4773b"/>
+  <path d="M653 433h267" stroke="#8fb9ff" stroke-linecap="round" stroke-width="7" opacity=".72"/>
+  <path d="M278 607h644" stroke="#04a7a4" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+  <text x="600" y="624" fill="#f2f6fd" font-family="Inter, sans-serif" font-size="20" text-anchor="middle" letter-spacing="3">TWENTY CRM · COURSE 2 · COMING DECEMBER 1</text>
+</svg>

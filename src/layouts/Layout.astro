@@ -4,12 +4,16 @@ import TopBg from "@/components/ui/TopBg.astro";
 import Footer from "@/components/sections/Footer.astro";
 import Header from "@/components/sections/Header.astro";
 import TrackGa from "@/components/widgets/TrackGa.astro";
+import ComingSoon from "@/components/elements/ComingSoon.astro";
+import { isPageVisible } from "@/config/pages.js";
 interface Props {
   title?: string | undefined;
   description?: string | undefined;
   keywords?: string | undefined;
+  lang?: string | undefined;
 }
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, lang = "en-GB" } = Astro.props;
+const pageVisible = isPageVisible(Astro.url.pathname);
 import "../styles/global.css";
 import "aos/dist/aos.css";
 import "../styles/aos-custom.css";
@@ -17,10 +21,10 @@ import "../styles/article.css";
 import "../styles/article-enhancements.css";
 ---
 
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <Meta title={title} description={description} keywords={keywords} />
+    <Meta title={title} description={description} keywords={keywords} noindex={!pageVisible} />
     <TrackGa />
     <script is:inline>
       (() => {
@@ -44,7 +48,7 @@ import "../styles/article-enhancements.css";
 <div class="relative isolate">
   <TopBg />
   <Header />
-  <slot />
+  {pageVisible ? <slot /> : <ComingSoon title={title || "This page is taking a breather."} />}
 </div>
     <Footer />
     <script src="../assets/js/main.js"></script>

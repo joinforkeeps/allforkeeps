@@ -1,0 +1,89 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/elements/PageHeader.astro";
+import { serviceLinks } from "@/config/site.js";
+---
+
+<Layout
+  title="Assessment | For Keeps"
+  description="Talk with For Keeps about a nonprofit technology assessment."
+>
+  <main class="site-container py-8 md:py-12">
+    <PageHeader
+      title="Learn all your options"
+      description={
+        serviceLinks.assessmentSurvey
+          ? "Share a little about your current challenge. We will share how we're helping mission-driven organisations own technology, instead of subscribing."
+          : "Tell us what is getting in the way. We will share how we're helping mission-driven organisations own technolog, instead of subscribing."
+      }
+    />
+    <section class="mx-auto mt-8 max-w-3xl rounded-2xl border border-primary/20 bg-white p-6 shadow-sm dark:bg-[#0f1b2d] md:p-10">
+      {serviceLinks.assessmentSurvey ? (
+        <>
+          <p class="text-lg leading-8 text-neutral-700 dark:text-neutral-200">
+            Start with a short, secure intake. We will review it before deciding
+            whether the work is a fit. Do not include links, donor records, or
+            confidential files.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              class="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 font-semibold text-white transition-colors hover:bg-primary-strong"
+              href={serviceLinks.assessmentSurvey}
+              data-umami-event="assessmentFormbricksClick"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open the assessment intake
+            </a>
+            <a
+              class="inline-flex items-center justify-center rounded-lg border border-primary/30 px-5 py-3 font-semibold text-primary transition-colors hover:bg-primary/10"
+              href="mailto:hello@allforkeeps.com"
+              data-umami-event="assessmentEmailClick"
+            >
+              Email hello@allforkeeps.com
+            </a>
+          </div>
+          <p class="mt-6 text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+            The survey is hosted by For Keeps on Formbricks. Answers are sent to
+            and stored by that assessment service, not by this website. Do not
+            share confidential project details until a mutual NDA is signed.
+          </p>
+        </>
+      ) : (
+        <>
+          <p class="text-lg leading-8 text-neutral-700 dark:text-neutral-200">
+            The assessment intake is being summoned. For now, email us at
+            <a
+              class="font-semibold text-primary underline"
+              href="mailto:hello@allforkeeps.com"
+            >
+              hello@allforkeeps.com
+            </a>
+            or join the queue for launch updates.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              class="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 font-semibold text-white transition-colors hover:bg-primary-strong"
+              href="mailto:hello@allforkeeps.com"
+              data-umami-event="assessmentEmailClick"
+            >
+              Email hello@allforkeeps.com
+            </a>
+            <a
+              class="inline-flex items-center justify-center rounded-lg border border-primary/30 px-5 py-3 font-semibold text-primary transition-colors hover:bg-primary/10"
+              href={serviceLinks.newsletter}
+              data-umami-event="assessmentNewsletterClick"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join For Keeps
+            </a>
+          </div>
+          <p class="mt-6 text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+            No form submissions or information is stored
+          </p>
+        </>
+      )}
+    </section>
+  </main>
+</Layout>

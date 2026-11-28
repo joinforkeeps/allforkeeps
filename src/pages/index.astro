@@ -8,6 +8,10 @@ import Button from "@/components/ui/Button.astro";
 import BrowserFrame from "@/components/ui/BrowserFrame.astro";
 import TechStackCard from "@/components/cards/TechStackCard.astro";
 import HeroSection from "@/components/home/HeroSection.astro";
+import JourneyChooser from "@/components/home/JourneyChooser.astro";
+import ClientScenarios from "@/components/home/ClientScenarios.astro";
+import OpenSourceGuide from "@/components/home/OpenSourceGuide.astro";
+import ForKeepsSocials from "@/components/sections/ForKeepsSocials.astro";
 import {
   LayoutDashboard,
   Layers,
@@ -28,29 +32,34 @@ import {
 
 const faqItems = [
   {
+    question: "What does open source mean?",
+    answer:
+      "Open source means the code is public and free to use and change; it does not come in a box that you download once.",
+  },
+  {
     question: "What’s free?",
     answer:
-      "Our published learning resources are free to read. Software licenses, hardware, hosting, email delivery, maintenance, and optional services can still cost money. Any paid For Keeps work is scoped and priced before you commit.",
+      "Our guides are free to read. Courses and assessments are paid. Paid members can choose one eligible older course free after each new course release.",
   },
   {
     question: "What is the benefit of self-hosting?",
     answer:
-      "Self-hosting can give your organization more control over its data, software, and exit plan. It also makes your team responsible for updates, backups, security, and infrastructure. We explain those trade-offs instead of promising that ownership means zero cost or effort.",
+      "Self-hosting can give your organisation more control over its data, software, and exit plan. It also makes your team responsible for updates, backups, security, and infrastructure. We explain those trade offs instead of promising that ownership means zero cost or effort.",
   },
   {
-    question: "Do I need coding experience?",
+    question: "Do we need coding experience?",
     answer:
       "You can start without a coding background. Our guides explain the steps and the decisions; some tools still require technical setup or outside help.",
   },
   {
     question: "Will you build or install our tools for us?",
     answer:
-      "The free guides teach you how to evaluate and set up tools. If you want hands-on help, ask about a separately scoped project. Hosting, migration, maintenance, and security responsibilities are agreed in writing before work begins.",
+      "We publish guides and offer project support when your team wants help choosing, setting up, or moving tools.",
   },
   {
     question: "What do your guides cover?",
     answer:
-      "We focus on Open Source tools and the choices around them: licenses, setup, hosting, support, maintenance, and the route out. Each tool has its own terms, so we help teams find and review the right license information before they adopt it.",
+      "We cover how tools work, what it takes to run them, and how to keep control of your data.",
   },
 ];
 
@@ -62,7 +71,7 @@ const features = [
   },
   {
     icon: "/assets/icon/components.png",
-    title: "Open Source Stacks",
+    title: "Open-source stacks",
     desc: "Compare tools for fundraising, operations, and local AI, including the trade-offs and operating needs.",
   },
   {
@@ -81,17 +90,17 @@ const problems = [
   {
     icon: "/assets/icon/battery.png",
     title: "Find your tools",
-    desc: "Get recommendations for donor management, grant research, fundraising, and AI.",
+    desc: "Get recommendations for donor management, grant research, fundraising, and AI",
   },
   {
     icon: "/assets/icon/clock.png",
     title: "Learn to use them",
-    desc: "Take practical courses that teach your team what to do next.",
+    desc: "Take practical courses that teach your team what to do next",
   },
   {
     icon: "/assets/icon/bell.png",
     title: "Get personalized advice",
-    desc: "Pay for an assessment or consulting focused on your organization’s needs.",
+    desc: "Pay for an assessment or consulting focused on your organisation’s needs",
   },
 ];
 
@@ -99,17 +108,17 @@ const useCases = [
   {
     icon: ChartNoAxesColumnIncreasing,
     label: "Find Donors",
-    desc: "Find and Track Donors without software guesswork",
+    desc: "Find and Track Donors without paying for data",
   },
   {
     icon: GitFork,
-    label: "Stop buying tools",
-    desc: "Stop buying tools your team can’t use.",
+    label: "Stop Buying Tools",
+    desc: "Stop buying tools your team doesn't use",
   },
   {
     icon: PenTool,
     label: "eLearning",
-    desc: "Learn the tools behind better fundraising.",
+    desc: "Learn the tools behind better fundraising",
   },
   {
     icon: Bot,
@@ -118,8 +127,8 @@ const useCases = [
   },
   {
     icon: Code,
-    label: "Data control",
-    desc: "Plan access, backups, and a workable exit before sensitive records move.",
+    label: "Data Control",
+    desc: "Plan access, backups, and a workable exit before sensitive records move",
   },
   {
     icon: Rocket,
@@ -129,7 +138,7 @@ const useCases = [
 ];
 
 const logos = [
-  { name: "Open Source CRM", icon: Compass },
+  { name: "Nonprofit CRM", icon: Compass },
   { name: "Find Donors", icon: Triangle },
   { name: "Know the real costs", icon: Sun },
   { name: "Pay for Expertise", icon: CircleDot },
@@ -140,232 +149,219 @@ const logos = [
 
 <Layout
   title="For Keeps"
-  description="Learn to choose, build, and maintain nonprofit technology you control. Start with practical Open Source guides; pay for scoped expertise when you need it."
+  description="Learn to choose, build, and maintain nonprofit technology you control. Start with practical open-source guides; pay for scoped expertise when you need it."
 >
   <!-- Hero Section -->
   <HeroSection />
 
   <!-- Logo Strip -->
-  <section class="py-6 md:py-8 site-container">
+  <section class="py-3 md:py-4 site-container">
     <p class="text-center text-sm text-neutral-400 dark:text-neutral-500 mb-6">
-      Nonprofit technology education for teams who want more control and a clear exit.
+      Nonprofit technology education for teams who want more control and a clear
+      exit.
     </p>
-    <div
-      class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 opacity-75"
-    >
-      {
-        logos.map((logo) => (
-          <div class="flex items-center gap-2 px-4 py-2 border border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg">
-            <logo.icon class="w-4 h-4 text-primary" />
-            <span class="text-sm font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-300">
-              {logo.name}
-            </span>
-          </div>
-        ))
-      }
+    <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 opacity-75">
+      {logos.map((logo) => (
+        <div class="flex items-center gap-2 px-4 py-2 border border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg">
+          <logo.icon class="w-4 h-4 text-primary" />
+          <span class="text-sm font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-300">
+            {logo.name}
+          </span>
+        </div>
+      ))}
     </div>
   </section>
 
   <!-- Problem Section -->
-  <section class="py-8 md:py-12 bg-neutral-50 dark:bg-neutral-900/40">
+  <section class="py-4 md:py-6 bg-neutral-50 dark:bg-neutral-900/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-6">
         <h2 class="text-3xl md:text-4xl font-brand mb-4">
           The tools are only half the story
         </h2>
         <p class="text-neutral-600 dark:text-neutral-300">
-          Before you pay for Salesforce, GoFundMe, Perplexity, or DonorSearch, know your options. We help you look at Open Source tools, real operating costs, and the skills needed to run them.
+          We help you compare open-source options, the work behind them, and
+          what your team can take on.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {
-          problems.map((problem) => (
-            <div class="p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm">
-              <img
-                src={problem.icon}
-                alt={problem.title}
-                width="64"
-                height="64"
-                class="w-16 h-16 mb-4 object-contain"
-              />
-              <h3 class="text-lg font-semibold text-neutral-800 dark:text-neutral-100 mb-2">
-                {problem.title}
-              </h3>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                {problem.desc}
-              </p>
-            </div>
-          ))
-        }
+        {problems.map((problem) => (
+          <div class="p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm">
+            <img
+              src={problem.icon}
+              alt={problem.title}
+              width="64"
+              height="64"
+              class="w-16 h-16 mb-4 object-contain"
+            />
+            <h3 class="text-lg font-semibold text-neutral-800 dark:text-neutral-100 mb-2">
+              {problem.title}
+            </h3>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              {problem.desc}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <JourneyChooser />
+  <ClientScenarios />
+
   <!-- Solution narrative -->
-  <section class="py-8 md:py-12 site-container">
+  <section class="py-4 md:py-6 site-container">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-brand mb-6">
-        A Community-Built Engine, Not Just Courses
+        A Community Built Engine, Not Just Courses
       </h2>
       <p class="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
-        We bring years of nonprofit experience to a straightforward alternative to traditional consulting: learn the tools, build what fits, and keep the skills. Technology can give your team freedom, but only when you understand what it depends on.
+        We took our years of nonprofit experience and went open, to offer a
+        straightforward alternative to traditional consulting and closed
+        ecosystems. Learn the tools, build what fits, and keep the skills.
+        Technology can give your team freedom, but only when you cut the chord
+        from Salesforce.
       </p>
       <p class="mt-4 text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
-        We combine self-led courses, interactive quickstarts, and a community that shares what works. No waiting for a grant to understand your options. No pretending that a free software license means free hosting or maintenance.
+        We skip the admin work and make it simple with interactive courses,
+        quickstarts, and a community that believes in ownership. No managed
+        services just to keep your average system alive. No booking an
+        assessment or a sales call just to receive a bill with no work
+        completed. No pretending that a Salesforce Administrator title is
+        anything more than achievement points.
       </p>
     </div>
 
     <!-- Features Grid -->
-    <section class="py-8 md:py-12 site-container">
+    <section class="py-4 md:py-6 site-container">
       <SectionHeader
-        title="Know your options before you renew"
-        description="You don't need another subscription. You need a better option"
-        />
+        title="Know your options, don't renew"
+        description="You don't need another subscription. You need a better option."
+      />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-        {
-          features.map((feature) => (
-            <div class="h-full p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm">
-              <img
-                src={feature.icon}
-                alt={feature.title}
-                width="64"
-                height="64"
-                class="w-16 h-16 mb-4 object-contain"
-              />
-              <h3 class="text-lg font-semibold text-neutral-800 dark:text-neutral-100 mb-2">
-                {feature.title}
-              </h3>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                {feature.desc}
-              </p>
-            </div>
-          ))
-        }
+        {features.map((feature) => (
+          <div class="h-full p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm">
+            <img
+              src={feature.icon}
+              alt={feature.title}
+              width="64"
+              height="64"
+              class="w-16 h-16 mb-4 object-contain"
+            />
+            <h3 class="text-lg font-semibold text-neutral-800 dark:text-neutral-100 mb-2">
+              {feature.title}
+            </h3>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              {feature.desc}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
 
     <!-- Dashboard / Product Preview -->
-    <section class="py-8 md:py-12 site-container">
+    <section class="py-4 md:py-6 site-container">
       <SectionHeader
         title="The For Keeps Guarantee"
-        description="We teach your team to evaluate tools before it commits. Every stack has dependencies and upkeep; our learning tracker and dashboard previews use sample data, not made-up claims about savings or live learners"
+        description="We teach your team to evaluate tools before it commits. Every stack has dependencies and upkeep; our learning tracker and dashboard previews use sample data."
       />
       <div class="mt-8 max-w-4xl mx-auto">
         <BrowserFrame url="allforkeeps.com/example">
           <div class="flex h-[320px] md:h-[380px]">
-            <aside
-              class="hidden sm:flex flex-col w-16 border-r border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 py-4 px-3 gap-2"
-            >
-              <div
-                class="w-7 h-7 mx-auto rounded-md bg-primary/15 flex items-center justify-center text-primary font-bold text-xs"
-              >
+            <aside class="hidden sm:flex flex-col w-16 border-r border-neutral-200 dark:border-[#125452] bg-neutral-50 dark:bg-[#072d30] py-4 px-3 gap-2">
+              <div class="w-7 h-7 mx-auto rounded-md bg-primary/15 flex items-center justify-center text-primary dark:text-[#a7f1e8] font-bold text-xs">
                 AFK
               </div>
-              <div
-                class="w-full h-8 rounded-md bg-primary/20 flex items-center justify-center"
-              >
-                <LayoutDashboard class="w-4 h-4 text-primary" />
+              <div class="w-full h-8 rounded-md bg-primary/20 flex items-center justify-center">
+                <LayoutDashboard class="w-4 h-4 text-primary dark:text-[#a7f1e8]" />
               </div>
-              <div
-                class="w-full h-8 rounded-md flex items-center justify-center"
-              >
-                <Layers class="w-4 h-4 text-neutral-400" />
+              <div class="w-full h-8 rounded-md flex items-center justify-center">
+                <Layers class="w-4 h-4 text-neutral-400 dark:text-[#a7c7c3]" />
               </div>
             </aside>
-            <div
-              class="flex-1 p-4 md:p-6 flex flex-col gap-4 overflow-hidden bg-white dark:bg-neutral-950"
-            >
+            <div class="flex-1 p-4 md:p-6 flex flex-col gap-4 overflow-hidden bg-white dark:bg-dashboard-teal">
               <div class="flex items-center justify-between">
                 <div>
-                  <h3
-                    class="text-sm font-semibold text-neutral-800 dark:text-neutral-100"
-                  >
+                  <h3 class="text-sm font-semibold text-neutral-800 dark:text-[#effffc]">
                     Impact Summary
                   </h3>
-                  <p class="text-[10px] text-neutral-400">
-                    Example workspace · sample data only
+                  <p class="text-[10px] text-neutral-400 dark:text-[#b7ddd9]">
+                    Your Org Workspace · sample data
                   </p>
                 </div>
-                <span
-                  class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-600 text-[10px] font-medium"
-                  >Plan ownership</span
-                >
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-600 dark:text-emerald-300 text-[10px] font-medium">
+                  Plan ownership
+                </span>
               </div>
               <div class="grid grid-cols-3 gap-2">
-                <div
-                  class="p-3 rounded border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
-                >
-                  <span class="text-[10px] text-neutral-400 uppercase"
-                    >Operating costs</span
-                  ><span class="block text-base font-brand text-primary mt-1"
-                    >0*</span
-                  >
+                <div class="p-3 rounded border border-neutral-200 dark:border-[#76c9be]/20 bg-neutral-50 dark:bg-[#0b4847]">
+                  <span class="text-[10px] text-neutral-400 dark:text-[#b7ddd9] uppercase">
+                    Savings
+                  </span>
+                  <span class="block text-base font-brand text-primary mt-1">
+                    $580.75
+                  </span>
                 </div>
-                <div
-                  class="p-3 rounded border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
-                >
-                  <span class="text-[10px] text-neutral-400 uppercase"
-                    >Learning paths</span
-                  ><span
-                    class="block text-base font-brand text-neutral-800 dark:text-white mt-1"
-                    >In progress</span
-                  >
+                <div class="p-3 rounded border border-neutral-200 dark:border-[#76c9be]/20 bg-neutral-50 dark:bg-[#0b4847]">
+                  <span class="text-[10px] text-neutral-400 dark:text-[#b7ddd9] uppercase">
+                    Course status
+                  </span>
+                  <span class="block text-base font-brand text-neutral-800 dark:text-white mt-1">
+                    In progress
+                  </span>
                 </div>
-                <div
-                  class="p-3 rounded border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900"
-                >
-                  <span class="text-[10px] text-neutral-400 uppercase"
-                    >Open guides</span
-                  ><span
-                    class="block text-base font-brand text-neutral-800 dark:text-white mt-1"
-                    >Public</span
-                  >
+                <div class="p-3 rounded border border-neutral-200 dark:border-[#76c9be]/20 bg-neutral-50 dark:bg-[#0b4847]">
+                  <span class="text-[10px] text-neutral-400 dark:text-[#b7ddd9] uppercase">
+                    Next chapter
+                  </span>
+                  <span class="block text-base font-brand text-neutral-800 dark:text-white mt-1">
+                    It was a trap.
+                  </span>
                 </div>
               </div>
-              <p class="text-[10px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-                *Hardware, cloud, and other costs may apply; you may be able to start with what you already have.
+              <p class="text-[10px] leading-relaxed text-neutral-500 dark:text-[#c7e4df]">
+                Keeper says: Look out for traps! You can avoid mimics by doing a
+                better job.
               </p>
-              <div
-                class="flex-1 rounded border border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50 dark:bg-neutral-900"
-              >
-                <div
-                  class="grid grid-cols-12 text-[10px] uppercase text-neutral-400 mb-2 font-medium"
-                >
-                  <span class="col-span-6">Stack Module</span><span
-                    class="col-span-3">Ownership</span
-                  ><span class="col-span-3 text-right">Cost</span>
+              <div class="flex-1 rounded border border-neutral-200 dark:border-[#76c9be]/20 p-3 bg-neutral-50 dark:bg-[#0b4847]">
+                <div class="grid grid-cols-12 text-[10px] uppercase text-neutral-400 dark:text-[#b7ddd9] mb-2 font-medium">
+                  <span class="col-span-6">Recent Achievements</span>
+                  <span class="col-span-3">Platform</span>
+                  <span class="col-span-3 text-right">Instructor</span>
                 </div>
                 <div class="space-y-2 text-xs">
-                  <div
-                    class="grid grid-cols-12 items-center py-1 border-b border-neutral-200 dark:border-neutral-800"
-                  >
-                    <span
-                      class="col-span-6 font-medium text-neutral-800 dark:text-neutral-200"
-                      >Twenty CRM</span
-                    ><span class="col-span-3 text-primary">Self-Hosted</span
-                    ><span class="col-span-3 text-right text-emerald-600"
-                      >Estimate</span
-                    >
+                  <div class="grid grid-cols-12 items-center py-1 border-b border-neutral-200 dark:border-[#76c9be]/20">
+                    <span class="col-span-6 font-medium text-neutral-800 dark:text-[#effffc]">
+                      Twenty CRM
+                    </span>
+                    <span class="col-span-3 text-primary dark:text-[#a7f1e8]">
+                      Docker
+                    </span>
+                    <span class="col-span-3 text-right text-dashboard-orange">
+                      Keeper
+                    </span>
                   </div>
-                  <div
-                    class="grid grid-cols-12 items-center py-1 border-b border-neutral-200 dark:border-neutral-800"
-                  >
-                    <span
-                      class="col-span-6 font-medium text-neutral-800 dark:text-neutral-200"
-                      >Ollama</span
-                    ><span class="col-span-3 text-primary">Self-Hosted</span
-                    ><span class="col-span-3 text-right text-emerald-600"
-                      >Estimate</span
-                    >
+                  <div class="grid grid-cols-12 items-center py-1 border-b border-neutral-200 dark:border-[#76c9be]/20">
+                    <span class="col-span-6 font-medium text-neutral-800 dark:text-[#effffc]">
+                      Ollama
+                    </span>
+                    <span class="col-span-3 text-primary dark:text-[#a7f1e8]">
+                      Docker
+                    </span>
+                    <span class="col-span-3 text-right text-dashboard-orange">
+                      Keeper
+                    </span>
                   </div>
                   <div class="grid grid-cols-12 items-center py-1">
-                    <span
-                      class="col-span-6 font-medium text-neutral-800 dark:text-neutral-200"
-                      >CiviCRM</span
-                    ><span class="col-span-3 text-primary">Self-Hosted</span
-                    ><span class="col-span-3 text-right text-emerald-600"
-                      >Estimate</span
-                    >
+                    <span class="col-span-6 font-medium text-neutral-800 dark:text-[#effffc]">
+                      CiviCRM
+                    </span>
+                    <span class="col-span-3 text-primary dark:text-[#a7f1e8]">
+                      Docker
+                    </span>
+                    <span class="col-span-3 text-right text-dashboard-orange">
+                      Keeper
+                    </span>
                   </div>
                 </div>
               </div>
@@ -376,69 +372,86 @@ const logos = [
     </section>
 
     <!-- Use Cases Grid -->
-    <section class="py-8 md:py-12 site-container">
+    <section class="py-4 md:py-6 site-container">
       <SectionHeader
-        title="Built for Every Nonprofit Need"
-        description="Whether you need a donor database, private AI models, or automated volunteer onboarding, our Open Source blueprints adapt to your mission"
+        title="Technology for Good"
+        description="Whether you need a donor database, private AI models, or automated volunteer onboarding, our open-source blueprints adapt to your mission"
       />
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-8">
-        {
-          useCases.map(({ icon: Icon, label, desc }) => (
-            <div class="flex flex-col items-center p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-center shadow-sm">
-              <Icon class="w-6 h-6 text-primary mb-2" />
-              <span class="text-sm font-semibold text-neutral-800 dark:text-neutral-100">
-                {label}
-              </span>
-              <span class="text-xs text-neutral-400 mt-1">{desc}</span>
-            </div>
-          ))
-        }
+        {useCases.map(({ icon: Icon, label, desc }) => (
+          <div class="flex flex-col items-center p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-center shadow-sm">
+            <Icon class="w-6 h-6 text-primary mb-2" />
+            <span class="text-sm font-semibold text-neutral-800 dark:text-neutral-100">
+              {label}
+            </span>
+            <span class="text-xs text-neutral-400 mt-1">{desc}</span>
+          </div>
+        ))}
       </div>
     </section>
 
+    <OpenSourceGuide />
+
     <!-- Tech Stack -->
-    <section class="py-8 md:py-12 site-container">
+    <section class="py-4 md:py-6 site-container">
       <SectionHeader
-        title="Open Source tools, chosen with care"
-        description="From nonprofit CRMs to local AI, compare licenses, setup needs, maintenance, and operating costs before adopting a tool"
+        title="Chosen with care"
+        description="From nonprofit CRMs to local AI, compare pros and cons, setup needs, maintenance, and operating costs"
       />
-      <div class="mt-8"><TechStackCard /></div>
+      <div class="mt-8">
+        <TechStackCard />
+      </div>
     </section>
 
     <!-- Pricing Preview with Free, Community, Nonprofit Tiers -->
     <Pricing
-      title="What’s free. What’s paid. What’s separate."
-      description="Read the guides at no charge. Join the community under a clear participation rule. Request a custom project only after you see its scope and price"
+      title="Pricing"
+      description="Book an assessment for custom recommendations, account required for premium courses"
     />
 
     <!-- FAQ -->
     <FAQ title="Frequently Asked Questions" items={faqItems} />
 
     <!-- Blog -->
-    <div class="py-8 md:py-12">
-      <BlogSection title="Guides and Open Source Insights" />
+    <div class="py-4 md:py-6">
+      <BlogSection title="Guides and open-source insights" />
     </div>
 
     <!-- Final CTA -->
-    <section
-      class="py-6 md:py-10 site-container rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm text-center"
-    >
+    <section class="py-6 md:py-10 site-container rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm text-center">
       <div class="max-w-2xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-brand mb-4">
           Ready to own your tools?
         </h2>
         <p class="text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed">
-          Start with a quickstart. If the stack is bigger than your team can take on alone, we can scope an assessment and map the next steps together.
+          Start with a quickstart. If the stack is bigger than your team can
+          take on alone, we can scope an assessment and map the next steps
+          together.
         </p>
         <div class="flex flex-wrap justify-center gap-3">
-          <Button url="/contact" className="text-lg px-8 py-3">
-            Request an Assessment <ArrowRight size={18} class="ml-2" />
+          <Button
+            url="/assessment"
+            event="footerAssessment"
+            className="text-lg px-8 py-3"
+          >
+            Book an Assessment <ArrowRight size={18} class="ml-2" />
           </Button>
-          <Button url="/courses" className="text-lg px-8 py-3">
-            Explore Quickstarts
+          <Button
+            url="https://learn.allforkeeps.com/lms/courses"
+            event="browseCourses"
+            className="text-lg px-8 py-3"
+          >
+            Browse Courses
           </Button>
         </div>
       </div>
+    </section>
+    <section class="site-container py-5" aria-labelledby="home-socials-title">
+      <SectionHeader
+        title="Find us around the web"
+        description="Enter the Dungeon, Meet Keeper"
+      />
+      <ForKeepsSocials />
     </section>
   </section>
 </Layout>

@@ -1,15 +1,15 @@
 ---
 title: "Log off their cloud. Log in to yours."
-publishDate: 2026-11-11
+publishDate: 2026-11-27
 version: "v1.0.0"
 description: "For Keeps helps nonprofits compare tools, costs, and the work of owning their technology."
 ---
 
 ## Why v1.0
 
-The early previews proved the point: free learning materials and practical quickstarts can help nonprofits question the rental trap before signing another contract. Leasehold wants your organization locked in the cloud mine. The playbook is familiar: make a tool indispensable, change the terms, then make the exit hurt.
+The early previews proved the point: free learning materials and practical quickstarts can help nonprofits question the rental trap before signing another contract. Leasehold wants your organisation locked in the cloud mine. The playbook is familiar: make a tool indispensable, change the terms, then make the exit hurt.
 
-Salesforce's announced NPSP transition is one example of a platform change that can force a nonprofit to weigh a new migration. We name vendors because teams deserve to ask hard questions before committing. We do not claim every vendor is bad or that every organization should self-host. We show the trade-offs, costs, and skills so you can choose with your eyes open.
+Salesforce's announced NPSP transition is one example of a platform change that can force a nonprofit to weigh a new migration. We name vendors because teams deserve to ask hard questions before committing. We do not claim every vendor is bad or that every organisation should self-host. We show the trade-offs, costs, and skills so you can choose with your eyes open.
 
 An old office PC can be a useful test lab, but its age and RAM do not guarantee it can run a particular stack. Check each tool's requirements, backups, security updates, and maintenance load before putting real work on it. Own your tools by understanding them, not by pretending the work is free.
 
@@ -25,7 +25,13 @@ An old office PC can be a useful test lab, but its age and RAM do not guarantee 
 
 - Wired the home, About, Quickstarts, Community, Pricing, and Contact routes.
 - Connected the Community page to its listed channels; account creation and the substantive-post access rule are not enforced by the site yet.
-- Added an assessment intake form with a clickwrap NDA draft. Intake submission remains unavailable until a dedicated For Keeps Supabase database is configured and the migration is applied. Have qualified counsel review the NDA before relying on it.
+- Replaced the assessment intake with email and mailing-list actions until the assessment survey is live.
+
+## 2026-11-27: Intake and community data cleanup
+
+- Removed the hosted database client, auth calls, environment settings, and migrations from the site.
+- The assessment page now directs visitors to email or the newsletter; it stores no intake data.
+- Community posting is a non-persistent stub while the page is hidden.
 
 ### Guides and content
 
@@ -41,7 +47,7 @@ An old office PC can be a useful test lab, but its age and RAM do not guarantee 
 
 ## Upgrade notes
 
-If your organization is considering a move away from a subscription:
+If your organisation is considering a move away from a subscription:
 
 1. Inventory the data, workflows, integrations, and contract terms you rely on.
 2. Export and verify a backup before changing systems.

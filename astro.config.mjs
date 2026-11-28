@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import { fileURLToPath } from 'node:url';
+import { isPageVisible } from './src/config/pages.js';
 
 export default defineConfig({
   site: import.meta.env.PUBLIC_SITE_URL || 'https://allforkeeps.com',
@@ -38,5 +39,10 @@ export default defineConfig({
     }),
   },
 
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => isPageVisible(new URL(page).pathname),
+    }),
+  ],
 });

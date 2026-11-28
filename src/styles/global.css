@@ -34,6 +34,9 @@
   --color-reef-light: #8fb9ff;
   --color-logo-green: #04a7a4;
   --color-accent-yellow: #fad13b;
+  --color-dashboard-navy: #10243b;
+  --color-dashboard-teal: #083a3a;
+  --color-dashboard-orange: #9f3f0b;
 
   --color-primary: #2d6dc3;
   --color-primary-rgb: 45, 109, 195;
@@ -72,6 +75,7 @@ html.dark {
   --color-primary-rgb: 143, 185, 255;
   --color-primary-bg: rgba(143, 185, 255, 0.15);
   --color-primary-bg-light: rgba(143, 185, 255, 0.06);
+  --color-dashboard-orange: #ffb36b;
 }
 
 /* Add typography styles */

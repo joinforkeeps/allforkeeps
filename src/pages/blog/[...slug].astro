@@ -6,7 +6,7 @@ import PostLayout from "@/layouts/PostLayout.astro";
 // 来告诉 Astro 在构建时生成哪些页面
 export async function getStaticPaths() {
 	const postEntries = await getCollection("post");
-	return postEntries.map((entry) => {
+	return postEntries.filter((entry) => entry.data.publishDate <= new Date()).map((entry) => {
 		// Content Layer 的 entry.id 是条目的唯一标识符
 		// 对于 [...slug] 路由，需要将 entry.id 转换为 slug 数组
 		// entry.id 已经是相对于集合根目录的路径，例如 "dir/index" 或 "dir"
@@ -60,7 +60,7 @@ const { Content } = await render(entry);
 				<!-- Metadata -->
 				<div class="article-meta text-sm text-neutral-500 dark:text-neutral-400">
 					<time datetime={entry.data.publishDate.toISOString()}>
-						{entry.data.publishDate.toLocaleDateString('en-US', {
+						{entry.data.publishDate.toLocaleDateString('en-GB', {
 							year: 'numeric',
 							month: 'long',
 							day: 'numeric'

@@ -3,13 +3,13 @@
 		"id": 1,
 		"name": "Build small and keep control",
 		"desc": "A small computer is a good place to practice before your team puts real records on a system.",
-		"image": "/assets/mission/microcontrollers-office.svg",
-		"alt": "Illustrated home office with a small computer board, laptop, and organized tools."
+		"image": "/assets/mission/open-source-workbench.svg",
+		"alt": "A learning-friendly home office with a plant left of the computer, an upright coffee cup, and a cleanly outlined keyboard."
 	},
 	{
 		"id": 2,
 		"name": "Move food, not your data",
-		"desc": "Coordinate volunteers and supplies with tools your organization can inspect, adapt, and hand off.",
+		"desc": "Coordinate volunteers and supplies with tools your organisation can inspect, adapt, and hand off.",
 		"image": "/assets/mission/community-food-drive.svg",
 		"alt": "Illustrated community food drive with volunteers, supply boxes, and a shared logistics dashboard."
 	},
@@ -18,6 +18,6 @@
 		"name": "Coordinate relief on your terms",
 		"desc": "Keep maps, contacts, and decisions accessible when a community is responding under pressure.",
 		"image": "/assets/mission/hurricane-relief.svg",
-		"alt": "Illustrated relief volunteers reviewing a map and coordinating supplies at a community center."
+		"alt": "Illustrated relief volunteers reviewing a map and coordinating supplies at a community centre."
 	}
 ]

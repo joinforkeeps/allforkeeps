@@ -3,72 +3,108 @@
     "name": "Instagram",
     "url": "https://www.instagram.com/joinforkeeps/",
     "icon": "instagram",
-    "domain": "instagram.com"
+    "domain": "instagram.com",
+    "order": 3,
+    "priority": true,
+    "public": true
   },
   {
     "name": "TikTok",
     "url": "https://www.tiktok.com/@joinforkeeps",
     "icon": "tiktok",
-    "domain": "tiktok.com"
+    "domain": "tiktok.com",
+    "order": 9,
+    "priority": false,
+    "public": true
   },
   {
     "name": "YouTube",
     "url": "https://www.youtube.com/@joinforkeeps",
     "icon": "youtube",
-    "domain": "youtube.com"
+    "domain": "youtube.com",
+    "order": 8,
+    "priority": false,
+    "public": true
   },
   {
     "name": "Threads",
     "url": "https://www.threads.com/@joinforkeeps",
     "icon": "threads",
-    "domain": "threads.com"
+    "domain": "threads.com",
+    "order": 10,
+    "priority": false,
+    "public": true
   },
   {
-    "name": "Twitter",
+    "name": "X",
     "url": "https://x.com/joinforkeeps",
     "icon": "x",
-    "domain": "x.com"
+    "domain": "x.com",
+    "order": 4,
+    "priority": false,
+    "public": true
   },
   {
     "name": "Reddit",
     "url": "https://www.reddit.com/user/allforkeeps/",
     "icon": "reddit",
-    "domain": "reddit.com"
+    "domain": "reddit.com",
+    "order": 11,
+    "priority": false,
+    "public": true
   },
   {
     "name": "Hugging Face",
     "url": "https://huggingface.co/joinforkeeps",
     "icon": "huggingface",
-    "domain": "huggingface.co"
+    "domain": "huggingface.co",
+    "order": 12,
+    "priority": false,
+    "public": true
   },
   {
     "name": "Kick",
     "url": "https://kick.com/joinforkeeps",
     "icon": "kick",
-    "domain": "kick.com"
+    "domain": "kick.com",
+    "order": 13,
+    "priority": false,
+    "public": true
   },
   {
     "name": "Linktree",
     "url": "https://linktr.ee/joinforkeeps",
     "icon": "linktree",
-    "domain": "linktr.ee"
+    "domain": "linktr.ee",
+    "order": 14,
+    "priority": false,
+    "public": true
   },
   {
     "name": "Mastodon",
     "url": "https://mastodon.social/@joinforkeeps",
     "icon": "mastodon",
-    "domain": "mastodon.social"
+    "domain": "mastodon.social",
+    "order": 2,
+    "priority": true,
+    "public": true
   },
   {
     "name": "Bluesky",
     "url": "https://bsky.app/profile/joinforkeeps.bsky.social",
     "icon": "bluesky",
-    "domain": "bsky.app"
+    "domain": "bsky.app",
+    "order": 1,
+    "priority": true,
+    "public": true
   },
   {
     "name": "Discord",
     "url": "https://discord.com/users/1563002896575107224",
     "icon": "discord",
-    "domain": "discord.com"
+    "domain": "discord.com",
+    "order": 5,
+    "priority": false,
+    "public": false
   }
 ]

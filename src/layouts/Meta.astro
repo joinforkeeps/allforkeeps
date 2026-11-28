@@ -7,6 +7,7 @@ export interface Props {
   url?: string;
   ogImage?: string;
   twitterHandle?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   url = siteConfig.url, //
   ogImage = "/og.jpg",
   twitterHandle = siteConfig.social.twitterName || '',
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -27,6 +29,7 @@ const {
 <meta name="description" content={description} />
 <meta name="keywords" content={keywords} />
 <meta name="author" content={siteConfig.author} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
 
 <!-- Open Graph Tags -->
 <meta property="og:type" content="website" />

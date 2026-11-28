@@ -3,38 +3,90 @@ import Layout from "@/layouts/Layout.astro";
 import Pricing from "@/components/sections/Pricing.astro";
 import FAQ from "@/components/sections/FAQ.astro";
 import PageHeader from "@/components/elements/PageHeader.astro";
+import HardwareRequirements from "@/components/content/HardwareRequirements.astro";
+import ForKeepsSocials from "@/components/sections/ForKeepsSocials.astro";
+import SupportNote from "@/components/content/SupportNote.astro";
+import { membershipConfig } from "@/config/membership";
+import { pricingConfig } from "@/config/pricing";
+import { siteConfig } from "@/config/site.js";
 
 const pricingFaq = [
   {
-    question: "Do the free resources require a subscription?",
-    answer:
-      "No. Public guides on this site are free to read. The software they discuss may have separate license, infrastructure, hosting, support, or maintenance costs.",
+    question: "Does membership cost anything?",
+    answer: `${membershipConfig.memberDefinition}. Joining is free, does not enroll anyone in a class, and does not start a subscription.`,
   },
   {
-    question: "What is the Join For Keeps community rule?",
-    answer:
-      "To maintain access to gated courses and guides, members must make at least one substantive contribution every 30 days. A tool review, project update, nonprofit technology pain point, or guide improvement qualifies. Public resources remain ungated.",
+    question: "What do members get?",
+    answer: `Members get premium emails, early access ${membershipConfig.earlyAccessDays} days before new courses, and one eligible older course pick with each release. The newest course stays paid for everyone.`,
   },
   {
-    question: "What does Enterprise mean?",
+    question: "Can we buy a course or assessment today?",
+    answer: `Course payments are not live yet. Courses are planned at $${pricingConfig.coursePriceUsd} USD one time, except the free introduction. Assessments are ${pricingConfig.assessmentPriceLabel.toLowerCase()}.`,
+  },
+  {
+    question: "What are the refund terms and payment methods?",
     answer:
-      "Enterprise work is scoped per project. We agree on deliverables, responsibilities, costs, and any ongoing support before work begins. It is not a recurring subscription by default.",
+      "We will publish refund terms and accepted payment methods before checkout opens. No course checkout is available yet.",
+  },
+  {
+    question: "Do nonprofit organisations get different prices?",
+    answer:
+      "Public guides and the introduction are free for everyone. Course prices are the same for nonprofits and other learners. Assessment work is scoped to the organisation before a price is agreed.",
+  },
+  {
+    question: "What if our team gets stuck?",
+    answer:
+      "Start with the guide and the sample-data exercises. Email us if you need help. Hosting, hardware, email, and ongoing maintenance can have separate costs.",
   },
 ];
 ---
 
 <Layout
   title="Pricing"
-  description="Clear access rules for free nonprofit technology guides, the For Keeps community, and custom enterprise projects."
+  description="Membership is free. Course prices are one time. Assessment work is scoped before commitment."
 >
   <main class="py-6 md:py-8">
     <PageHeader
-      title="Straight answers. No subscription trap."
-      description="Read the free guides, contribute to the community, or request a project quote with a written scope."
+      title="Build it. Then own it. All for keeps."
+      description="Our independent studio helps nonprofits priced out of big software. We welcome everyone."
     />
     <Pricing showHeader={false} />
     <div class="site-container mt-4">
+      <p class="text-base leading-7 text-neutral-700 dark:text-neutral-200">
+        {siteConfig.teamClaim}
+      </p>
+      <h2 class="mt-8 font-brand text-2xl text-neutral-900 dark:text-white">
+        Gather your tools
+      </h2>
+      <p class="mt-2 max-w-3xl text-base leading-7 text-neutral-700 dark:text-neutral-200">
+        Guides, mailing list membership, and the introductory courses are free.
+        Hardware, hosting, email delivery, and maintenance may cost extra.
+        Course purchases and tips help us publish more free guides.
+      </p>
+      <p class="mt-3 text-base leading-7 text-neutral-700 dark:text-neutral-200">
+        If they helped, buy us a coffee.
+      </p>
+    </div>
+    <div class="site-container">
+      <HardwareRequirements />
+    </div>
+    <div class="site-container mt-4">
       <FAQ title="Pricing and access" items={pricingFaq} />
+    </div>
+    <section
+      class="site-container mt-8"
+      aria-labelledby="pricing-socials-title"
+    >
+      <h2
+        id="pricing-socials-title"
+        class="mb-4 font-brand text-2xl text-neutral-900 dark:text-white"
+      >
+        Follow our work
+      </h2>
+      <ForKeepsSocials />
+    </section>
+    <div class="site-container mt-4">
+      <SupportNote />
     </div>
   </main>
 </Layout>

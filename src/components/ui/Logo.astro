@@ -7,17 +7,13 @@ const { className = "h-15 w-auto" } = Astro.props;
 ---
 
 <a href="/" class="flex items-center gap-2 group focus:outline-none">
-  <!-- Book + Pencil Logo Icon -->
   <img
-    src="/assets/logo.png"
-    alt="For Keeps Logo"
+    src="/assets/brand/book-mark-128.png"
+    alt="For Keeps book mark"
     class={`object-contain bg-transparent ${className}`}
   />
 
-  <!-- Typography matching the uploaded asset -->
-  <span
-    class="font-brand text-3xl tracking-normal text-[#117a75] dark:text-[#2dd4bf] font-bold antialiased pt-0.5"
-  >
-  For Keeps
+  <span class="font-brand text-2xl tracking-normal text-[#04a7a4] font-normal antialiased pt-0.45">
+    For Keeps
   </span>
 </a>

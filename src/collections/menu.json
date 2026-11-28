@@ -1,15 +1,15 @@
 [
-	{ "name": "Quickstarts", "url": "/courses" },
-	{ "name": "Community", "url": "/community" },
-	{ "name": "Contact", "url": "/contact" },
-	{
-		"name": "AFK",
-		"children": [
-			{ "name": "About", "url": "/about" },
-			{ "name": "Pricing", "url": "/pricing" },
-			{ "name": "Features", "url": "/features" },
-			{ "name": "Blog", "url": "/blog" },
-			{ "name": "Changelog", "url": "/changelog" }
-		]
-	}
+  { "name": "Home", "url": "/", "pageKey": "home" },
+  { "name": "About", "url": "/about", "pageKey": "about" },
+  { "name": "Assessment", "url": "/assessment", "pageKey": "assessment" },
+  { "name": "Learn", "url": "https://learn.allforkeeps.com/lms/courses", "pageKey": "learn" },
+  { "name": "Shop", "url": "https://learn.allforkeeps.com/lms/courses", "pageKey": "shop" },
+  {
+    "name": "AFK",
+    "children": [
+      { "name": "Pricing", "url": "/pricing", "pageKey": "pricing" },
+      { "name": "Blog", "url": "/blog", "pageKey": "blog" },
+      { "name": "Changelog", "url": "/changelog", "pageKey": "changelog" }
+    ]
+  }
 ]

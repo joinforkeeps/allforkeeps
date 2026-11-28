@@ -2,12 +2,14 @@
 import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/elements/PageHeader.astro";
 import BlogSection from "@/components/sections/BlogSection.astro";
+import LearnTag from "@/components/content/LearnTag.astro";
 
 const POSTS_PER_PAGE = 6;
 const currentPage = 1;
 ---
 
 <Layout title="Blog For Keeps" description="Latest articles, updates, and insights from the For Keeps team.">
+  <div class="site-container mt-8"><LearnTag /></div>
   <section class="relative z-20 container mx-auto my-12 px-7 lg:px-0">
     <PageHeader
       title="Blog"

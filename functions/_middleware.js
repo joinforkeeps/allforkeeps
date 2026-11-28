@@ -1,11 +1,9 @@
 export async function onRequest({ request, next }) {
-	const requestUrl = new URL(request.url);
-
-	if (requestUrl.hostname === "join.allforkeeps.com") {
-		const destination = new URL("https://allforkeeps.com/community/");
-		destination.search = requestUrl.search;
-		return Response.redirect(destination.toString(), 301);
+	const hostname = new URL(request.url).hostname.toLowerCase();
+	if (hostname === "shop.allforkeeps.com") {
+		return Response.redirect("https://learn.allforkeeps.com/lms/courses", 302);
 	}
 
+	// Cloudflare owns the join hostname redirect; keep this middleware non-authoritative.
 	return next();
 }

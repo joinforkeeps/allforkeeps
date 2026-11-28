@@ -1,0 +1,44 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/elements/PageHeader.astro";
+import Button from "@/components/ui/Button.astro";
+import { pricingConfig } from "@/config/pricing";
+import { siteConfig } from "@/config/site.js";
+---
+
+<Layout
+  title="Support For Keeps"
+  description="Help us keep practical nonprofit technology guides free."
+>
+  <main class="site-container py-8 md:py-12">
+    <PageHeader
+      title="Keep the guides coming"
+      description="We make practical technology guidance free to read. Optional support helps us make more."
+    />
+    <section class="mx-auto mt-8 max-w-3xl rounded-2xl border border-primary/20 bg-white/80 p-6 shadow-sm dark:bg-bg-secondary-dark md:p-8">
+      <h2 class="font-brand text-2xl text-neutral-900 dark:text-white">
+        Tip options are being prepared
+      </h2>
+      <p class="mt-3 leading-7 text-neutral-700 dark:text-neutral-200">
+        We have not published a Monero address or payment link yet. We will add
+        a verified public option here when it is ready.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <Button
+          url={pricingConfig.links.newsletter}
+          event="supportJoinMailingList"
+          type="fill"
+        >
+          Join the mailing list
+        </Button>
+        <a
+          href={`mailto:${siteConfig.mail}?subject=Support%20For%20Keeps`}
+          class="inline-flex items-center rounded-xl border border-primary/25 px-5 py-3 font-semibold text-primary hover:bg-primary/5 dark:text-primary-light"
+          data-umami-event="supportEmail"
+        >
+          Email us
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>

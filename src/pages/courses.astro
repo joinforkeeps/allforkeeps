@@ -3,6 +3,11 @@ import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/elements/PageHeader.astro";
 import Button from "@/components/ui/Button.astro";
 import { BookOpen } from "@lucide/astro";
+import HardwareRequirements from "@/components/content/HardwareRequirements.astro";
+import LearnTag from "@/components/content/LearnTag.astro";
+import { serviceLinks } from "@/config/site.js";
+import { membershipConfig } from "@/config/membership";
+import { formatCoursePrice, pricingConfig } from "@/config/pricing";
 
 const guides = [
   {
@@ -20,7 +25,7 @@ const guides = [
     image: "/assets/nonprofits.jpg",
     imageAlt: "For Keeps nonprofit technology guide cover",
     description:
-      "A donated license is not an escape pod. Follow the costs for setup, staff time, hosting, support, and the route out before calling a platform free.",
+      "A donated licence is not an escape pod. Follow the costs for setup, staff time, hosting, support, and the route out before calling a platform free.",
     url: "/blog/nonprofit-discount-whole-bill",
   },
   {
@@ -33,16 +38,38 @@ const guides = [
     url: "/blog/keep-the-disc-check-the-server",
   },
 ];
+
+const courses = [
+  {
+    number: "Course 1",
+    title: "Open-source software and self-hosting",
+    detail: `${formatCoursePrice(pricingConfig.introCoursePriceUsd)} for everyone.`,
+    status: "Free",
+  },
+  {
+    number: "Course 2",
+    title: "Twenty CRM",
+    detail: `Planned for December 1 · ${formatCoursePrice(pricingConfig.coursePriceUsd)} one time · registration is not open.`,
+    status: "Coming December 1",
+  },
+  {
+    number: "Course 3",
+    title: "Donor technology",
+    detail: "A future course about choosing tools for nonprofit donor work.",
+    status: "Coming soon",
+  },
+];
 ---
 
 <Layout
   title="Courses and Quickstarts"
-  description="Enter the For Keeps training dungeon. Learn nonprofit technology through practical missions, Open Source tools, and KEEPER's field notes."
+  description="Enter the For Keeps training dungeon. Learn nonprofit technology through practical missions, open-source tools, and KEEPER's field notes."
 >
   <main class="fk-courses py-8 md:py-12 site-container">
+    <LearnTag />
     <PageHeader
-      title="Cadet, the door is open. Pick a mission."
-      description="We built these quickstarts for the people asked to make a donor database, a server, or a grant workflow work with three people and no spare budget. KEEPER has the map. You still get to choose the route."
+      title="Learn one useful step at a time."
+      description="Practical nonprofit quickstarts, with sample data first and the costs and upkeep stated plainly."
     />
 
     <figure class="mt-5 overflow-hidden rounded-2xl border border-primary/15 bg-neutral-950">
@@ -55,7 +82,8 @@ const guides = [
         class="w-full aspect-[1200/630] object-cover"
       />
       <figcaption class="px-5 py-3 text-sm text-neutral-300">
-        FIELD NOTE 001 · The practice vault. Fictional danger, real verification.
+        FIELD NOTE 001 · The practice vault. Fictional danger, real
+        verification.
       </figcaption>
     </figure>
 
@@ -64,64 +92,153 @@ const guides = [
         <p class="fk-start-label">MISSION 00 / START HERE</p>
         <h2 id="fk-start-title">The first room is a practice room.</h2>
         <p>
-          Meet Open Source and self-hosting without putting donor data on the
-          table. KEEPER marks three checkpoints: read the license, find who
-          holds the keys, and plan the exit before you move in.
+          Learn about open-source software and self-hosting without putting
+          donor data on the table. Start with the licence, the day-to-day
+          upkeep, and a safe way to leave.
         </p>
         <blockquote>
           “Learn the map before you carry the mission into the dungeon.”
         </blockquote>
-        <a class="fk-start-link" href="/start">
-          Enter the START mission <span aria-hidden="true">→</span>
+        <a
+          class="fk-start-link"
+          href="/start"
+          data-umami-event="startIntroduction"
+        >
+          Read the free introduction <span aria-hidden="true">→</span>
         </a>
       </div>
       <div class="fk-start-facts" aria-label="START mission facts">
-        <div><strong>3</strong><span>learning checkpoints</span></div>
-        <div><strong>0</strong><span>donor records needed</span></div>
-        <div><strong>Free</strong><span>to read</span></div>
-        <p>The full Frappe Learning course is in development.</p>
+        <div>
+          <strong>3</strong>
+          <span>learning checkpoints</span>
+        </div>
+        <div>
+          <strong>0</strong>
+          <span>donor records needed</span>
+        </div>
+        <div>
+          <strong>Free</strong>
+          <span>to read</span>
+        </div>
+        <p>
+          Our first course is built around Twenty CRM and delivered through our
+          learning site.
+        </p>
       </div>
     </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-      {
-        guides.map((guide) => (
-          <article class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col justify-between">
-            <div>
-              <img
-                src={guide.image}
-                alt={guide.imageAlt}
-                width="1200"
-                height="630"
-                loading="lazy"
-                class="mb-6 w-full aspect-[1200/630] rounded-xl object-cover"
-              />
-              <div class="flex items-center justify-between gap-4 mb-4">
-                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary">
-                  {guide.category}
-                </span>
-                <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400">
-                  Free to read
-                </span>
-              </div>
-              <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">
-                {guide.title}
-              </h2>
-              <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6">
-                {guide.description}
-              </p>
-            </div>
-            <div class="flex items-center justify-between gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
-              <span class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
-                <BookOpen class="w-3.5 h-3.5" /> Open mission
-              </span>
-              <Button url={guide.url} className="text-sm px-4 py-2">
-                Enter mission
-              </Button>
-            </div>
+    <section class="mt-8" aria-labelledby="course-path-title">
+      <h2
+        id="course-path-title"
+        class="font-brand text-3xl text-neutral-900 dark:text-white"
+      >
+        The course path
+      </h2>
+      <div class="mt-4 grid gap-4 md:grid-cols-3">
+        {courses.map((course) => (
+          <article class="rounded-xl border border-primary/20 bg-white/80 p-5 dark:bg-bg-secondary-dark">
+            <p class="text-xs font-bold uppercase tracking-[0.1em] text-primary">
+              {course.number}
+            </p>
+            <h3 class="mt-2 text-xl font-semibold text-neutral-900 dark:text-white">
+              {course.title}
+            </h3>
+            <p class="mt-2 min-h-12 text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+              {course.detail}
+            </p>
+            <span class="mt-4 inline-flex rounded-full border border-dashboard-orange/30 bg-dashboard-orange/10 px-3 py-1 text-xs font-semibold text-dashboard-orange">
+              {course.status}
+            </span>
           </article>
-        ))
-      }
+        ))}
+      </div>
+      <a
+        class="mt-5 inline-flex font-semibold text-primary underline underline-offset-4"
+        href={serviceLinks.learning}
+        data-umami-event="browseCourses"
+      >
+        Browse courses on our learning site →
+      </a>
+      <p class="mt-4 max-w-3xl text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+        Mailing list membership is free. Members get{" "}
+        {membershipConfig.earlyAccessDays}
+        days of early access. With each new release, members can pick one
+        eligible older course for free. The newest course stays paid for
+        everyone.
+      </p>
+    </section>
+
+    <section class="mt-8 rounded-2xl border border-primary/15 bg-white/70 p-5 dark:bg-bg-secondary-dark md:p-7">
+      <h2 class="font-brand text-2xl text-neutral-900 dark:text-white">
+        What the first setup covers
+      </h2>
+      <ol class="mt-4 grid gap-3 text-sm leading-6 text-neutral-700 dark:text-neutral-200 sm:grid-cols-2">
+        <li>
+          <strong>1.</strong> Install Docker Desktop on Windows 11, or Docker
+          Engine on Linux.
+        </li>
+        <li>
+          <strong>2.</strong> Enable WSL2 and a Linux distribution on Windows;
+          use sample data only.
+        </li>
+        <li>
+          <strong>3.</strong> Download the course starter project and open its
+          folder in a terminal.
+        </li>
+        <li>
+          <strong>4.</strong> Run <code>docker compose up -d</code> to start the
+          practice environment.
+        </li>
+        <li>
+          <strong>5.</strong> Check the local page, learn how to stop it, and
+          verify a backup before continuing.
+        </li>
+      </ol>
+      <p class="mt-4 text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+        The free introduction and reference material stay accessible. Any help
+        with setup and use is reserved for assessment clients.
+      </p>
+    </section>
+
+    <HardwareRequirements />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+      {guides.map((guide) => (
+        <article class="p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <img
+              src={guide.image}
+              alt={guide.imageAlt}
+              width="1200"
+              height="630"
+              loading="lazy"
+              class="mb-6 w-full aspect-[1200/630] rounded-xl object-cover"
+            />
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary">
+                {guide.category}
+              </span>
+              <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                Free to read
+              </span>
+            </div>
+            <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+              {guide.title}
+            </h2>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6">
+              {guide.description}
+            </p>
+          </div>
+          <div class="flex items-center justify-between gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
+            <span class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
+              <BookOpen class="w-3.5 h-3.5" /> Open mission
+            </span>
+            <Button url={guide.url} className="text-sm px-4 py-2">
+              Enter mission
+            </Button>
+          </div>
+        </article>
+      ))}
     </div>
     <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-300">
       KEEPER can make the briefing dramatic. The costs and risks are not

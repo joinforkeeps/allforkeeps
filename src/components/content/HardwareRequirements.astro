@@ -1,0 +1,55 @@
+---
+import { hardwareRequirements } from "@/data/hardware";
+---
+
+<aside
+  class="my-8 rounded-2xl border border-primary/25 bg-gradient-to-br from-white/90 via-primary/5 to-logo-green/10 p-5 dark:from-bg-secondary-dark dark:via-reef/10 dark:to-logo-green/10 md:p-7"
+  aria-labelledby="hardware-title"
+>
+  <p class="text-xs font-bold uppercase tracking-[0.12em] text-primary">
+    Starter pack
+  </p>
+  <h2
+    id="hardware-title"
+    class="mt-1 font-brand text-2xl text-neutral-900 dark:text-white"
+  >
+    What the first setup needs
+  </h2>
+  <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+    {hardwareRequirements.minimum.map(({ label, value }) => (
+      <div class="rounded-lg border border-primary/15 bg-white/70 p-3 dark:bg-bg-primary-dark/40">
+        <dt class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+          {label}
+        </dt>
+        <dd class="mt-1 text-sm leading-6 text-neutral-800 dark:text-neutral-100">
+          {value}
+        </dd>
+      </div>
+    ))}
+  </dl>
+  <p class="mt-4 rounded-lg border-s-2 border-dashboard-orange bg-dashboard-orange/5 p-3 text-sm leading-6 text-neutral-700 dark:text-neutral-200">
+    <strong>No Budget, No Problem:</strong> {hardwareRequirements.budgetNote}
+  </p>
+  <div class="mt-4 grid gap-4 sm:grid-cols-2">
+    <div>
+      <h3 class="font-semibold text-neutral-900 dark:text-white">
+        Supported systems
+      </h3>
+      <ul class="mt-2 list-disc space-y-1 ps-5 text-sm text-neutral-700 dark:text-neutral-200">
+        {hardwareRequirements.systems.map((system) => (
+          <li>{system}</li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-semibold text-neutral-900 dark:text-white">
+        Starter tools
+      </h3>
+      <ul class="mt-2 list-disc space-y-1 ps-5 text-sm text-neutral-700 dark:text-neutral-200">
+        {hardwareRequirements.starterPack.map((tool) => (
+          <li>{tool}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</aside>

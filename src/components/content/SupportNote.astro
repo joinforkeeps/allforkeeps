@@ -1,0 +1,84 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<aside class={`support-note ${compact ? "support-note-compact" : ""}`}>
+  <h2>Support our Work</h2>
+  <p>We keep the guides free. Tips help us publish more.</p>
+  <a href="/support" data-umami-event="supportOptions">
+    Contact Support
+  </a>
+</aside>
+
+<style>
+  .support-note {
+    margin-block: 1.5rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgb(45 109 195 / 18%);
+    border-radius: 1rem;
+    background: linear-gradient(
+      120deg,
+      rgb(45 109 195 / 8%),
+      rgb(15 27 45 / 3%)
+    );
+  }
+
+  .support-note h2 {
+    margin: 0;
+    color: var(--color-neutral-900);
+    font-size: 1rem;
+    font-weight: 650;
+  }
+
+  .support-note p {
+    margin: 0.4rem 0 0;
+    color: var(--color-neutral-700);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .support-note a {
+    display: inline-block;
+    margin-top: 0.65rem;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    font-weight: 650;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .support-note-compact {
+    margin-block: 0.75rem 0;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .support-note-compact h2 {
+    font-size: 0.85rem;
+  }
+
+  .support-note-compact p {
+    font-size: 0.75rem;
+  }
+
+  :global(.dark) .support-note {
+    border-color: rgb(143 185 255 / 20%);
+    background: linear-gradient(
+      120deg,
+      rgb(45 109 195 / 16%),
+      rgb(15 27 45 / 70%)
+    );
+  }
+
+  :global(.dark) .support-note h2,
+  :global(.dark) .support-note p {
+    color: #d7e5f8;
+  }
+
+  :global(.dark) .support-note a {
+    color: var(--color-primary-light);
+  }
+</style>

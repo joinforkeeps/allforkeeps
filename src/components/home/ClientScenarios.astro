@@ -1,0 +1,408 @@
+---
+const scenarios = [
+  {
+    name: "Local Nonprofit",
+    location: "Texas, United States",
+    organisation: "Texas",
+    profile: "8 staff · 120 young people reached each year",
+    image: "/assets/clients/texas-youth-mentoring.jpg",
+    imageAlt: "A volunteer group supporting a youth robotics programme",
+    credit: "Photo: BLM youth mentoring",
+    budget: "$2,400.00",
+    calculation: "8 seats × $25 × 12 months",
+    need: "A small youth team wants to understand its Salesforce NPSP and Nonprofit Cloud options before committing more staff time to a system.",
+    plan: "We would map one donor and programme workflow, test it with sample contacts in Twenty CRM, then compare hosting, migration, access, and maintenance work.",
+  },
+  {
+    name: "Community Nonprofit",
+    location: "Mexico City, Mexico",
+    organisation: "CDMX",
+    profile: "5 staff · 250 learners reached each year",
+    image: "/assets/clients/mexico-city-students.jpg",
+    imageAlt: "Students attending a presentation at a Mexico City campus",
+    credit: "Photo: Angélica Martínez",
+    budget: "$1,500.00",
+    calculation: "5 seats × $25 × 12 months",
+    need: "A community education team needs a clearer way to follow donor conversations, class participation, and volunteer support.",
+    plan: "We would sketch the records and permissions first, build a small sample workflow, and compare the effort of running an open-source stack with the tools already in use.",
+  },
+  {
+    name: "Humanitarian Org",
+    location: "London, United Kingdom",
+    organisation: "UK",
+    profile: "12 staff · 400 local residents reached each year",
+    image: "/assets/clients/london-community-garden.jpg",
+    imageAlt:
+      "A public pocket park with raised planting beds in Arsenal, London",
+    credit: "Photo: Alan Stanton",
+    budget: "$3,600.00",
+    calculation: "12 seats × $25 × 12 months",
+    need: "A community growing team wants volunteer, event, and supporter records to work together without losing an exit route.",
+    plan: "We would map its volunteer and supporter journeys, compare a sample Twenty CRM setup, and write down the hosting, backup, training, and handover tasks.",
+  },
+];
+---
+
+<section
+  class="site-container py-8 md:py-12"
+  aria-labelledby="client-scenarios-title"
+>
+  <div class="mx-auto mb-6 max-w-3xl text-center">
+    <p class="text-sm font-semibold uppercase tracking-[0.12em] text-primary">
+      Learn it. Build it.
+    </p>
+    <h2
+      id="client-scenarios-title"
+      class="mt-2 font-brand text-3xl text-neutral-900 dark:text-white md:text-4xl"
+    >
+      For Keeps.
+    </h2>
+    <p class="mt-3 leading-7 text-neutral-600 dark:text-neutral-300">
+      These are fictional planning scenarios, not client results. Flip a card to
+      see our work in action!
+    </p>
+  </div>
+  <div class="grid gap-5 lg:grid-cols-3">
+    {scenarios.map((scenario, index) => (
+      <article class="client-card" data-client-card>
+        <div class="client-card-inner">
+          <div class="client-card-face client-card-front" data-client-front>
+            <div class="client-card-image-wrap">
+              <img
+                src={scenario.image}
+                alt={scenario.imageAlt}
+                width="1200"
+                height="675"
+                loading="lazy"
+                class="client-card-image"
+              />
+              <span class="client-card-location">{scenario.location}</span>
+            </div>
+            <div class="client-card-content">
+              <span class="client-card-label">Paid Assessment</span>
+              <h3>
+                {scenario.name}: {scenario.organisation}
+              </h3>
+              <p class="client-card-profile">{scenario.profile}</p>
+              <div class="client-card-budget">
+                <span>Estimated annual subscription</span>
+                <strong>{scenario.budget}</strong>
+                <small>{scenario.calculation}</small>
+              </div>
+              <p class="client-card-context">
+                Based on an assumed $25 per user each month. Compare the
+                subscription line with setup, hosting, support, and admin work.
+              </p>
+              <a
+                class="client-card-credit"
+                href={scenario.creditUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {scenario.credit}
+              </a>
+              <button
+                type="button"
+                class="client-card-flip"
+                data-client-flip
+                aria-expanded="false"
+                data-umami-event="clientScenarioFlip"
+              >
+                Flip
+              </button>
+            </div>
+          </div>
+          <div
+            class="client-card-face client-card-back"
+            data-client-back
+            aria-hidden="true"
+            inert
+          >
+            <div class="client-card-content">
+              <span class="client-card-label">Nonprofit consulting</span>
+              <h3>{scenario.name}: Case Study</h3>
+              <p class="client-card-profile">{scenario.need}</p>
+              <div class="client-card-plan">
+                <span>Proposed solution</span>
+                <p>{scenario.plan}</p>
+              </div>
+              <div class="client-card-budget">
+                <span>Current costs</span>
+                <strong>{scenario.budget} / year</strong>
+                <small>{scenario.calculation}</small>
+              </div>
+              <p class="client-card-context">This is an estimated example</p>
+              <button
+                type="button"
+                class="client-card-flip"
+                data-client-flip
+                aria-expanded="true"
+                data-umami-event="clientScenarioFlip"
+              >
+                Back to {scenario.name}
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .client-card {
+    min-width: 0;
+    min-height: 38rem;
+    perspective: 1200px;
+  }
+  .client-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    transition: transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .client-card.is-flipped .client-card-inner {
+    transform: rotateY(180deg);
+  }
+  .client-card-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgb(4 167 164 / 36%);
+    border-radius: 1.15rem;
+    background: linear-gradient(160deg, #fff 0%, #f2faf8 100%);
+    box-shadow: 0 12px 30px rgb(15 54 57 / 10%);
+    backface-visibility: hidden;
+  }
+  .client-card-back {
+    transform: rotateY(180deg);
+    background:
+      radial-gradient(
+        ellipse at 100% 0%,
+        rgb(4 167 164 / 16%),
+        transparent 48%
+      ),
+      linear-gradient(150deg, #123f40 0%, #092e33 100%);
+    color: #effffc;
+  }
+  .client-card-image-wrap {
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+    background: #dcece8;
+  }
+  .client-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .client-card-location {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    max-width: calc(100% - 1.5rem);
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+    background: rgb(7 42 46 / 88%);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 650;
+  }
+  .client-card-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+  .client-card-label {
+    color: #087c77;
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .client-card-content h3 {
+    margin: 0.45rem 0 0;
+    color: #12363a;
+    font-family: var(--font-brand);
+    font-size: 1.7rem;
+    line-height: 1.15;
+  }
+  .client-card-profile {
+    margin: 0.6rem 0 0;
+    color: #3f5b5e;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .client-card-budget {
+    display: grid;
+    gap: 0.2rem;
+    margin-top: 1rem;
+    border: 1px solid rgb(159 63 11 / 35%);
+    border-radius: 0.75rem;
+    padding: 0.75rem 0.85rem;
+    background: rgb(250 209 59 / 12%);
+  }
+  .client-card-budget span {
+    color: #7d370d;
+    font-size: 0.66rem;
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .client-card-budget strong {
+    color: #7d370d;
+    font-size: 1.25rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .client-card-budget small {
+    color: #62524a;
+    font-size: 0.72rem;
+  }
+  .client-card-context {
+    margin: 0.55rem 0 0;
+    color: #53686a;
+    font-size: 0.74rem;
+    line-height: 1.5;
+  }
+  .client-card-credit {
+    margin-top: 0.65rem;
+    color: #53686a;
+    font-size: 0.68rem;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .client-card-flip {
+    width: 100%;
+    margin-top: auto;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid rgb(4 167 164 / 42%);
+    border-radius: 0.7rem;
+    background: rgb(4 167 164 / 9%);
+    color: #075e5a;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      background-color 180ms ease,
+      transform 180ms ease;
+  }
+  .client-card-flip:hover {
+    transform: translateY(-2px);
+    background: rgb(4 167 164 / 17%);
+  }
+  .client-card-back .client-card-label,
+  .client-card-back .client-card-profile,
+  .client-card-back .client-card-context,
+  .client-card-back .client-card-credit {
+    color: #c3e6e1;
+  }
+  .client-card-back .client-card-content h3 {
+    color: #f3fffd;
+  }
+  .client-card-back .client-card-plan {
+    margin-top: 1rem;
+    border-left: 3px solid #04a7a4;
+    padding: 0.65rem 0.8rem;
+    background: rgb(255 255 255 / 6%);
+  }
+  .client-card-back .client-card-plan span {
+    color: #83d9d0;
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .client-card-back .client-card-plan p {
+    margin: 0.4rem 0 0;
+    color: #effffc;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .client-card-back .client-card-budget {
+    border-color: rgb(255 179 107 / 45%);
+    background: rgb(159 63 11 / 22%);
+  }
+  .client-card-back .client-card-budget span,
+  .client-card-back .client-card-budget strong {
+    color: #ffc18d;
+  }
+  .client-card-back .client-card-budget small {
+    color: #f1d7c2;
+  }
+  .client-card-back .client-card-flip {
+    border-color: rgb(131 217 208 / 55%);
+    background: rgb(4 167 164 / 20%);
+    color: #effffc;
+  }
+  .client-card-back .client-card-flip:hover {
+    background: rgb(4 167 164 / 34%);
+  }
+  .client-card-flip:focus-visible {
+    outline: 3px solid #f0a36b;
+    outline-offset: 3px;
+  }
+  :global(html.dark) .client-card-front {
+    border-color: rgb(4 167 164 / 55%);
+    background: linear-gradient(160deg, #153d3d 0%, #0c3034 100%);
+  }
+  :global(html.dark) .client-card-label {
+    color: #79ded3;
+  }
+  :global(html.dark) .client-card-content h3 {
+    color: #effffc;
+  }
+  :global(html.dark) .client-card-profile,
+  :global(html.dark) .client-card-context,
+  :global(html.dark) .client-card-credit {
+    color: #c3e6e1;
+  }
+  :global(html.dark) .client-card-budget span,
+  :global(html.dark) .client-card-budget strong {
+    color: #ffc18d;
+  }
+  :global(html.dark) .client-card-budget small {
+    color: #f1d7c2;
+  }
+  :global(html.dark) .client-card-flip {
+    color: #dffffa;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .client-card-inner,
+    .client-card-flip {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-client-card]")
+    .forEach((card) => {
+      const front = card.querySelector<HTMLElement>("[data-client-front]");
+      const back = card.querySelector<HTMLElement>("[data-client-back]");
+      if (!front || !back) return;
+
+      card
+        .querySelectorAll<HTMLButtonElement>("[data-client-flip]")
+        .forEach((button) => {
+          button.addEventListener("click", () => {
+            const flipped = card.classList.toggle("is-flipped");
+            front.setAttribute("aria-hidden", String(flipped));
+            front.inert = flipped;
+            back.setAttribute("aria-hidden", String(!flipped));
+            back.inert = !flipped;
+            const nextButton = flipped
+              ? back.querySelector<HTMLButtonElement>("[data-client-flip]")
+              : front.querySelector<HTMLButtonElement>("[data-client-flip]");
+            nextButton?.focus();
+          });
+        });
+    });
+</script>

@@ -1,0 +1,21 @@
+---
+const { title = "This page is taking a breather." } = Astro.props;
+---
+
+<main class="site-container py-16 md:py-24">
+  <section class="mx-auto max-w-2xl rounded-2xl border border-primary/20 bg-white/80 p-8 text-center shadow-sm dark:bg-bg-secondary-dark/80 md:p-12">
+    <p class="text-sm font-semibold uppercase tracking-[0.12em] text-primary">For Keeps</p>
+    <h1 class="mt-3 font-brand text-4xl text-neutral-900 dark:text-white">{title}</h1>
+    <p class="mt-4 leading-7 text-neutral-600 dark:text-neutral-300">
+      We are preparing this part of the site. Join the mailing list for updates.
+    </p>
+    <a
+      class="mt-6 inline-flex rounded-lg bg-primary px-5 py-3 font-semibold text-white transition-colors hover:bg-primary-strong"
+      href="https://news.allforkeeps.com/subscription/form"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Join the mailing list
+    </a>
+  </section>
+</main>

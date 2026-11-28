@@ -1,33 +1,60 @@
 const SITE_URL = import.meta.env.PUBLIC_SITE_URL || "https://allforkeeps.com";
+import socials from "../data/for-keeps-socials.json";
+import { pricingConfig } from "./pricing.ts";
+const assessmentSurveyUrl =
+  import.meta.env.PUBLIC_FORMBRICKS_SURVEY_URL?.trim() || "";
+if (assessmentSurveyUrl && new URL(assessmentSurveyUrl).protocol !== "https:") {
+  throw new Error("PUBLIC_FORMBRICKS_SURVEY_URL must be an HTTPS share URL.");
+}
+
+export const serviceLinks = {
+  newsletter: pricingConfig.links.newsletter,
+  learning: pricingConfig.links.learning,
+  shop: pricingConfig.links.shop,
+  assessment: pricingConfig.links.assessment,
+  assessmentSurvey: assessmentSurveyUrl,
+  enterDungeon: pricingConfig.links.learning,
+};
+export const teamClaim =
+  "We are an independent eLearning studio with more than 10 years of experience helping individuals and nonprofit organisations make the most of opensource technology.";
+export const teamClaimTeam =
+  "We are a small team of nonprofit technology consultants with insider experience.";
+export const teamClaimMode = "independent";
+const selectedTeamClaim =
+  teamClaimMode === "team" ? teamClaimTeam : teamClaim;
+const xProfile = socials.find((social) => social.name === "X" || social.name === "Twitter");
+
+/** @type {"newsletter" | "assessment"} */
+export const primaryCta = "newsletter";
+export const primaryCtaLabel =
+  primaryCta === "assessment" ? "Book an assessment" : "Join For Keeps";
+export const secondaryCtaLabel =
+  primaryCta === "assessment" ? "Get updates" : "Book an Assessment";
+export const analytics = {
+  umamiWebsiteId: import.meta.env.PUBLIC_UMAMI_ID || "",
+  umamiScriptUrl: "https://stats.allforkeeps.com/script.js",
+};
 
 export const siteConfig = {
   title: "For Keeps",
   author: "For Keeps",
   url: SITE_URL,
   mail: "hello@allforkeeps.com",
+  teamClaim: selectedTeamClaim,
   meta: {
     title: "For Keeps",
     description:
-      "Learn to choose, build, and maintain nonprofit technology you control. Start with practical Open Source guides; pay for scoped expertise when you need it.",
+      "Learn to choose, build, and maintain nonprofit technology you control. Start with practical open-source guides; pay for scoped expertise when you need it.",
     keywords:
       "For Keeps, nonprofit technology, open source, self-hosting, nonprofit CRM, donor tools, technology ownership",
     image: `${SITE_URL}/assets/keeper.jpg`,
     favicon: `${SITE_URL}/favicon.png`,
-    twitterHandle: "@joinforkeeps",
+    twitterHandle: xProfile?.url ? `@${new URL(xProfile.url).pathname.split("/").filter(Boolean).pop()}` : "",
   },
   social: {
-    twitter: "https://x.com/joinforkeeps",
-    twitterHandle: "@joinforkeeps",
+    twitter: xProfile?.url || "",
+    twitterHandle: xProfile?.url ? `@${new URL(xProfile.url).pathname.split("/").filter(Boolean).pop()}` : "",
     twitterName: "For Keeps",
     blog: "https://allforkeeps.com/blog",
-    community: "https://linktr.ee/joinforkeeps",
   },
 };
-
-export const socialLinks = [
-  {
-    name: "X",
-    url: "https://x.com/joinforkeeps",
-    icon: `<svg class="ic-twitter icon" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" fill="currentColor"></path></svg>`,
-  },
-];

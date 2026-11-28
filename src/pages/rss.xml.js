@@ -2,7 +2,9 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
 export async function GET(context) {
-  const blog = await getCollection('post');
+  const blog = (await getCollection('post')).filter(
+    (post) => post.data.publishDate <= new Date(),
+  );
   return rss({
     title: 'For Keeps',
     description: 'For Keeps',

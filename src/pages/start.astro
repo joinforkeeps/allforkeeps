@@ -1,57 +1,55 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import KeeperTransmission from "@/components/content/KeeperTransmission.astro";
-
-const frappeUrl = import.meta.env.PUBLIC_FRAPPE_LEARNING_URL || "";
-const hasFrappeUrl =
-  frappeUrl.startsWith("https://") || frappeUrl.startsWith("http://");
+import LearnTag from "@/components/content/LearnTag.astro";
+import { serviceLinks } from "@/config/site.js";
 
 const checkpoints = [
   {
     number: "01",
-    title: "Read the license on the door",
-    label: "Open Source",
-    copy:
-      "Open Source software gives people rights to use, study, change, and share code under its license. Every project has its own terms. A public code repository or free download alone does not tell you what those terms allow.",
+    title: "Read the licence on the door",
+    label: "Open-source software",
+    copy: "Open-source software gives people rights to use, study, change, and share code under its licence. Every project has its own terms. A public code repository or free download alone does not tell you what those terms allow.",
   },
   {
     number: "02",
     title: "Find who holds the keys",
     label: "Self-hosting",
-    copy:
-      "Self-hosting means your organization runs software on infrastructure it operates or controls. That can mean a machine in your office or a rented server. Your team also plans updates, access, backups, security, and recovery.",
+    copy: "Self-hosting means your organisation runs software on infrastructure it operates or controls. That can mean a machine in your office or a rented server. Your team also plans updates, access, backups, security, and recovery.",
   },
   {
     number: "03",
     title: "Mark the exit before you move in",
     label: "Ownership",
-    copy:
-      "List the data you need to keep, the format it can leave in, the people who can export it, the full operating cost, and the person who will test a restore. An exit plan is part of the build, not a fire escape added later.",
+    copy: "List the data you need to keep, the format it can leave in, the people who can export it, the full operating cost, and the person who will test a restore. An exit plan is part of the build, not a fire escape added later.",
   },
 ];
 ---
 
 <Layout
   title="Start Mission"
-  description="A KEEPER-guided introduction to Open Source software, self-hosting, and planning a safe exit from nonprofit technology."
+  description="A KEEPER-guided introduction to open-source software, self-hosting, and planning a safe exit from nonprofit technology."
 >
   <main class="fk-start">
+    <div class="site-container">
+      <LearnTag />
+    </div>
     <section class="fk-start-hero site-container">
       <div class="fk-start-copy">
         <p class="fk-start-kicker">START MISSION / THE FIRST DOOR</p>
         <h1>Before you claim the keys, learn what they open.</h1>
         <p class="fk-start-lede">
-          Welcome to the practice vault. We will separate Open Source from
-          self-hosting, map the work behind both, and leave with a first exit
-          plan. No server purchase. No donor records. No mysterious button
+          Welcome to the practice vault. We will separate open-source software
+          from self-hosting, map the work behind both, and leave with a first
+          exit plan. No server purchase. No donor records. No mysterious button
           labeled “production.”
         </p>
         <a class="fk-start-button" href="#briefing">
           Enter the briefing <span aria-hidden="true">↓</span>
         </a>
         <p class="fk-start-note">
-          This field briefing is ready to read. The full Frappe Learning course
-          is in development; paid enrollment is not open.
+          This free introduction is ready to read. The upcoming Twenty CRM
+          course is planned for December 1; paid registration is not open.
         </p>
       </div>
 
@@ -69,9 +67,18 @@ const checkpoints = [
       </figure>
 
       <div class="fk-start-stats" aria-label="Mission facts">
-        <div><strong>3</strong><span>checkpoints</span></div>
-        <div><strong>0</strong><span>donor records needed</span></div>
-        <div><strong>Free</strong><span>to read</span></div>
+        <div>
+          <strong>3</strong>
+          <span>checkpoints</span>
+        </div>
+        <div>
+          <strong>0</strong>
+          <span>donor records needed</span>
+        </div>
+        <div>
+          <strong>Free</strong>
+          <span>to read</span>
+        </div>
       </div>
     </section>
 
@@ -86,20 +93,18 @@ const checkpoints = [
       </div>
 
       <ol class="fk-route">
-        {
-          checkpoints.map((checkpoint) => (
-            <li class="fk-route-step">
-              <span class="fk-route-number" aria-hidden="true">
-                {checkpoint.number}
-              </span>
-              <div class="fk-route-content">
-                <p class="fk-route-label">{checkpoint.label}</p>
-                <h3>{checkpoint.title}</h3>
-                <p>{checkpoint.copy}</p>
-              </div>
-            </li>
-          ))
-        }
+        {checkpoints.map((checkpoint) => (
+          <li class="fk-route-step">
+            <span class="fk-route-number" aria-hidden="true">
+              {checkpoint.number}
+            </span>
+            <div class="fk-route-content">
+              <p class="fk-route-label">{checkpoint.label}</p>
+              <h3>{checkpoint.title}</h3>
+              <p>{checkpoint.copy}</p>
+            </div>
+          </li>
+        ))}
       </ol>
     </section>
 
@@ -126,9 +131,9 @@ const checkpoints = [
         <details class="fk-answer">
           <summary>Open the answer</summary>
           <p>
-            False. Self-hosting changes who operates the infrastructure; it
-            does not remove the work. Plan updates, backups, security, access,
-            staff time, and a tested recovery route.
+            False. Self-hosting changes who operates the infrastructure; it does
+            not remove the work. Plan updates, backups, security, access, staff
+            time, and a tested recovery route.
           </p>
         </details>
       </div>
@@ -138,25 +143,29 @@ const checkpoints = [
       <div class="fk-next-card">
         <div>
           <p class="fk-start-kicker">THE NEXT ROOM</p>
-          <h2>The full course is being built for Frappe Learning.</h2>
+          <h2>More learning is on the way.</h2>
           <p>
-            We are shaping the next training steps now. Stay tuned in the
-            community for updates as we get closer to holiday training.
+            Course 1 is a free open-source introduction. Course 2 covers Twenty
+            CRM and is planned for December 1. Registration is not open yet.
           </p>
         </div>
         <div class="fk-next-actions">
-          {
-            hasFrappeUrl ? (
-              <a class="fk-start-button" href={frappeUrl} target="_blank" rel="noopener noreferrer">
-                Continue to Frappe Learning
-              </a>
-            ) : (
-              <a class="fk-start-button" href="/community">
-                Follow community updates
-              </a>
-            )
-          }
-          <a class="fk-secondary-link" href="/courses">Browse the field guides</a>
+          <a
+            class="fk-start-button"
+            href={serviceLinks.newsletter}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-umami-event="joinMailingList"
+          >
+            Join the mailing list
+          </a>
+          <a
+            class="fk-secondary-link"
+            href={serviceLinks.learning}
+            data-umami-event="browseCourses"
+          >
+            Browse Courses
+          </a>
         </div>
       </div>
     </section>
@@ -226,7 +235,9 @@ const checkpoints = [
     color: #fff;
     font-weight: 700;
     text-decoration: none;
-    transition: background-color 180ms ease, transform 180ms ease;
+    transition:
+      background-color 180ms ease,
+      transform 180ms ease;
   }
 
   .fk-start-button:hover {
