@@ -63,7 +63,7 @@ const scenarios = [
     </p>
   </div>
   <div class="grid gap-5 lg:grid-cols-3">
-    {scenarios.map((scenario, index) => (
+    {scenarios.map((scenario) => (
       <article class="client-card" data-client-card>
         <div class="client-card-inner">
           <div class="client-card-face client-card-front" data-client-front>
@@ -93,14 +93,7 @@ const scenarios = [
                 Based on an assumed $25 per user each month. Compare the
                 subscription line with setup, hosting, support, and admin work.
               </p>
-              <a
-                class="client-card-credit"
-                href={scenario.creditUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {scenario.credit}
-              </a>
+              <p class="client-card-credit">{scenario.credit}</p>
               <button
                 type="button"
                 class="client-card-flip"

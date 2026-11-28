@@ -15,7 +15,7 @@ import { pageFlags } from "@/config/pages.js";
 import { primaryCta, primaryCtaLabel, serviceLinks } from "@/config/site.js";
 const visibleMenus = menus.filter((menu) => {
   if ("children" in menu) {
-    return menu.children.some((child) => pageFlags[child.pageKey]);
+    return menu.children?.some((child) => pageFlags[child.pageKey]) ?? false;
   }
   return pageFlags[menu.pageKey];
 });
@@ -64,7 +64,9 @@ const ctaLabel = isSpanish ? "Únete a la lista de correo" : primaryCtaLabel;
         <button
           type="button"
           id="darkToggleMobile"
-          aria-label={isSpanish ? "Cambiar tema de color" : "Toggle colour theme"}
+          aria-label={
+            isSpanish ? "Cambiar tema de color" : "Toggle colour theme"
+          }
           class="flex items-center justify-center w-9 h-9 cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edeefa] border-[0.5px] border-[#f3f3ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-transform duration-200 active:scale-95"
         >
           <div
@@ -139,14 +141,16 @@ const ctaLabel = isSpanish ? "Únete a la lista de correo" : primaryCtaLabel;
                     aria-controls="afk-submenu"
                   >
                     <span class="afk-label" aria-hidden="true">
-                      {navLabel(menu.name).split("").map((letter, index) => (
-                        <span
-                          class="afk-letter"
-                          style={`--letter-index: ${index}`}
-                        >
-                          {letter}
-                        </span>
-                      ))}
+                      {navLabel(menu.name)
+                        .split("")
+                        .map((letter, index) => (
+                          <span
+                            class="afk-letter"
+                            style={`--letter-index: ${index}`}
+                          >
+                            {letter}
+                          </span>
+                        ))}
                     </span>
                     <ChevronDown class="dropdown-chevron w-4 h-4 transition-transform duration-200 text-neutral-400 group-hover:text-primary dark:text-neutral-500" />
                     <ChevronRight class="w-4 h-4 lg:hidden text-neutral-300 dark:text-neutral-600 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
@@ -156,7 +160,7 @@ const ctaLabel = isSpanish ? "Únete a la lista de correo" : primaryCtaLabel;
                     class="dropdown-panel lg:absolute lg:top-full lg:left-1/2 lg:mt-2 lg:min-w-[200px] lg:rounded-xl lg:border lg:border-dashed lg:border-primary/20 dark:lg:border-neutral-700 lg:bg-white/95 dark:lg:bg-bg-secondary-dark lg:p-2 hidden lg:invisible lg:opacity-0 lg:flex lg:flex-col lg:transition-all lg:duration-200"
                   >
                     {menu.children
-                      .filter((child) => pageFlags[child.pageKey])
+                      ?.filter((child) => pageFlags[child.pageKey])
                       .map((child) => (
                         <a
                           href={child.url}
@@ -214,7 +218,9 @@ const ctaLabel = isSpanish ? "Únete a la lista de correo" : primaryCtaLabel;
         <button
           type="button"
           id="darkToggle"
-          aria-label={isSpanish ? "Cambiar tema de color" : "Toggle colour theme"}
+          aria-label={
+            isSpanish ? "Cambiar tema de color" : "Toggle colour theme"
+          }
           class="relative flex items-center h-9 px-2 gap-1.5 font-medium cursor-pointer rounded-full bg-gradient-to-b from-white to-[#edf1fa] border-[0.5px] border-[#f3f5ff] dark:from-neutral-800 dark:to-neutral-600 dark:border-neutral-600 transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95 mx-1"
         >
           <div
